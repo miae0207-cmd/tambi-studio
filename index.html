@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3EFFF">
-<meta name="description" content="탐비의 드라마 블로그 작업실 — 오늘 쓸 소재, 제목·각도, 이미지 수급, 홈판 체크리스트까지 한 화면에.">
+<meta name="description" content="탐비의 블로그 작업실 — 드라마·자동차·지원금 소재, 홈판 제목 공식, 이미지 수급, 체크리스트까지 한 화면에.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="탐비 스튜디오">
@@ -52,20 +52,23 @@
         <h2>오늘 쓸 소재</h2>
         <button type="button" class="btn ghost sm" id="refreshTopics">↻ 새로고침</button>
       </div>
+
+      <div class="blogswitch" id="blogSwitch" role="tablist" aria-label="블로그 선택"></div>
+
       <p class="view-sub" id="topicsMeta">소재 불러오는 중…</p>
       <div class="chips" id="topicFilter" role="group" aria-label="소재 필터"></div>
       <label class="search-field">
         <span aria-hidden="true">🔍</span>
-        <input type="text" id="topicSearch" placeholder="작품명 · 배우 · 채널로 찾기" autocomplete="off">
+        <input type="text" id="topicSearch" placeholder="작품명 · 차종 · 지원금으로 찾기" autocomplete="off">
       </label>
       <div class="topic-list" id="topicList"></div>
 
-      <div class="tip-card">
+      <div class="tip-card" id="topicTip">
         <b>사진은 공식 소스에서만, 직접 캡처해서 씁니다</b>
         <ol>
-          <li><b>공홈 스틸컷</b> — 카드의 🖼 버튼으로 방송사 공식 포토 페이지(현장포토·포토갤러리)를 엽니다.</li>
-          <li><b>공식 유튜브 1080p</b> — ▶ 버튼으로 공식 채널의 그 작품 클립만 모아 보고, 필요한 장면을 직접 캡처합니다.</li>
-          <li>공홈 포토가 없는 작품은 유튜브 캡처 + 대사·요약 카드로 채우면 글 흐름이 끊기지 않아요.</li>
+          <li><b>공식 홈페이지</b> — 카드의 공식 링크로 방송사·제조사·기관 페이지만 엽니다.</li>
+          <li><b>공식 유튜브 1080p</b> — 필요한 장면은 공식 채널 영상에서 직접 캡처합니다.</li>
+          <li>기사 사진·남의 캡처는 쓰지 않습니다. 카드에 적힌 출처 표기를 글에도 그대로 남겨요.</li>
         </ol>
       </div>
     </section>
@@ -74,8 +77,10 @@
     <section class="view" id="view-titles" aria-label="제목과 각도">
       <div class="view-head">
         <h2>제목 · 각도 뽑기</h2>
-        <span class="view-sub" style="margin:0">자극어 자동 제외</span>
+        <span class="view-sub" style="margin:0">📺 드라마 전용</span>
       </div>
+
+      <div id="formulaCard"></div>
 
       <div class="card">
         <div class="seg" id="modeSwitch" role="group" aria-label="제목 모드">
@@ -89,9 +94,32 @@
         </label>
 
         <label class="field">
-          <span>키워드 · 포인트 <i>(선택)</i></span>
+          <span>회차·포인트 <i>(방영중은 회차를 꼭)</i></span>
           <input type="text" id="genKeyword" placeholder="예: 12회, 정체, 명대사" autocomplete="off">
         </label>
+
+        <details class="fold perf-fold" id="perfFold">
+          <summary>➕ 숫자·성과 넣기 <i>선택 — 넣으면 훅이 세집니다</i></summary>
+          <div class="fold-body">
+            <label class="field">
+              <span>인용 훅 <i>'…' 안에 들어갈 한마디</i></span>
+              <input type="text" id="genHook" placeholder="예: 시청률은 2%대였는데.. / 터진 건 폭탄만이 아니었다" autocomplete="off">
+            </label>
+            <label class="field">
+              <span>성과 문장 <i>과거작용, '…한'으로 끝나게</i></span>
+              <input type="text" id="genOutcome" placeholder="예: 넷플릭스 3위 한 / 최고 9.7%까지 오른" autocomplete="off">
+            </label>
+            <label class="field">
+              <span>방송사</span>
+              <input type="text" id="genChannel" placeholder="예: JTBC, tvN, KBS" autocomplete="off">
+            </label>
+            <label class="field">
+              <span>배우·수상 <i>선택</i></span>
+              <input type="text" id="genActor" placeholder="예: 류승룡" autocomplete="off">
+            </label>
+            <p class="hint">확인한 숫자만 적어주세요. 비워두면 숫자 없는 안전한 훅으로 뽑습니다.</p>
+          </div>
+        </details>
 
         <div class="chips" id="toneChips" role="group" aria-label="톤 선택"></div>
 
@@ -110,7 +138,7 @@
     <section class="view" id="view-images" aria-label="이미지 수급과 체크리스트">
       <div class="view-head">
         <h2>이미지 수급</h2>
-        <span class="view-sub" style="margin:0">공식 홈페이지 · 공식 채널만</span>
+        <span class="view-sub" style="margin:0">📺 드라마 · 공식 홈페이지·채널만</span>
       </div>
 
       <div class="card">
@@ -156,7 +184,7 @@
         <h2>저장함</h2>
         <button type="button" class="btn ghost sm" id="clearSaved">전체 삭제</button>
       </div>
-      <p class="view-sub">마음에 든 제목은 여기 모아뒀다가 그대로 붙여넣으세요. 과거작은 작품명 메모가 같이 남습니다.</p>
+      <p class="view-sub">세 블로그 제목을 모두 모읍니다. 마음에 든 건 그대로 붙여넣으세요.</p>
       <div class="chips" id="savedFilter" role="group" aria-label="저장함 필터"></div>
       <div id="savedList"></div>
     </section>

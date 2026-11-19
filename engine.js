@@ -390,9 +390,81 @@
 
   var TONE_LABEL = { curious: '궁금증', twist: '반전·해석', empathy: '공감·반응', clean: '정리' };
 
-  /* 제목 풀: s = 템플릿, t = 톤 */
+  /* ================================================================
+     제목 공식 (달래쨘 홈판 실적 기반)
+     · 방영중 : [작품명] [회차/포인트], [한 줄 훅]           → 검색 + 홈판
+     · 과거작 : '인용 훅' + 성과/방송사/배우 + 드라마         → 작품명 숨김, 홈판 전용
+     ================================================================ */
+
+  /* 인용 훅이 없을 때 쓸 수 있는, 숫자를 만들지 않는 안전한 훅 */
+  var SAFE_HOOKS = [
+    '아무 정보 없이 봐야 한다', '첫 회부터 답이 있었다', '그 장면 하나로 다들 기억한다',
+    '끝나고 나서도 계속 생각난다', '다시 보면 다르게 읽힌다', '배우들도 몰랐다고 한다',
+    '한 줄 대사가 다 했다', '세 번 봐도 새로 보인다', '그때는 아무도 몰랐다',
+    '지금 다시 보면 더 아프다'
+  ];
+
+  /* 성과 문장이 없을 때 쓸 수 있는, 숫자를 만들지 않는 안전한 성과 */
+  var SAFE_OUTCOMES = [
+    '지금도 다시 보는', '끝까지 회자되는', '한 번 보면 잊히지 않는',
+    '두 번째 정주행이 이어지는', '오래 사랑받은', '지금 봐도 통하는'
+  ];
+
+  /* 방영중 제목 풀: s = 템플릿, t = 톤 */
   var TITLE_POOL = [
     /* 궁금증 유발형 */
+    { t: 'curious', s: '{W} {K}, {H}', pri: 1 },
+    { t: 'curious', s: '{W} {K}, 여기서부터 달라진다' },
+    { t: 'curious', s: '{W} {K}, 이 장면이 남긴 것' },
+    { t: 'curious', s: '{W} {K}, 다들 어디서 멈췄을까' },
+    { t: 'curious', s: '{W} {K}, 그 대사가 오래 남는 이유' },
+    { t: 'curious', s: '{W} {K}, 다음 화에서 확인할 것' },
+    { t: 'curious', s: '{W} {K}, 지금 다시 보면 보이는 것' },
+    { t: 'curious', s: '{W} {K}, 아직 안 본 사람이 많은 이유' },
+    { t: 'curious', s: '{W} {K}, 예고로 본 다음 전개' },
+    { t: 'curious', s: '{W} {K}, 인물이 바뀐 지점' },
+    { t: 'curious', s: '{W} {K}, 반응이 먼저 온 이유' },
+    { t: 'curious', s: '{W} {K}, 결말까지 남은 복선' },
+    { t: 'curious', s: '{W} {K}, 이번 화 최고의 장면' },
+    { t: 'curious', s: '{W} {K}, 지금 화제인 이유' },
+    { t: 'curious', s: '{W}, 이번 주에 봐야 할 이유' },
+    { t: 'curious', s: '{W} {K}, 초반에 깔린 신호들' },
+    { t: 'curious', s: '{W} {K}, 어디까지 밝혀졌나' },
+    { t: 'curious', s: '{W} {K}, 그 장면이 의미하는 것' },
+
+    /* 반전·해석형 */
+    { t: 'twist', s: '{W} {K}, 다시 보면 다른 이야기' },
+    { t: 'twist', s: '{W} {K}, 연출이 숨긴 장치 세 가지' },
+    { t: 'twist', s: '{W} {K}, 알고 보면 복선이었다' },
+    { t: 'twist', s: '{W} {K}, 두 번째 볼 때 보이는 것' },
+    { t: 'twist', s: '{W} {K}, 결말을 다시 읽는다' },
+    { t: 'twist', s: '{W} {K}, 그 장면의 다른 해석' },
+    { t: 'twist', s: '{W} {K}, 주인공이 숨긴 것' },
+    { t: 'twist', s: '{W} {K}, 감독이 노린 지점' },
+    { t: 'twist', s: '{W}의 진짜 주인공은 누구일까' },
+    { t: 'twist', s: '{W} {K}, 처음과 끝이 연결되는 지점' },
+
+    /* 공감·반응형 */
+    { t: 'empathy', s: '{W} {K} 보고 다들 같은 생각 했을 듯' },
+    { t: 'empathy', s: '{W} {K}, 나만 불편했던 거 아니죠' },
+    { t: 'empathy', s: '{W} {K}에서 다들 멈췄을 듯' },
+    { t: 'empathy', s: '{W} {K} 장면이 오래 남는 이유' },
+    { t: 'empathy', s: '{W} {K} 두고 의견 갈리는 지점' },
+    { t: 'empathy', s: '{W} {K}, 이 장면만 다시 봤다' },
+    { t: 'empathy', s: '{W}, 나만 이렇게 몰입한 거 아니죠' },
+    { t: 'empathy', s: '{W} {K}, 같이 보면 더 재밌는 이유' },
+
+    /* 깔끔 정리형 */
+    { t: 'clean', s: '{W} {K}, 지금까지 밝혀진 것' },
+    { t: 'clean', s: '{W} {K} 한 번에 정리' },
+    { t: 'clean', s: '{W} {K} 시간순 정리' },
+    { t: 'clean', s: '{W} {K}, 인물관계까지 한눈에' },
+    { t: 'clean', s: '{W} {K} 요점만 빠르게' },
+    { t: 'clean', s: '{W} {K}, 결말 전 체크리스트' },
+    { t: 'clean', s: '{W} {K}, 스포일러 범위까지' },
+    { t: 'clean', s: '{W} 기본 정보와 {K} 체크 포인트' },
+
+    /* ↓ 아래는 예전 풀 (방영중 모드에서 길이·각도 다양화용) */
     { t: 'curious', s: '{W} {K}, 결말까지 이어질까' },
     { t: 'curious', s: '{K|이/가} 바꾼 {W}의 흐름' },
     { t: 'curious', s: '{W}에서 {K|이/가} 의미하는 것' },
@@ -491,73 +563,26 @@
     { t: 'clean', s: '{W} 인물·관계·결말 총정리' }
   ];
 
-  /* 과거·종영작 모드: 작품명을 제목에서 숨기고 훅만 남긴 제목 풀 */
+  /* 과거·종영작 모드: '인용 훅' + 성과/방송사/배우 + 드라마 (작품명 없음) */
   var HIDE_POOL = [
-    /* 궁금증 */
-    { t: 'curious', s: '알고 보니 첫 회부터 깔려 있던 복선' },
-    { t: 'curious', s: '{K}에서 다들 놓친 장면' },
-    { t: 'curious', s: '그 장면이 복선이었다는 걸 아무도 몰랐다' },
-    { t: 'curious', s: '지금 다시 보면 다르게 읽히는 장면' },
-    { t: 'curious', s: '이 장면, 결말까지 이어질까' },
-    { t: 'curious', s: '왜 그때는 아무도 눈치채지 못했을까' },
-    { t: 'curious', s: '다시 보면 보이는 신호 세 가지' },
-    { t: 'curious', s: '결말 전에 꼭 확인해야 할 장면' },
-    { t: 'curious', s: '그 대사, 알고 보면 중요한 암시였다' },
-    { t: 'curious', s: '{K}, 어디까지 밝혀졌나' },
-    { t: 'curious', s: '첫 회에 이미 답이 나와 있던 이유' },
-    { t: 'curious', s: '이 장면의 의미, 그냥 지나치면 안 되는 이유' },
-    { t: 'curious', s: '다시 보다가 발견한 작은 장치' },
-    { t: 'curious', s: '그 장면이 왜 오래 남는지 궁금했다' },
-
-    /* 반전·해석 */
-    { t: 'twist', s: '주인공이 끝까지 말하지 못했던 진짜 이유' },
-    { t: 'twist', s: '그 선택은 사랑이 아니었다' },
-    { t: 'twist', s: '결말을 다시 읽으면 달라지는 것들' },
-    { t: 'twist', s: '알고 보면 진짜 주인공은 따로 있었다' },
-    { t: 'twist', s: '{K}의 다른 해석' },
-    { t: 'twist', s: '연출이 숨긴 장치 세 가지' },
-    { t: 'twist', s: '마지막 장면, 다르게 읽는 방법' },
-    { t: 'twist', s: '처음부터 복선이었던 인물 관계' },
-    { t: 'twist', s: '그 장면은 우연이 아니었다' },
-    { t: 'twist', s: '두 번째 볼 때 보이는 것' },
-    { t: 'twist', s: '{K} 하나로 정리하는 전체 서사' },
-    { t: 'twist', s: '결말이 열린 게 아니라 닫혀 있었다' },
-    { t: 'twist', s: '주인공 마지막 대사에 담긴 의미' },
-    { t: 'twist', s: '다시 보면 짠해지는 장면의 이유' },
-
-    /* 공감·반응 */
-    { t: 'empathy', s: '방영 때는 몰랐는데 지금 보면 짠한 장면' },
-    { t: 'empathy', s: '그 장면에서 다들 멈췄을 듯' },
-    { t: 'empathy', s: '나만 이렇게 몰입한 거 아니죠' },
-    { t: 'empathy', s: '다 보고 한참 멍했던 이유' },
-    { t: 'empathy', s: '이 장면이 오래 남는 이유' },
-    { t: 'empathy', s: '다들 같은 생각 했을 듯' },
-    { t: 'empathy', s: '다시 보는 사람들의 공통점' },
-    { t: 'empathy', s: '{K}에서 제일 화나는 장면' },
-    { t: 'empathy', s: '그때는 몰랐는데 지금 보니 더 아픈 장면' },
-    { t: 'empathy', s: '같이 보면 더 재밌는 이유' },
-    { t: 'empathy', s: '이 장면 두고 의견 갈리는 지점' },
-    { t: 'empathy', s: '끝나고 나서도 계속 생각나는 이유' },
-    { t: 'empathy', s: '첫 방송 때 반응과 지금 반응이 다른 이유' },
-    { t: 'empathy', s: '그 인물에게 감정 이입하는 이유' },
-
-    /* 깔끔 정리 */
-    { t: 'clean', s: '{K} 정리: 지금까지 밝혀진 것' },
-    { t: 'clean', s: '{K} 한 번에 정리' },
-    { t: 'clean', s: '인물관계와 {K} 총정리' },
-    { t: 'clean', s: '{K}까지, 흐름 정리' },
-    { t: 'clean', s: '알아두면 좋은 배경 세 가지' },
-    { t: 'clean', s: '요점만 빠르게 정리' },
-    { t: 'clean', s: '{K} 시간순 정리' },
-    { t: 'clean', s: '기본 정보와 체크 포인트' },
-    { t: 'clean', s: '한눈에 보는 요약' },
-    { t: 'clean', s: '{K|으로/로} 보는 전체 줄거리' },
-    { t: 'clean', s: '등장인물 한눈에 정리' },
-    { t: 'clean', s: '결말까지 요점 정리' },
-    { t: 'clean', s: '회차별 핵심 정리' },
-    { t: 'clean', s: '인물·관계·결말 총정리' },
-    { t: 'clean', s: '줄거리 한 번에 정리' },
-    { t: 'clean', s: '배경과 설정 정리' }
+    /* 성과를 앞세운 기본형 */
+    { t: 'curious', s: "'{Q}' {O} 드라마" },
+    { t: 'curious', s: "'{Q}' {O} {C} 드라마" },
+    { t: 'curious', s: "'{Q}' {O}, 지금도 회자되는 드라마" },
+    { t: 'twist', s: "'{Q}' {O} 이유" },
+    { t: 'twist', s: "'{Q}' {O} 드라마, 지금 봐도 통하는 이유" },
+    { t: 'clean', s: "'{Q}' {O} 드라마, 한 번에 정리" },
+    /* 방송사·제작을 앞세운 형 */
+    { t: 'clean', s: "'{Q}' {C} 드라마" },
+    { t: 'clean', s: "'{Q}' {C}에서 만든 드라마" },
+    { t: 'clean', s: '"{Q}" {C} 드라마' },
+    { t: 'clean', s: "'{Q}' {O} 드라마, 결말까지 남는 것" },
+    /* 배우·수상을 앞세운 형 (배우를 적었을 때만) */
+    { t: 'clean', s: "'{Q}' {A|이/가} 상 받은 드라마" },
+    { t: 'empathy', s: "'{Q}' {A|이/가} 나온 드라마" },
+    /* 감정·기억을 앞세운 형 */
+    { t: 'empathy', s: "'{Q}' {O} 드라마, 아직 안 본 사람이 있다" },
+    { t: 'empathy', s: '"{Q}" {O} 드라마' }
   ];
 
   /* 과거작 모드의 각도별 제목 예시 (작품명 없이) */
@@ -648,16 +673,24 @@
 
   /* 토큰 치환: {W} {K} {S}, {K|이/가}, {W|은/는} */
   function render(tpl, ctx) {
-    var out = String(tpl).replace(/\{([WKS])\|([^}\/]+)\/([^}]+)\}/g, function (m, key, a, b) {
+    var out = String(tpl).replace(/\{([WKQOACH])\|([^}\/]+)\/([^}]+)\}/g, function (m, key, a, b) {
       var v = ctx[key] || '';
       if (/^(으로|로)$/.test(a)) return v + josaRo(v);
       return v + josa(v, a, b);
     });
-    out = out.replace(/\{W\}/g, ctx.W || '').replace(/\{K\}/g, ctx.K || '').replace(/\{S\}/g, ctx.S || '');
+    out = out
+      .replace(/\{W\}/g, ctx.W || '')
+      .replace(/\{K\}/g, ctx.K || '')
+      .replace(/\{S\}/g, ctx.S || '')
+      .replace(/\{Q\}/g, ctx.Q || '')
+      .replace(/\{O\}/g, ctx.O || '')
+      .replace(/\{C\}/g, ctx.C || '')
+      .replace(/\{A\}/g, ctx.A || '')
+      .replace(/\{H\}/g, ctx.H || '');
     return tidy(out);
   }
   function tidy(s) {
-    return String(s)
+    return String(s == null ? '' : s)
       .replace(/\s+/g, ' ')
       .replace(/\s+([,.!?])/g, '$1')
       .replace(/[({\[]\s+/g, function (m) { return m.charAt(0); })
@@ -666,10 +699,11 @@
   }
 
   function charLen(s) { return String(s).length; }
+  /* 달래쨘 실제 제목이 35~45자대라, '적정' 구간을 그에 맞춥니다 */
   function fitOf(len) {
-    if (len >= 18 && len <= 32) return { cls: 'good', label: '적정' };
-    if (len < 18) return { cls: 'short', label: '짧음' };
-    if (len <= 40) return { cls: 'long', label: '김' };
+    if (len >= 24 && len <= 45) return { cls: 'good', label: '적정' };
+    if (len < 24) return { cls: 'short', label: '짧음' };
+    if (len <= 55) return { cls: 'long', label: '김' };
     return { cls: 'long', label: '너무 김' };
   }
 
@@ -768,6 +802,15 @@
     var W = rawWork || '이 작품';
     var K = tidy(opts.keyword);
     if (mode === 'hide') K = stripWork(K, rawWork);
+    else if (!K) K = '이번 화';
+
+    /* 방영중: {H} = 그 회차의 한 줄 훅 / 과거작: {Q} 인용 훅, {O} 성과 문장 */
+    var H = tidy(opts.hook);
+    var Q = tidy(opts.hook);
+    var O = tidy(opts.outcome);
+    var C = tidy(opts.channel);
+    var A = tidy(opts.actor);
+
     var tone = opts.tone || 'all';
     var limit = opts.limit || 20;
     var rand = typeof opts.rand === 'function' ? opts.rand : function () { return Math.random(); };
@@ -777,13 +820,22 @@
     for (var i = 0; i < source.length; i++) {
       var p = source[i];
       if (tone !== 'all' && p.t !== tone) continue;
-      if (!K && p.s.indexOf('{K') !== -1) continue;
-      if (mode === 'hide' && p.s.indexOf('{W') !== -1) continue;
-      if (mode === 'show' && p.s.indexOf('{W') === -1) continue;
+      var s = p.s;
+      if (mode === 'hide') {
+        if (s.indexOf('{W') !== -1) continue;
+        // 과거작은 항상 인용 훅 공식으로만 뽑습니다 (훅이 없으면 안전한 훅으로 채움)
+        if (s.indexOf('{Q') === -1) continue;
+        if (!C && s.indexOf('{C') !== -1) continue;
+        if (!A && s.indexOf('{A') !== -1) continue;
+      } else {
+        if (s.indexOf('{W') === -1) continue;
+        if (!K && s.indexOf('{K') !== -1) continue;
+        if (!H && s.indexOf('{H') !== -1) continue;
+      }
       pool.push(p);
     }
 
-    // 무작위 순서 + 길이 적합도 가중
+    // 무작위 순서
     var order = pool.map(function (p) { return { p: p, r: rand() }; });
     order.sort(function (a, b) { return a.r - b.r; });
 
@@ -791,7 +843,14 @@
     var picked = [];
     for (var k = 0; k < order.length; k++) {
       var item = order[k].p;
-      var text = render(item.s, { W: mode === 'hide' ? '' : W, K: K, S: K });
+      // 훅·성과가 없으면 안전한 문장으로 채워 넣습니다 (숫자는 절대 만들지 않음)
+      var q = Q || SAFE_HOOKS[k % SAFE_HOOKS.length];
+      var o = O || SAFE_OUTCOMES[k % SAFE_OUTCOMES.length];
+      var text = render(item.s, {
+        W: mode === 'hide' ? '' : W,
+        K: K, S: K,
+        Q: q.replace(/["''”“]/g, ''), O: o, C: C, A: A, H: H
+      });
       if (!text || seen[text]) continue;
       if (findAggro(text).length) continue;
       if (text.length < 8) continue;
@@ -803,16 +862,17 @@
       if (stem && seen['#' + stem]) continue;
       seen[text] = true;
       if (stem) seen['#' + stem] = true;
-      picked.push({ text: text, tone: item.t, r: order[k].r });
+      picked.push({ text: text, tone: item.t, r: order[k].r, pri: item.pri || 0 });
     }
 
-    // 18~32자(적정 길이) 우선, 그 안에서는 무작위 순서 → 다시 뽑으면 다른 세트
+    // 공식 그대로인 제목({H})을 먼저, 그다음 적정 길이(24~45자), 그 안에서는 34자에 가까운 순
     picked.sort(function (a, b) {
+      if (a.pri !== b.pri) return b.pri - a.pri;
       var fa = fitOf(a.text.length).cls === 'good' ? 0 : 1;
       var fb = fitOf(b.text.length).cls === 'good' ? 0 : 1;
       if (fa !== fb) return fa - fb;
-      var sa = Math.abs(a.text.length - 26) + a.r * 8;
-      var sb = Math.abs(b.text.length - 26) + b.r * 8;
+      var sa = Math.abs(a.text.length - 34) + a.r * 8;
+      var sb = Math.abs(b.text.length - 34) + b.r * 8;
       return sa - sb;
     });
     var sliced = picked.slice(0, limit);
@@ -827,8 +887,8 @@
   var CHECKLIST = [
     {
       group: '제목 · 썸네일', items: [
-        { id: 't1', label: '제목이 18~32자, 핵심 키워드가 앞 12자 안에', hint: '홈판 카드에서 뒤가 잘려도 핵심은 보여야 합니다.' },
-        { id: 't2', label: '제목 전략이 작품 상태와 맞음', hint: '방영중이면 작품명을 제목에 넣어 검색까지, 과거작이면 작품명을 숨기고 훅만.' },
+        { id: 't1', label: '제목이 24~45자, 앞 20자 안에 훅과 핵심 키워드가', hint: '홈판 카드에서 뒤가 잘려도 훅은 보여야 합니다.' },
+        { id: 't2', label: '제목 전략이 홈판 공식과 맞음', hint: "방영중은 '[작품명] [회차], [훅]', 과거작은 '인용 훅 + 성과/방송사 + 드라마'로 작품명을 숨깁니다." },
         { id: 't3', label: '충격·경악 같은 자극어 대신 내용 중심 표현', hint: '클릭보다 완독이 다음 노출을 만듭니다.' },
         { id: 't4', label: '대표 이미지가 첫 화면에 보이고 잘리지 않음', hint: '세로 크롭 기준으로 한 번 확인하세요.' },
         { id: 't5', label: '제목에서 숨긴 작품은 첫 이미지·첫 문단에서 알 수 있게', hint: '과거작 모드는 제목에 작품명이 없으니 3초 안에 어떤 작품인지 보여야 합니다.' }
