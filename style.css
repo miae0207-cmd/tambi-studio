@@ -528,15 +528,16 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 @media (prefers-color-scheme: dark) {
-  /* Keep the cream identity; only soften glare for OLED at night */
-  body { background: #FFF8F4; color: var(--ink); }
+  /* Keep the lavender identity; only soften glare for OLED at night */
+  body { background: #FBF9FF; color: var(--ink); }
 }
 
 @media (min-width: 600px) {
   .hero { padding-top: 26px; }
-  .topic-list { display: grid; grid-template-columns: 1fr 1fr; }
+  .topic-list { display: flex; flex-direction: column; gap: 14px; }
   .topic-card { display: flex; flex-direction: column; }
   .topic-acts { margin-top: auto; padding-top: 13px; }
+  .tl-list li { grid-template-columns: 74px 1fr; }
 }
 
 /* ---------- 2026-11-19 · 공식 소스 링크 / 접이식 상세 / 검색 ---------- */
@@ -600,10 +601,12 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
 }
 .fold > summary::-webkit-details-marker { display: none; }
 .fold > summary::after {
-  content: "▾";
+  content: "";
   margin-left: auto;
-  font-size: 11px;
-  color: var(--sub);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--sub);
   transition: transform .15s ease;
 }
 .fold[open] > summary::after { transform: rotate(180deg); }
