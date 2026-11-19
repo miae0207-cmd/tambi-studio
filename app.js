@@ -143,7 +143,7 @@
     row.appendChild(b);
     return row;
   }
-  function copyLineSaved(text, blog, name, kind) {
+  function copyLineSaved(text, blog, name, kind, mode) {
     var row = el('div', 'mini-title' + (kind === 'homefeed' ? ' hf' : ''));
     var wrap = el('span', 'mt-wrap');
     wrap.appendChild(el('span', 'mt-text', text));
@@ -153,7 +153,7 @@
     b.addEventListener('click', function () { copyText(text, b); });
     var sv = el('button', 'copy-btn save', '저장');
     sv.addEventListener('click', function () {
-      var added = addSaved(text, blog, name, kind);
+      var added = addSaved(text, blog, name, kind, mode);
       sv.textContent = added ? '저장됨 ✓' : '이미 저장됨';
     });
     acts.appendChild(b);
@@ -486,7 +486,7 @@
       card.appendChild(el('p', 'sec-label', t.status === 'airing' ? '바로 쓸 제목 · [작품명] [회차], [훅]' : '검색용 제목 · 작품명 포함'));
       var tl = el('div', 'mini-titles');
       t.titles.forEach(function (txt) {
-        tl.appendChild(copyLineSaved(txt, 'drama', t.work, 'search'));
+        tl.appendChild(copyLineSaved(txt, 'drama', t.work, 'search', t.status === 'airing' ? 'show' : 'hide'));
       });
       card.appendChild(tl);
     }
@@ -496,7 +496,7 @@
       card.appendChild(hlabel);
       var hl = el('div', 'mini-titles');
       t.homefeed.forEach(function (txt) {
-        hl.appendChild(copyLineSaved(txt, 'drama', t.work, 'homefeed'));
+        hl.appendChild(copyLineSaved(txt, 'drama', t.work, 'homefeed', 'hide'));
       });
       card.appendChild(hl);
     }
@@ -877,7 +877,7 @@
       cp.addEventListener('click', function () { copyText(t.text, cp); });
       var sv = el('button', 'save', '저장');
       sv.addEventListener('click', function () {
-        var added = addSaved(t.text, 'drama', state.work, state.mode === 'hide' ? 'homefeed' : 'search');
+        var added = addSaved(t.text, 'drama', state.work, state.mode === 'hide' ? 'homefeed' : 'search', state.mode);
         sv.textContent = added ? '저장됨 ✓' : '이미 저장됨';
         sv.classList.add('saved');
       });
@@ -966,14 +966,15 @@
   }
 
   /* ---------------- saved ---------------- */
-  function addSaved(text, blog, name, kind) {
+  function addSaved(text, blog, name, kind, mode) {
     var exists = state.saved.some(function (x) { return x.text === text; });
     if (exists) return false;
     state.saved.unshift({
       text: text,
       blog: blog || 'drama',
       name: name || '',
-      kind: kind || ''
+      kind: kind || '',
+      mode: mode === 'hide' ? 'hide' : (mode === 'show' ? 'show' : '')
     });
     state.saved = state.saved.slice(0, 300);
     saveState();
@@ -1007,8 +1008,13 @@
       mid.appendChild(el('span', 's-text', x.text));
       var memo = [blogLabel(x.blog)];
       if (x.name) memo.push(x.name);
-      if (x.blog === 'drama') memo.push(x.mode === 'hide' ? '과거작 · 숨김' : '방영중');
-      if (x.kind === 'homefeed') memo.push('홈판형');
+      if (x.blog === 'drama') {
+        if (x.kind === 'homefeed') memo.push('과거작 · 작품명 숨김');
+        else if (x.mode === 'hide') memo.push('과거작');
+        else if (x.mode === 'show') memo.push('방영중');
+      } else if (x.kind === 'homefeed') {
+        memo.push('홈판형');
+      }
       mid.appendChild(el('span', 's-meta', memo.join(' · ')));
       row.appendChild(mid);
 
