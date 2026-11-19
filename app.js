@@ -378,6 +378,16 @@
     renderToneChips();
   }
 
+  /* '12회, 정체' 처럼 여러 개를 적으면 첫 낱말만 제목 틀에 넣습니다 (문장이 어색해지지 않게) */
+  function primaryKeyword(raw) {
+    var parts = String(raw || '').split(/[,、·\/|]+/);
+    for (var i = 0; i < parts.length; i++) {
+      var t = parts[i].trim();
+      if (t) return t;
+    }
+    return '';
+  }
+
   var TONES = [
     { k: 'all', t: '전체' },
     { k: 'curious', t: '궁금증' },
@@ -415,7 +425,7 @@
     var list = HF.buildTitles({
       mode: state.mode,
       work: work,
-      keyword: state.keyword,
+      keyword: primaryKeyword(state.keyword),
       tone: state.tone,
       limit: 9,
       rand: Math.random
@@ -482,7 +492,7 @@
 
     var catId = state.mode === 'hide' ? 'ended' : 'airing';
     var rot = Math.floor(Math.random() * 3);
-    var angles = HF.buildAngles(catId, work, state.keyword, rot, state.mode);
+    var angles = HF.buildAngles(catId, work, primaryKeyword(state.keyword), rot, state.mode);
     renderAngles(angles);
     toast('각도 ' + angles.length + '개를 준비했어요');
   }
@@ -807,7 +817,7 @@
     var work = $('genWork').value.trim();
     if (!work) return;
     var catId = state.mode === 'hide' ? 'ended' : 'airing';
-    renderAngles(HF.buildAngles(catId, work, state.keyword, Math.floor(Math.random() * 3), state.mode));
+    renderAngles(HF.buildAngles(catId, work, primaryKeyword(state.keyword), Math.floor(Math.random() * 3), state.mode));
   }
 
   if (document.readyState === 'loading') {
