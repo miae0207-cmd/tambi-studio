@@ -342,8 +342,9 @@
       btn.type = 'button';
       btn.setAttribute('role', 'tab');
       btn.setAttribute('aria-selected', state.blog === b.id ? 'true' : 'false');
+      btn.setAttribute('aria-label', b.label + ' 블로그 ' + n + '개');
       btn.appendChild(el('span', 'bi', b.icon || '•'));
-      btn.appendChild(el('span', 'bl', b.label));
+      btn.appendChild(el('span', 'bl', b.short || b.label));
       btn.appendChild(el('span', 'bn', String(n)));
       btn.addEventListener('click', function () { setBlog(b.id); });
       box.appendChild(btn);

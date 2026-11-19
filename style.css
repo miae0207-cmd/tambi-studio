@@ -673,6 +673,8 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
   align-items: center;
   justify-content: center;
   gap: 4px;
+  min-width: 0;
+  overflow: hidden;
   min-height: 42px;
   border-radius: 12px;
   font-size: 12.5px;
@@ -683,7 +685,7 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
   padding: 0 4px;
 }
 .blog-btn .bi { font-size: 15px; line-height: 1; }
-.blog-btn .bl { white-space: nowrap; }
+.blog-btn .bl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .blog-btn .bn {
   font-size: 10px;
   font-weight: 800;

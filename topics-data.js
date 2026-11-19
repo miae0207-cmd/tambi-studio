@@ -1,6 +1,6 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-19T22:31:24+09:00",
- "label": "2026년 11월 넷째 주",
+ "updated": "2026-11-19T22:38:30+09:00",
+ "label": "2026년 11월 셋째 주",
  "version": 3,
  "blogs": [
   {
