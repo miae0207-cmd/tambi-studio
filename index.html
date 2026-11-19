@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFE9EF">
+<meta name="theme-color" content="#F3EFFF">
 <meta name="description" content="탐비의 드라마 블로그 작업실 — 오늘 쓸 소재, 제목·각도, 이미지 수급, 홈판 체크리스트까지 한 화면에.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -54,14 +54,18 @@
       </div>
       <p class="view-sub" id="topicsMeta">소재 불러오는 중…</p>
       <div class="chips" id="topicFilter" role="group" aria-label="소재 필터"></div>
+      <label class="search-field">
+        <span aria-hidden="true">🔍</span>
+        <input type="text" id="topicSearch" placeholder="작품명 · 배우 · 채널로 찾기" autocomplete="off">
+      </label>
       <div class="topic-list" id="topicList"></div>
 
       <div class="tip-card">
-        <b>스틸컷이 없는 작품(과거작·ENA)은 이 순서로</b>
+        <b>사진은 공식 소스에서만, 직접 캡처해서 씁니다</b>
         <ol>
-          <li>네이버 뉴스 <b>보도스틸</b> 검색 — 홍보사가 뿌린 고화질 공식 사진이 기사에 남아 있어요.</li>
-          <li>공식 <b>포스터 1~2장 + 유튜브 공식 클립 캡처</b>로 채우기.</li>
-          <li>중간은 <b>대사·포인트 요약 카드</b> 이미지로 넘기면 글이 끊기지 않아요.</li>
+          <li><b>공홈 스틸컷</b> — 카드의 🖼 버튼으로 방송사 공식 포토 페이지(현장포토·포토갤러리)를 엽니다.</li>
+          <li><b>공식 유튜브 1080p</b> — ▶ 버튼으로 공식 채널의 그 작품 클립만 모아 보고, 필요한 장면을 직접 캡처합니다.</li>
+          <li>공홈 포토가 없는 작품은 유튜브 캡처 + 대사·요약 카드로 채우면 글 흐름이 끊기지 않아요.</li>
         </ol>
       </div>
     </section>
@@ -106,12 +110,12 @@
     <section class="view" id="view-images" aria-label="이미지 수급과 체크리스트">
       <div class="view-head">
         <h2>이미지 수급</h2>
-        <span class="view-sub" style="margin:0">작품명 하나로 바로 검색</span>
+        <span class="view-sub" style="margin:0">공식 홈페이지 · 공식 채널만</span>
       </div>
 
       <div class="card">
         <h3>🔍 어떤 작품이든</h3>
-        <p class="hint">작품명을 그대로 적으면 아래 버튼이 그 작품 검색으로 바뀝니다.</p>
+        <p class="hint">작품명을 그대로 적으면 아래 버튼이 그 작품의 공식 페이지만 찾아갑니다. 기사 사진은 쓰지 않아요.</p>
         <label class="field">
           <span>작품명</span>
           <input type="text" id="imgQuery" placeholder="예: 멜로가 체질, ENA 드라마 제목" autocomplete="off">
@@ -119,24 +123,14 @@
         <p class="q-preview" id="qPreview"></p>
 
         <div class="img-big">
-          <a data-imglink="news1" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="ico">📰</span>
-            <span>네이버 뉴스 · 보도스틸<small>기사에 남은 공식 고화질 사진</small></span>
-            <span class="go">열기 →</span>
-          </a>
-          <a data-imglink="news2" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="ico">🗞</span>
-            <span>네이버 뉴스 · 스틸컷<small>포토갤러리 없을 때 두 번째 카드</small></span>
-            <span class="go">열기 →</span>
-          </a>
-          <a data-imglink="img" href="#" target="_blank" rel="noopener noreferrer">
-            <span class="ico">🖼</span>
-            <span>네이버 이미지<small>장면 캡처·포스터 모아보기</small></span>
+          <a data-imglink="home" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="ico">🌐</span>
+            <span>방송사 공홈 찾기<small>공식 포토갤러리·현장포토로 바로</small></span>
             <span class="go">열기 →</span>
           </a>
           <a data-imglink="yt" href="#" target="_blank" rel="noopener noreferrer">
             <span class="ico">▶</span>
-            <span>유튜브 공식 클립<small>고화질 캡처용 원본 영상</small></span>
+            <span>유튜브 공식 클립<small>공식 채널 1080p에서 직접 캡처</small></span>
             <span class="go">열기 →</span>
           </a>
         </div>

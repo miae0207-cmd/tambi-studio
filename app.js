@@ -24,6 +24,7 @@
     tone: 'all',
     imgQuery: '',
     topicFilter: 'all',
+    topicQuery: '',
     savedFilter: 'all'
   };
 
@@ -43,6 +44,7 @@
       if (typeof o.tone === 'string') state.tone = o.tone;
       if (typeof o.imgQuery === 'string') state.imgQuery = o.imgQuery;
       if (typeof o.topicFilter === 'string') state.topicFilter = o.topicFilter;
+      if (typeof o.topicQuery === 'string') state.topicQuery = o.topicQuery;
     } catch (e) { /* private mode: run without storage */ }
   }
 
@@ -172,6 +174,7 @@
     TOPIC_META.updated = data.updated || '';
     TOPIC_META.label = data.label || '';
     renderTopicsMeta();
+    renderTopicFilter();
     renderTopics();
     renderImageChips();
     return true;
@@ -227,10 +230,12 @@
   function renderTopicFilter() {
     var box = $('topicFilter');
     box.innerHTML = '';
+    var airing = TOPICS.filter(function (t) { return t.status === 'airing'; }).length;
+    var past = TOPICS.length - airing;
     var defs = [
-      { k: 'all', t: '전체' },
-      { k: 'airing', t: '방영중 · 작품명 포함' },
-      { k: 'past', t: '과거작 · 작품명 숨김' }
+      { k: 'all', t: '전체 ' + TOPICS.length },
+      { k: 'airing', t: '방영중 ' + airing + ' · 작품명 포함' },
+      { k: 'past', t: '과거작 ' + past + ' · 작품명 숨김' }
     ];
     defs.forEach(function (d) {
       var b = el('button', 'chip' + (state.topicFilter === d.k ? ' on' : ''), d.t);
@@ -245,11 +250,8 @@
     });
   }
 
-  function newsUrl(q) {
-    return 'https://search.naver.com/search.naver?where=news&query=' + encodeURIComponent(q);
-  }
-  function imageUrl(q) {
-    return 'https://search.naver.com/search.naver?where=image&query=' + encodeURIComponent(q);
+  function officialSearchUrl(q) {
+    return 'https://search.naver.com/search.naver?query=' + encodeURIComponent(q + ' 공식 홈페이지');
   }
   function youtubeUrl(q) {
     return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q);
@@ -266,11 +268,17 @@
   function renderTopics() {
     var list = $('topicList');
     list.innerHTML = '';
+    var q = (state.topicQuery || '').trim().toLowerCase();
     var items = TOPICS.filter(function (t) {
-      return state.topicFilter === 'all' || t.status === state.topicFilter;
+      if (state.topicFilter !== 'all' && t.status !== state.topicFilter) return false;
+      if (!q) return true;
+      var hay = [t.work, t.channel, t.cast, t.genre, t.slot, t.metric, t.why]
+        .concat(t.keywords || []).concat(t.titles || []).concat(t.homefeed || [])
+        .join(' ').toLowerCase();
+      return hay.indexOf(q) >= 0;
     });
     if (!items.length) {
-      list.appendChild(el('div', 'empty', '해당하는 소재가 아직 없어요. 새로고침을 눌러보세요.'));
+      list.appendChild(el('div', 'empty', '조건에 맞는 소재가 없어요. 검색어를 지우거나 새로고침을 눌러보세요.'));
       return;
     }
     items.forEach(function (t, i) {
@@ -286,7 +294,8 @@
       t.status === 'airing' ? '방영중' : '과거작'));
     if (t.status === 'past') top.appendChild(el('span', 'badge hide', '제목엔 작품명 숨김'));
     if (t.heat === 'hot') top.appendChild(el('span', 'badge flame', '🔥 화제'));
-    top.appendChild(el('span', 'topic-meta', [t.channel, t.slot].filter(Boolean).join(' · ')));
+    if (t.genre) top.appendChild(el('span', 'badge genre', t.genre));
+    top.appendChild(el('span', 'topic-meta', [t.channel, t.year || t.slot].filter(Boolean).join(' · ')));
     card.appendChild(top);
 
     if (idx === 0 && state.topicFilter === 'all') {
@@ -326,12 +335,79 @@
       card.appendChild(tl);
     }
 
-    var q = t.imageQuery || t.work;
+    if (Array.isArray(t.homefeed) && t.homefeed.length) {
+      card.appendChild(el('p', 'sec-label', '홈판용 제목 · 작품명 없이'));
+      var hl = el('div', 'mini-titles');
+      t.homefeed.forEach(function (txt) {
+        var row = el('div', 'mini-title hf');
+        row.appendChild(el('span', 'mt-text', txt));
+        var b = el('button', 'copy-btn', '복사');
+        b.addEventListener('click', function () { copyText(txt, b); });
+        row.appendChild(b);
+        hl.appendChild(row);
+      });
+      card.appendChild(hl);
+    }
+
     var ib = el('div', 'img-row');
-    ib.appendChild(outLink(newsUrl(q + ' 보도스틸'), '📰 보도스틸', '네이버 뉴스에서 보도스틸 찾기'));
-    ib.appendChild(outLink(newsUrl(q + ' 스틸컷'), '🖼 스틸컷', '네이버 뉴스에서 스틸컷 찾기'));
-    ib.appendChild(outLink(youtubeUrl(q + ' 공식 클립'), '▶ 유튜브', '유튜브에서 공식 클립 찾기'));
+    if (t.officialPhotoUrl) {
+      ib.appendChild(outLink(t.officialPhotoUrl, '🖼 공홈 스틸컷',
+        (t.officialPhotoLabel || '공식 홈페이지') + ' — ' + (t.officialPhotoNote || '방송사 공식 포토 페이지')));
+    } else {
+      var note = el('span', 'img-note', '공홈 포토 없음 → 유튜브 캡처 추천');
+      if (t.officialPhotoNote) note.title = t.officialPhotoNote;
+      ib.appendChild(note);
+    }
+    if (t.officialYoutubeUrl) {
+      ib.appendChild(outLink(t.officialYoutubeUrl, '▶ 공식 유튜브',
+        (t.officialYoutubeName || '공식 채널') + '에서 이 작품 클립만 모아 보기'));
+    }
     card.appendChild(ib);
+
+    if (Array.isArray(t.timeline) && t.timeline.length) {
+      var story = document.createElement('details');
+      story.className = 'fold';
+      story.appendChild(el('summary', null, '📖 줄거리 순서 · 하이라이트 보기'));
+      var sb = el('div', 'fold-body');
+      var tlList = el('ol', 'tl-list');
+      t.timeline.forEach(function (r) {
+        var li = el('li');
+        li.appendChild(el('span', 'tl-range', r.range));
+        li.appendChild(el('span', 'fold-text', r.text));
+        tlList.appendChild(li);
+      });
+      sb.appendChild(tlList);
+      if (Array.isArray(t.highlights) && t.highlights.length) {
+        sb.appendChild(el('p', 'sec-label', '주요 하이라이트'));
+        var hls = el('ul', 'hl-list');
+        t.highlights.forEach(function (h) {
+          var li = el('li');
+          li.appendChild(el('span', 'hl-ep', h.ep));
+          li.appendChild(el('span', 'fold-text', h.text));
+          hls.appendChild(li);
+        });
+        sb.appendChild(hls);
+      }
+      story.appendChild(sb);
+      card.appendChild(story);
+    }
+
+    if (Array.isArray(t.behind) && t.behind.length) {
+      var bd = document.createElement('details');
+      bd.className = 'fold behind';
+      bd.appendChild(el('summary', null, '🎬 비하인드 · 특이점 ' + t.behind.length + '개'));
+      var bbody = el('div', 'fold-body');
+      var bl = el('ul', 'bh-list');
+      t.behind.forEach(function (b) {
+        var li = el('li');
+        li.appendChild(el('span', 'bh-label', b.label));
+        li.appendChild(el('span', 'fold-text', b.text));
+        bl.appendChild(li);
+      });
+      bbody.appendChild(bl);
+      bd.appendChild(bbody);
+      card.appendChild(bd);
+    }
 
     var acts = el('div', 'topic-acts');
     var go = el('button', 'btn soft sm', '이 작품으로 제목 뽑기 →');
@@ -638,9 +714,7 @@
     var q = currentImgQuery();
     state.imgQuery = $('imgQuery').value.trim();
     var defs = {
-      news1: q ? newsUrl(q + ' 보도스틸') : 'https://search.naver.com/search.naver?where=news&query=' + encodeURIComponent('드라마 보도스틸'),
-      news2: q ? newsUrl(q + ' 스틸컷') : 'https://search.naver.com/search.naver?where=news&query=' + encodeURIComponent('드라마 스틸컷'),
-      img: q ? imageUrl(q + ' 스틸컷') : 'https://search.naver.com/search.naver?where=image&query=' + encodeURIComponent('드라마 스틸컷'),
+      home: q ? officialSearchUrl(q) : 'https://search.naver.com/search.naver?query=' + encodeURIComponent('드라마 공식 홈페이지'),
       yt: q ? youtubeUrl(q + ' 공식 클립') : 'https://www.youtube.com/results?search_query=' + encodeURIComponent('드라마 공식 클립')
     };
     Object.keys(defs).forEach(function (k) {
@@ -648,8 +722,8 @@
       if (a) a.href = defs[k];
     });
     $('qPreview').textContent = q
-      ? '“' + q + '” 로 검색합니다 · 뉴스 기사에 남은 보도스틸이 가장 깔끔해요'
-      : '작품명을 적으면 아래 버튼이 그 작품 검색으로 바뀝니다';
+      ? '“' + q + '” 공식 홈페이지와 공식 클립만 찾습니다 · 기사 사진은 쓰지 않아요'
+      : '작품명을 적으면 아래 버튼이 그 작품의 공식 페이지만 찾아갑니다';
   }
 
   function renderImageChips() {
@@ -748,6 +822,15 @@
 
     // topics
     renderTopicFilter();
+    var sIn = $('topicSearch');
+    if (sIn) {
+      sIn.value = state.topicQuery || '';
+      sIn.addEventListener('input', function () {
+        state.topicQuery = this.value;
+        saveState();
+        renderTopics();
+      });
+    }
     $('refreshTopics').addEventListener('click', function () { loadTopics(true); });
     loadTopics(false);
 
@@ -776,7 +859,7 @@
       if (e.key === 'Enter') {
         e.preventDefault();
         var q = currentImgQuery();
-        if (q) window.open(newsUrl(q + ' 보도스틸'), '_blank', 'noopener');
+        if (q) window.open(officialSearchUrl(q), '_blank', 'noopener');
       }
     });
     updateImgLinks();
