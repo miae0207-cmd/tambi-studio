@@ -151,7 +151,7 @@
       return;
     }
 
-    var W = 340, H = 176, padT = 22, baseY = 132, left = 2, right = 2;
+    var W = 300, H = 170, padT = 22, baseY = 128, left = 2, right = 2;
     var slot = (W - left - right) / daily.length;
     var maxV = 0;
     daily.forEach(function (d) { maxV = Math.max(maxV, num(d.views, 0)); });
@@ -190,7 +190,7 @@
       s += '<path d="' + barPath(+x.toFixed(1), +y.toFixed(1), +barW.toFixed(1), +h.toFixed(1), 6) +
         '" fill="url(#' + (peak ? 'barPeak' : 'barSoft') + ')"/>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 6).toFixed(1) +
-        '" text-anchor="middle" font-size="10" font-weight="800" fill="' +
+        '" text-anchor="middle" font-size="10.5" font-weight="800" fill="' +
         (peak ? '#5B21B6' : '#5B5370') + '" stroke="#FFFFFF" stroke-width="3" paint-order="stroke">' +
         esc(fmt(v)) + '</text>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 17) +
