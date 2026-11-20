@@ -28,9 +28,9 @@
   ];
   var BGS = ['#ffffff', '#F0E9FF', '#FBF3E4', '#F1F1F5', '#14111F'];
   var BLOCKS = [
-    { id: 'low',  label: '약', px: 10 },
-    { id: 'mid',  label: '중', px: 20 },
-    { id: 'high', label: '강', px: 34 }
+    { id: 'low',  label: '약', px: 12 },
+    { id: 'mid',  label: '중', px: 26 },
+    { id: 'high', label: '강', px: 46 }
   ];
   var WMPOS = [
     { id: 'br',   label: '우하단' },
@@ -60,7 +60,7 @@
     mode: 'pos',         // pos | mosaic
     shape: 'brush',      // brush | rect
     block: 'mid',
-    brush: 34,
+    brush: 140,
     wm: { text: '달래쨘', pos: 'br', size: 34, opacity: 85, color: '#ffffff', badge: true, shadow: true }
   };
 
@@ -717,16 +717,11 @@
     renderWmPos();
     renderWmColors();
     renderShape();
+    renderFormat();
     syncCells();
     syncFileUI();
     setMode(S.mode);
-    if (window.navigator && navigator.canShare) {
-      var probe = document.createElement('input');
-      probe.type = 'file';
-      if (window.File && navigator.canShare({ files: [new File(['x'], 'x.png', { type: 'image/png' })] })) {
-        $('ieShare').hidden = false;
-      }
-    }
+    $('ieShare').hidden = true;   // 저장을 한 번 하기 전에는 공유 버튼을 숨긴다
   }
 
   /* ---------------- 사진 넣기 ---------------- */
@@ -957,6 +952,7 @@
   }
   canvas.addEventListener('pointerup', endPointer);
   canvas.addEventListener('pointercancel', endPointer);
+  canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 
   /* ---------------- 저장 ---------------- */
   function stamp() {
@@ -980,6 +976,7 @@
       link.download = name;
       $('ieOutImg').src = url;
       $('ieOut').hidden = false;
+      $('ieShare').hidden = !(navigator.canShare && lastBlob);
 
       var tmp = document.createElement('a');
       tmp.href = url;
