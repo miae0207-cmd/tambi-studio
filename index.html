@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 <div class="app">
@@ -178,6 +178,66 @@
       </div>
     </section>
 
+    <!-- ============ 통계 리포트 ============ -->
+    <section class="view" id="view-stats" aria-label="통계 리포트">
+      <div class="view-head">
+        <h2>통계 리포트</h2>
+        <button type="button" class="btn ghost sm" id="statRefresh">↻ 새로고침</button>
+      </div>
+
+      <div class="report-hero">
+        <p class="rh-eyebrow">블로그 방문자 통계</p>
+        <h3 class="rh-title" id="statTitle">주간 리포트</h3>
+        <p class="rh-meta" id="statMeta">불러오는 중…</p>
+      </div>
+
+      <div class="sample-banner" id="statBanner" hidden></div>
+
+      <div class="kpi-grid" id="statKpi"></div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>요일별 조회수</h3>
+          <span class="card-note" id="weekLegend"></span>
+        </div>
+        <div class="chart-box" id="weekChart"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>어디서 들어왔나</h3>
+          <span class="card-note">유입 비율</span>
+        </div>
+        <div id="sourceChart"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>조회수 많은 글</h3>
+          <span class="card-note">막대색 = 글 유형</span>
+        </div>
+        <div id="rankList"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>글 유형별 조회</h3>
+          <span class="card-note">목록 숫자 기준</span>
+        </div>
+        <div id="typeChart"></div>
+      </div>
+
+      <div class="tip-card">
+        <b>실제 숫자로 바꾸는 방법</b>
+        <ol>
+          <li>네이버 블로그 <b>관리 → 통계</b>에서 기간을 7일(예: 11/09 ~ 11/15)로 맞춥니다.</li>
+          <li><b>조회수</b> 화면(요일별·글별)과 <b>유입 분석</b> 화면을 각각 캡처합니다.</li>
+          <li>캡처를 채팅에 올리면 이 화면의 숫자를 그대로 옮겨 반영합니다.</li>
+        </ol>
+        <p class="stat-foot" id="statUpdated"></p>
+      </div>
+    </section>
+
     <!-- ============ 저장함 ============ -->
     <section class="view" id="view-saved" aria-label="저장한 제목">
       <div class="view-head">
@@ -201,6 +261,9 @@
     <button type="button" class="tab" data-tab="images" role="tab" aria-selected="false">
       <span class="ti" aria-hidden="true">🖼</span>이미지
     </button>
+    <button type="button" class="tab" data-tab="stats" role="tab" aria-selected="false">
+      <span class="ti" aria-hidden="true">📊</span>통계
+    </button>
     <button type="button" class="tab" data-tab="saved" role="tab" aria-selected="false">
       <span class="ti" aria-hidden="true">💗</span>저장함<span class="dotbadge" id="savedBadge"></span>
     </button>
@@ -209,8 +272,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 
-<script src="engine.js?v=3"></script>
-<script src="topics-data.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="engine.js?v=4"></script>
+<script src="topics-data.js?v=4"></script>
+<script src="stats-data.js?v=4"></script>
+<script src="app.js?v=4"></script>
+<script src="stats.js?v=4"></script>
 </body>
 </html>

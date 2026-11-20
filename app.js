@@ -1137,7 +1137,7 @@
   }
 
   /* ---------------- tabs ---------------- */
-  var TABS = ['topics', 'titles', 'images', 'saved'];
+  var TABS = ['topics', 'titles', 'images', 'stats', 'saved'];
 
   function setTab(name) {
     if (TABS.indexOf(name) < 0) name = 'topics';
