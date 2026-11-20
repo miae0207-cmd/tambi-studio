@@ -582,29 +582,26 @@
     }
 
     if ((a.gender || []).length) {
+      var g = a.gender;
       html += '<div class="aud-block">' +
-        '<div class="aud-head"><span>성별</span><b>여 ' + num(a.gender[0].pct, 0).toFixed(1) + ' : ' +
-        num(a.gender[1] ? a.gender[1].pct : 0, 0).toFixed(1) + ' 남</b></div>' +
-        '<div class="aud-bar">' + audBar(a.gender, GEN) + '</div>' +
-        audLegend(a.gender, GEN) + '</div>';
-    }
-
-    if ((a.age_top || []).length) {
-      var maxAge = 0;
-      a.age_top.forEach(function (x) { maxAge = Math.max(maxAge, num(x.pct, 0)); });
-      html += '<div class="aud-block">' +
-        '<div class="aud-head"><span>연령 · 성별 상위</span><b>45~54세가 가장 많음</b></div>' +
-        '<ul class="aud-age">' + a.age_top.map(function (x) {
-          var w = maxAge ? Math.max(4, (num(x.pct, 0) / maxAge) * 100) : 0;
-          return '<li><span class="ag-l">' + esc(x.label) + '</span>' +
-            '<span class="ag-t"><i style="width:' + w.toFixed(1) + '%"></i></span>' +
-            '<span class="ag-v">' + num(x.pct, 0).toFixed(1) + '%</span></li>';
-        }).join('') + '</ul>' + '</div>';
+        '<div class="aud-head"><span>성별</span><b>여 ' + num(g[0].pct, 0).toFixed(1) + '% · 남 ' +
+        num(g[1] ? g[1].pct : 0, 0).toFixed(1) + '%</b></div>' +
+        '<div class="aud-bar">' + audBar(g, GEN) + '</div>' +
+        audLegend(g, GEN) + '</div>';
     }
 
     var band = a.age_band;
     if (band) {
-      html += '<div class="aud-callout">' + esc(band.label) + '가 <b>' + num(band.pct, 0).toFixed(1) + '%</b> — 절반 이상</div>';
+      var cells = (a.age_top || []).map(function (x) {
+        return esc(x.label) + ' ' + num(x.pct, 0).toFixed(1) + '%';
+      }).join(' · ');
+      html += '<div class="aud-block">' +
+        '<div class="aud-head"><span>나이</span><b>' + esc(band.label) + '가 ' +
+        num(band.pct, 0).toFixed(1) + '% — 절반 이상</b></div>' +
+        '<div class="aud-bar"><i style="width:' + num(band.pct, 0).toFixed(1) +
+        '%;background:linear-gradient(90deg,#B79CF9,#7C3AED)"></i></div>' +
+        '<p class="aud-note">' + cells + '</p>' +
+        '</div>';
     }
 
     host.innerHTML = html || '<p class="chart-empty">독자 자료를 아직 불러오지 못했어요.</p>';
