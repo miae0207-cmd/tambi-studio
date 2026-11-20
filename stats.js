@@ -569,7 +569,7 @@
     var a = ADV && ADV.audience;
     if (!a) { host.innerHTML = '<p class="chart-empty">독자 자료를 아직 불러오지 못했어요.</p>'; return; }
 
-    var DEV = ['#7C3AED', '#DDD3FB'];
+    var DEV = ['#7C3AED', '#C4B5FD'];
     var GEN = ['#E58AA8', '#7C9CE8'];
     var html = '';
 
