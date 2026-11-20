@@ -23,6 +23,7 @@
     work: '',
     keyword: '',
     hook: '',
+    hooks: { rank: '', cast: '', making: '', rewatch: '' },
     outcome: '',
     channel: '',
     actor: '',
@@ -62,6 +63,11 @@
       ['work', 'keyword', 'hook', 'outcome', 'channel', 'actor', 'tone', 'imgQuery'].forEach(function (k) {
         if (typeof o[k] === 'string') state[k] = o[k];
       });
+      if (o.hooks && typeof o.hooks === 'object') {
+        ['rank', 'cast', 'making', 'rewatch'].forEach(function (k) {
+          if (typeof o.hooks[k] === 'string') state.hooks[k] = o.hooks[k];
+        });
+      }
       if (o.blog === 'drama' || o.blog === 'car' || o.blog === 'money') state.blog = o.blog;
       if (o.topicFilter && typeof o.topicFilter === 'object') {
         ['drama', 'car', 'money'].forEach(function (b) {
@@ -585,7 +591,13 @@
     state.work = t.work;
     state.keyword = (t.keywords && t.keywords[0]) || '';
     state.mode = t.status === 'airing' ? 'show' : 'hide';
-    state.hook = f.hook || '';
+    state.hooks = {
+      rank: (f.hooks && f.hooks.rank) || f.hook || '',
+      cast: (f.hooks && f.hooks.cast) || '',
+      making: (f.hooks && f.hooks.making) || '',
+      rewatch: (f.hooks && f.hooks.rewatch) || ''
+    };
+    state.hook = state.hooks.rank;
     state.outcome = f.outcome || '';
     state.channel = f.channel || '';
     state.actor = f.actor || '';
@@ -724,7 +736,10 @@
   function syncGenInputs() {
     $('genWork').value = state.work || '';
     $('genKeyword').value = state.keyword || '';
-    $('genHook').value = state.hook || '';
+    $('genHookRank').value = state.hooks.rank || '';
+    $('genHookCast').value = state.hooks.cast || '';
+    $('genHookMaking').value = state.hooks.making || '';
+    $('genHookRe').value = state.hooks.rewatch || '';
     $('genOutcome').value = state.outcome || '';
     $('genChannel').value = state.channel || '';
     $('genActor').value = state.actor || '';
@@ -778,14 +793,13 @@
 
   var FORMULA = {
     past: {
-      rule: "‘짧은 숫자·반전 훅(.. / ?)’ + ‘~한·~찍은 성과’ + 방송사 + 드라마",
-      note: '실제 4만뷰·2만뷰 글 그대로예요. 앞은 따옴표 안에서 ..나 ?로 끊고, 뒤는 "~한 OO 드라마"로 끝냅니다. 작품명은 절대 쓰지 않아요.',
+      rule: "‘짧은 훅(.. / ?)’ + ‘~한·~찍은 성과’ + 방송사 + 드라마 — 4가지 결로 돌아가며",
+      note: '① 시청률·순위 ② 캐스팅·배우 ③ 제작·원작·실화 ④ 재평가·몰입. 형식은 같고 앞 훅만 바꿔서 매번 같은 제목이 안 나오게 했어요. 작품명은 절대 쓰지 않습니다.',
       samples: [
         '"첫방 4%대 드라마라고?" 3주 만에 넷플릭스 세계 1위 찍은 SBS 드라마',
-        "'공개 나흘 만에 4개국 1위..' 넷플릭스가 처음 한국에서 만든 드라마",
-        "'시청률 0.2% 였는데..' 종영 3개월만에 넷플릭스 3위한 드라마",
-        "'시청률은 2%대였는데..' 8주 동안 시청자들 공감을 쌓은 JTBC 드라마",
-        "'단 4회 만에 해외가 뒤집혔다..' 5개국 1위 찍은 드라마"
+        "'원래 다른 배우가 거절했다가..' 해외까지 터진 드라마",
+        "'작가가 5년 묵혀뒀다 꺼낸..' 공개되자마자 역주행 탄 드라마",
+        "'1화만 보고 껐다 후회했다..' 3화부터 반응 뒤집힌 드라마"
       ]
     },
     show: {
@@ -828,7 +842,13 @@
     }
     state.work = work;
     state.keyword = $('genKeyword').value.trim();
-    state.hook = $('genHook').value.trim();
+    state.hooks = {
+      rank: $('genHookRank').value.trim(),
+      cast: $('genHookCast').value.trim(),
+      making: $('genHookMaking').value.trim(),
+      rewatch: $('genHookRe').value.trim()
+    };
+    state.hook = state.hooks.rank;
     state.outcome = $('genOutcome').value.trim();
     state.channel = $('genChannel').value.trim();
     state.actor = $('genActor').value.trim();
@@ -841,6 +861,7 @@
         work: work,
         keyword: kw,
         hook: state.hook,
+        hooks: state.hooks,
         outcome: state.outcome,
         channel: state.channel,
         actor: state.actor,
@@ -872,7 +893,8 @@
       row.appendChild(el('p', 't-text', t.text));
       var meta = el('div', 't-meta');
       meta.appendChild(el('span', 'fit ' + t.fit.cls, t.fit.label + ' · ' + t.len + '자'));
-      if (t.toneLabel) meta.appendChild(el('span', 'tone-tag', t.toneLabel));
+      if (t.flavor) meta.appendChild(el('span', 'tone-tag flavor', t.flavor));
+      else if (t.toneLabel) meta.appendChild(el('span', 'tone-tag', t.toneLabel));
 
       var acts = el('div', 't-acts');
       var cp = el('button', null, '복사');

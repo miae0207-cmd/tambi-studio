@@ -587,13 +587,35 @@
        [3] 설명문·미사여구·"~이유"·"~한 번에 정리" 같은 꼬리는 쓰지 않는다.
      2026-11-20 훅 개편: 시상식(백상·연기대상)·수상 훅은 삭제. 시청률 반전 + 넷플릭스/OTT
      순위·해외 반응·역주행만 남깁니다. pri = 뽑기 순서(높을수록 먼저). */
-  var HIDE_POOL = [
-    { t: 'curious', s: "'{Q}' {O} 드라마", pri: 3 },
-    { t: 'curious', s: "'{Q}' {O} {C} 드라마", pri: 3 },
-    { t: 'twist', s: "'{Q}' {O} 한국드라마", pri: 2 },
-    { t: 'twist', s: "'{Q}' 지금 {O} 드라마", pri: 2 },
-    { t: 'empathy', s: "'{Q}' {O} 드라마였다", pri: 2 },
-    { t: 'empathy', s: "'{Q}' {O} K-드라마", pri: 1 }
+  /* 과거작 4가지 결 — 형식(따옴표 훅 + 작품명 숨김 + ~드라마)은 같고 앞 훅의 결을 바꿉니다.
+       rank    : '시청률 0.2%였는데..' 첫방·시청률·넷플릭스 순위 반전
+       cast    : '원래 다른 배우가 거절했다가..' 캐스팅·배우 의외성
+       making  : '작가가 5년 묵혀뒀다..' 제작·원작·실화 비하인드
+       rewatch : '1화만 보고 껐다 후회했다..' 재평가·몰입 반전
+     훅을 안 적으면 그 결에 맞는 구어체 의문으로 채웁니다(숫자·사실을 만들지 않음). */
+  var HIDE_FLAVORS = [
+    { id: 'rank', label: '시청률·순위', tone: 'curious',
+      safe: ['아직도 안 본 사람?', '이걸 왜 안 봤지?', '한 번에 몰아본 사람?'] },
+    { id: 'cast', label: '캐스팅·배우', tone: 'empathy',
+      safe: ['이 배우가 왜 여기 나왔지?', '이 조합은 누가 정했지?', '캐스팅부터 달랐나?'] },
+    { id: 'making', label: '제작·원작', tone: 'clean',
+      safe: ['이게 어떻게 만들어졌지?', '준비만 몇 년이었을까?', '원작이 있었나?'] },
+    { id: 'rewatch', label: '재평가·몰입', tone: 'twist',
+      safe: ['1화에서 껐던 사람?', '다시 보면 달라질까?', '3화부터 봤어야 했나?'] }
+  ];
+
+  /* 뒤는 반드시 '~드라마'로 끝납니다 */
+  var HIDE_FRAMES = [
+    "'{Q}' {O} 드라마",
+    "'{Q}' {O} {C} 드라마",
+    "'{Q}' {O} 한국드라마",
+    "'{Q}' 지금 {O} 드라마",
+    "'{Q}' {O} 드라마였다"
+  ];
+  var HIDE_CAST_FRAMES = [
+    "'{Q}' {A|이/가} 나온 {O} 드라마",
+    "'{Q}' {A}의 연기로 {O} 드라마",
+    "'{Q}' {O} 드라마"
   ];
 
   /* 과거작 모드의 각도별 제목 예시 (작품명 없이) */
@@ -805,6 +827,64 @@
     return out;
   }
 
+  /* 과거작(작품명 숨김) 전용 생성기: 4가지 결을 번갈아 섞어 뽑습니다 */
+  function buildHideList(o) {
+    var O = tidy(o.outcome), C = tidy(o.channel), A = tidy(o.actor);
+    var hooks = o.hooks || {};
+    var limit = o.limit || 20;
+    var rand = o.rand || function () { return Math.random(); };
+    var toneFilter = o.tone || 'all';
+    var seen = {}, groups = [];
+    for (var i = 0; i < HIDE_FLAVORS.length; i++) {
+      var fl = HIDE_FLAVORS[i];
+      if (toneFilter !== 'all' && fl.tone !== toneFilter) continue;
+      var raw = tidy(hooks[fl.id] || '') || fl.safe[Math.floor(rand() * fl.safe.length) % fl.safe.length];
+      var q = hookEnd(raw).replace(/["'“”‘’]/g, '');
+      var frames = HIDE_FRAMES;
+      if (fl.id === 'cast') frames = (A && q.indexOf(A) !== -1) ? [HIDE_CAST_FRAMES[2]] : HIDE_CAST_FRAMES;
+      var mine = [];
+      for (var j = 0; j < frames.length; j++) {
+        var f = frames[j];
+        if (f.indexOf('{A') !== -1 && !A) continue;
+        if (f.indexOf('{C') !== -1 && !C) continue;
+        var oo = O || SAFE_OUTCOMES[(i + j) % SAFE_OUTCOMES.length];
+        if (f.indexOf('지금') !== -1 && /^지금/.test(oo)) continue;
+        var text = render(f, { W: '', K: '', S: '', Q: q, O: oo, C: C, A: A });
+        if (!text || seen[text]) continue;
+        if (findAggro(text).length) continue;
+        if (text.length < 8 || text.length > 60) continue;
+        if (o.work && o.work.length >= 2 && text.indexOf(o.work) !== -1) continue;
+        var stem = text.replace(/[\s,.:;·!?'"“”]/g, '');
+        if (seen['#' + stem]) continue;
+        seen[text] = true; seen['#' + stem] = true;
+        mine.push({ text: text, tone: fl.tone, flavor: fl.label, r: rand() });
+      }
+      mine.sort(function (a, b) {
+        var fa = fitOf(a.text.length).cls === 'good' ? 0 : 1;
+        var fb = fitOf(b.text.length).cls === 'good' ? 0 : 1;
+        if (fa !== fb) return fa - fb;
+        return a.r - b.r;
+      });
+      groups.push(mine);
+    }
+    var out = [], idx = 0, guard = 0;
+    while (out.length < limit && guard < limit * 3) {
+      var added = false;
+      for (var g = 0; g < groups.length; g++) {
+        if (out.length >= limit) break;
+        if (groups[g][idx]) { out.push(groups[g][idx]); added = true; }
+      }
+      if (!added) break;
+      idx++; guard++;
+    }
+    for (var x = 0; x < out.length; x++) {
+      out[x].len = charLen(out[x].text);
+      out[x].fit = fitOf(out[x].len);
+      out[x].toneLabel = TONE_LABEL[out[x].tone] || '';
+    }
+    return out;
+  }
+
   /* 제목 생성 */
   function seededShuffle(arr, seed) {
     var a = arr.slice(0);
@@ -836,7 +916,15 @@
     var tone = opts.tone || 'all';
     var limit = opts.limit || 20;
     var rand = typeof opts.rand === 'function' ? opts.rand : function () { return Math.random(); };
-    var source = mode === 'hide' ? HIDE_POOL : TITLE_POOL;
+
+    if (mode === 'hide') {
+      return buildHideList({
+        work: rawWork, outcome: O, channel: C, actor: A, hooks: opts.hooks || {},
+        tone: tone, limit: limit, rand: rand
+      });
+    }
+
+    var source = TITLE_POOL;
 
     var pool = [];
     for (var i = 0; i < source.length; i++) {

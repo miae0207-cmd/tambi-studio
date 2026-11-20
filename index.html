@@ -100,11 +100,23 @@
         </label>
 
         <details class="fold perf-fold" id="perfFold">
-          <summary>➕ 숫자·성과 넣기 <i>선택 — 넣으면 훅이 세집니다</i></summary>
+          <summary>➕ 숫자·성과·훅 넣기 <i>선택 — 4가지 결로 따로 뽑아요</i></summary>
           <div class="fold-body">
             <label class="field">
-              <span>인용 훅 <i>짧게, 끝은 .. 나 ? 로</i></span>
-              <input type="text" id="genHook" placeholder="예: 시청률 0.2% 였는데.. / 첫방 4%대 드라마라고?" autocomplete="off">
+              <span>① 시청률·순위 훅 <i>'..'나 '?'로 끊기</i></span>
+              <input type="text" id="genHookRank" placeholder="예: 첫방 4%대 드라마라고? / 시청률 0.2% 였는데.." autocomplete="off">
+            </label>
+            <label class="field">
+              <span>② 캐스팅·배우 훅 <i>선택</i></span>
+              <input type="text" id="genHookCast" placeholder="예: 원래 다른 배우가 거절했다가.." autocomplete="off">
+            </label>
+            <label class="field">
+              <span>③ 제작·원작·실화 훅 <i>선택</i></span>
+              <input type="text" id="genHookMaking" placeholder="예: 작가가 5년 묵혀됐다 꺼냈다.." autocomplete="off">
+            </label>
+            <label class="field">
+              <span>④ 재평가·몰입 훅 <i>선택</i></span>
+              <input type="text" id="genHookRe" placeholder="예: 1화만 보고 껐다 후회했다.." autocomplete="off">
             </label>
             <label class="field">
               <span>반전 성과 <i>'~한 / ~찍은'으로 끝나게</i></span>
@@ -118,7 +130,7 @@
               <span>배우 <i>선택</i></span>
               <input type="text" id="genActor" placeholder="예: 손현주" autocomplete="off">
             </label>
-            <p class="hint">확인한 숫자만 적어주세요. 앞은 ‘..’나 ‘?’로 끊고 뒤는 꼭 ‘~드라마’로 끝납니다. 비워두면 숫자 없는 구어체 훅으로 뽑습니다.</p>
+            <p class="hint">확인한 숫자만 적어주세요. 훅은 ‘..’나 ‘?’로 끊고 뒤는 꼭 ‘~드라마’로 끝나게 뽑습니다. 비워둔 결은 구어체 의문으로 채워요.</p>
           </div>
         </details>
 
@@ -458,10 +470,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 
-<script src="engine.js?v=6"></script>
-<script src="topics-data.js?v=6"></script>
+<script src="engine.js?v=7"></script>
+<script src="topics-data.js?v=7"></script>
 <script src="stats-data.js?v=6"></script>
-<script src="app.js?v=6"></script>
+<script src="app.js?v=7"></script>
 <script src="stats.js?v=8"></script>
 <script src="image-editor.js?v=1"></script>
 </body>
