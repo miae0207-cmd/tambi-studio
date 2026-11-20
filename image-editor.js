@@ -1147,6 +1147,7 @@
   function init() {
     S.fmt = 'image/png';
     loadPrefs();
+    if (!S.photos.length) S.layout = 'single';
     wire();
     resizeCanvas();
     rebuildMask();
