@@ -657,14 +657,16 @@
       encodeURIComponent(String(title || '').trim());
   }
 
-  /* --- 네이버 메인 유입 TOP 20 (제목 누르면 블로그 검색으로) --- */
+  /* --- 네이버 메인 유입 TOP 20 (제목 누르면 원문 글로 바로) --- */
   function mainRow(p, i) {
     var title = p.title || '';
+    var href = p.url || blogSearchUrl(title);
+    var go = p.url ? '바로가기 ↗' : '글 찾기 ↗';
     return '<li>' +
-      '<a class="main-row" href="' + esc(blogSearchUrl(title)) + '" target="_blank" rel="noopener noreferrer">' +
+      '<a class="main-row" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
       '<span class="rk' + (i === 0 ? ' top' : '') + '">' + (p.rank || i + 1) + '</span>' +
       '<p class="main-title">' + esc(title) + '</p>' +
-      '<span class="main-go">글 찾기 ↗</span></a></li>';
+      '<span class="main-go">' + go + '</span></a></li>';
   }
 
   function renderMain() {
