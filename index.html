@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 <link rel="stylesheet" href="image-editor.css?v=4">
 </head>
 <body>
@@ -383,6 +383,13 @@
         <button type="button" class="btn ghost sm" id="statRefresh">↻ 새로고침</button>
       </div>
 
+      <div class="stat-seg" id="statSeg" role="tablist" aria-label="통계 보기 전환">
+        <button type="button" class="on" role="tab" aria-selected="true" data-pane="basic">📈 방문 통계</button>
+        <button type="button" role="tab" aria-selected="false" data-pane="adv">💜 어드바이저</button>
+      </div>
+
+      <div class="stat-pane" id="paneBasic">
+
       <div class="report-hero">
         <p class="rh-eyebrow">블로그 방문자 통계</p>
         <h3 class="rh-title" id="statTitle">주간 리포트</h3>
@@ -425,12 +432,71 @@
         <div id="typeChart"></div>
       </div>
 
+      </div>
+
+      <div class="stat-pane" id="paneAdv" hidden>
+
+      <!-- ── 크리에이터 어드바이저 ── -->
+      <div class="adv-band" id="advBand">
+        <p class="adv-eyebrow">네이버 크리에이터 어드바이저</p>
+        <h3 class="adv-band-title">💜 수익 · 급상승 · 인기 검색어</h3>
+        <p class="adv-band-sub" id="advBandSub">11/19(목) 기준 · 네이버가 직접 집계한 값</p>
+        <div class="adv-jump" id="advJump" role="group" aria-label="어드바이저 바로가기"></div>
+      </div>
+
+      <div class="card" id="advRevenueCard">
+        <div class="card-head">
+          <h3>💰 예상수익</h3>
+          <span class="card-note">리워드 · 최근 7일</span>
+        </div>
+        <div id="advRevenue"></div>
+      </div>
+
+      <div class="card" id="advRisingCard">
+        <div class="card-head">
+          <h3>🔥 어제 급상승 콘텐츠</h3>
+          <span class="card-note" id="advRisingNote">내 글</span>
+        </div>
+        <div id="advRising"></div>
+      </div>
+
+      <div class="card" id="advAudienceCard">
+        <div class="card-head">
+          <h3>👥 독자 구성</h3>
+          <span class="card-note">최근 15일 표</span>
+        </div>
+        <div id="advAudience"></div>
+      </div>
+
+      <div class="card" id="advSearchCard">
+        <div class="card-head">
+          <h3>🔎 주제별 인기 유입 검색어</h3>
+          <span class="card-note">네이버 블로그 전체</span>
+        </div>
+        <p class="adv-hint">내 블로그로 들어온 검색어가 아니라, 그 주제에서 요즘 사람들이 찾는 검색어예요. 소재 고르는 데 쓰세요.</p>
+        <div class="adv-groups" id="advSearchTabs" role="group" aria-label="주제 선택"></div>
+        <div id="advSearchBody"></div>
+      </div>
+
+      <div class="card" id="advMainCard">
+        <div class="card-head">
+          <h3>🏆 네이버 메인 유입 TOP 20</h3>
+          <span class="card-note">홈판 벤치마킹</span>
+        </div>
+        <p class="adv-hint">메인(홈판)에서 실제로 터진 제목 20개예요. 문장 결을 그대로 참고하세요.</p>
+        <div id="advMain"></div>
+      </div>
+
+      </div>
+
       <div class="tip-card">
         <b>이 숫자는 어디서 왔나</b>
         <ol>
           <li>네이버 블로그 <b>관리 → 통계</b>에 찍힌 실제 기록입니다(11/13 ~ 11/19, 7일).</li>
           <li>요일별 조회수는 <b>조회수 일간</b> 원본, 유입 비율은 11/19 <b>유입 분석</b> 값입니다.</li>
           <li>글별 조회수는 날짜별 <b>조회수 순위</b> 7장을 합산한 값이라, 순위권 밖 글·블로그 홈 유입분이 빠져 하루 0~1% 차이가 납니다.</li>
+          <li>예상수익·광고·급상승·독자 구성은 <b>크리에이터 어드바이저</b>(creator-advisor.naver.com) 11/19 값입니다.</li>
+          <li>주제별 인기 검색어와 메인 유입 TOP 20은 <b>네이버 블로그 전체</b> 기준이라, 내 블로그 숫자와는 다릅니다.</li>
         </ol>
         <p class="stat-foot" id="statUpdated"></p>
       </div>
@@ -472,9 +538,9 @@
 
 <script src="engine.js?v=7"></script>
 <script src="topics-data.js?v=7"></script>
-<script src="stats-data.js?v=6"></script>
+<script src="stats-data.js?v=7"></script>
 <script src="app.js?v=8"></script>
-<script src="stats.js?v=8"></script>
+<script src="stats.js?v=9"></script>
 <script src="image-editor.js?v=4"></script>
 </body>
 </html>

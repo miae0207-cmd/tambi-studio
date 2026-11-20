@@ -349,6 +349,343 @@
     host.innerHTML = html;
   }
 
+  /* ---------------- 크리에이터 어드바이저 ---------------- */
+  var ADV = null;
+  var advGroup = 0;
+
+  var ADV_JUMP = [
+    { id: 'advRevenueCard', label: '💰 예상수익' },
+    { id: 'advRisingCard', label: '🔥 급상승' },
+    { id: 'advAudienceCard', label: '👥 독자' },
+    { id: 'advSearchCard', label: '🔎 검색어' },
+    { id: 'advMainCard', label: '🏆 메인 TOP20' }
+  ];
+
+  function siblingUp(e, attr) {
+    attr = attr || 'data-adv';
+    var t = e.target;
+    while (t && t !== document) {
+      if (t.getAttribute && t.getAttribute(attr) != null) return t;
+      t = t.parentNode;
+    }
+    return null;
+  }
+
+  /* --- 방문 통계 ↔ 어드바이저 세그먼트 --- */
+  function setPane(name) {
+    var seg = $('statSeg');
+    if (seg) {
+      var btns = seg.querySelectorAll('button');
+      for (var i = 0; i < btns.length; i++) {
+        var on = btns[i].getAttribute('data-pane') === name;
+        if (on) btns[i].classList.add('on'); else btns[i].classList.remove('on');
+        btns[i].setAttribute('aria-selected', on ? 'true' : 'false');
+      }
+    }
+    var b = $('paneBasic'), a = $('paneAdv');
+    if (b) b.hidden = name !== 'basic';
+    if (a) a.hidden = name !== 'adv';
+  }
+
+  function initSeg() {
+    var seg = $('statSeg');
+    if (!seg) return;
+    seg.onclick = function (e) {
+      var btn = siblingUp(e, 'data-pane');
+      if (!btn) return;
+      setPane(btn.getAttribute('data-pane'));
+    };
+  }
+
+  function renderAdvBand() {
+    var sub = $('advBandSub');
+    if (sub) {
+      if (ADV) {
+        var bits = [];
+        if (ADV.dayLabel) bits.push(ADV.dayLabel + ' 기준');
+        bits.push('네이버가 직접 집계한 값');
+        if (ADV.channel) bits.push(ADV.channel);
+        sub.textContent = bits.join(' · ');
+      } else {
+        sub.textContent = '자료를 아직 불러오지 못했어요';
+      }
+    }
+
+    var jump = $('advJump');
+    if (!jump) return;
+    jump.innerHTML = ADV_JUMP.map(function (j) {
+      return '<button type="button" data-adv="' + j.id + '">' + esc(j.label) + '</button>';
+    }).join('');
+    jump.onclick = function (e) {
+      var btn = siblingUp(e);
+      if (!btn) return;
+      var el = $(btn.getAttribute('data-adv'));
+      if (!el) return;
+      if (el.scrollIntoView) {
+        try { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        catch (err) { el.scrollIntoView(); }
+      }
+    };
+  }
+
+  /* --- 예상수익 미니 막대 --- */
+  function moneyChart(daily) {
+    var W = 300, H = 128, padT = 19, baseY = 94, left = 2, right = 2;
+    var slot = (W - left - right) / daily.length;
+    var maxV = 0;
+    daily.forEach(function (d) { maxV = Math.max(maxV, num(d.won, 0)); });
+    var scaleMax = maxV * 1.06 || 1;
+    var maxH = baseY - padT;
+    var barW = Math.min(24, slot * 0.58);
+
+    var s = '<svg class="week-svg" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="최근 7일 예상수익 막대 차트">';
+    s += '<defs>' +
+      '<linearGradient id="moneySoft" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0%" stop-color="#C4A9FB"/><stop offset="100%" stop-color="#9F7CF4"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="moneyPeak" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#5B21B6"/>' +
+      '</linearGradient>' +
+      '</defs>';
+    s += '<line x1="' + left + '" y1="' + baseY + '" x2="' + (W - right) + '" y2="' + baseY +
+      '" stroke="#EDE7F8" stroke-width="1.2"/>';
+
+    daily.forEach(function (d, i) {
+      var v = num(d.won, 0);
+      var h = v > 0 ? Math.max(3, (v / scaleMax) * maxH) : 2;
+      var x = left + slot * i + (slot - barW) / 2;
+      var y = baseY - h;
+      var last = i === daily.length - 1;
+      s += '<path d="' + barPath(+x.toFixed(1), +y.toFixed(1), +barW.toFixed(1), +h.toFixed(1), 6) +
+        '" fill="url(#' + (last ? 'moneyPeak' : 'moneySoft') + ')"/>';
+      s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 5).toFixed(1) +
+        '" text-anchor="middle" font-size="9" font-weight="800" fill="' +
+        (last ? '#5B21B6' : '#6B6283') + '" stroke="#FFFFFF" stroke-width="3" paint-order="stroke">' +
+        esc(fmt(v)) + '</text>';
+      s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 14) +
+        '" text-anchor="middle" font-size="10" font-weight="800" fill="' +
+        (last ? '#6D28D9' : '#5B5370') + '">' + esc(d.day || '') + '</text>';
+      s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 26) +
+        '" text-anchor="middle" font-size="8.5" fill="#8E86A3">' + esc(d.date || '') + '</text>';
+    });
+    s += '</svg>';
+    return s;
+  }
+
+  function renderRevenue() {
+    var host = $('advRevenue');
+    if (!host) return;
+    var r = ADV && ADV.revenue;
+    if (!r) { host.innerHTML = '<p class="chart-empty">수익 자료를 아직 불러오지 못했어요.</p>'; return; }
+
+    var up = num(r.delta, 0) >= 0;
+    var daily = r.daily || [];
+    var ad = r.ad || {};
+
+    var html = '<div class="money-hero">' +
+      '<div>' +
+      '<span class="money-label">어제 ' + esc(ADV.dayLabel || '') + ' 예상수익</span>' +
+      '<strong class="money-num">' + esc(fmt(r.yesterday)) + '<em>원</em></strong>' +
+      '</div>' +
+      '<span class="money-delta">' + (up ? '▲' : '▼') + ' ' +
+      (up ? '+' : '−') + esc(fmt(Math.abs(num(r.delta, 0)))) + '원 ' +
+      '<small>' + (up ? '+' : '−') + esc(Math.abs(num(r.deltaPct, 0)).toFixed(1)) + '%</small></span>' +
+      '</div>';
+
+    html += '<div class="money-grid">' +
+      '<div class="money-cell"><span>최근 7일 합계</span><b>' + esc(fmt(r.total7)) + '<i>원</i></b></div>' +
+      '<div class="money-cell"><span>하루 평균</span><b>' + esc(fmt(r.avg7)) + '<i>원</i></b></div>' +
+      '</div>';
+
+    if (daily.length) {
+      html += '<div class="money-chart">' + moneyChart(daily) + '</div>';
+    }
+
+    html += '<div class="money-ads">' +
+      '<div class="ad-cell"><span>광고 노출</span><b>' + esc(fmt(ad.impressions)) + '</b></div>' +
+      '<div class="ad-cell"><span>광고 클릭</span><b>' + esc(fmt(ad.clicks)) + '</b></div>' +
+      '<div class="ad-cell"><span>클릭률</span><b>' + esc(num(ad.ctr, 0).toFixed(2)) + '%</b></div>' +
+      '</div>';
+
+    var tr = ADV.traffic;
+    if (tr) {
+      var tv = [
+        '어제 조회수 ' + fmt(tr.views) + ' (+' + num(tr.viewsPct, 0).toFixed(1) + '%)',
+        '메인 유입 ' + fmt(tr.mainInflow),
+        '검색 유입 ' + fmt(tr.searchInflow)
+      ];
+      html += '<p class="adv-hint" style="margin:11px 0 0">' + esc(tv.join(' · ')) + '</p>';
+    }
+
+    host.innerHTML = html;
+  }
+
+  /* --- 어제 급상승 콘텐츠 --- */
+  function renderRising() {
+    var host = $('advRising');
+    var note = $('advRisingNote');
+    if (!host) return;
+    var list = (ADV && ADV.rising) || [];
+    if (note) note.textContent = ADV && ADV.dayLabel ? (ADV.dayLabel + ' · 내 글') : '내 글';
+    if (!list.length) { host.innerHTML = '<p class="chart-empty">급상승 자료를 아직 불러오지 못했어요.</p>'; return; }
+
+    host.innerHTML = '<ol class="rise-list">' + list.map(function (p, i) {
+      var badge = p.is_new
+        ? '<span class="tbadge rise-new">NEW</span>'
+        : '<span class="tbadge rise-up">+' + esc(fmt(p.delta)) + '</span>';
+      return '<li class="rise-row">' +
+        '<span class="rk' + (i === 0 ? ' top' : '') + '">' + (i + 1) + '</span>' +
+        '<div class="rise-body">' +
+        '<div class="rise-top">' +
+        '<span class="rise-when">' + esc(p.created || '') + '</span>' +
+        badge +
+        '<b class="rise-num">' + esc(fmt(p.views)) + '<i>회</i></b>' +
+        '</div>' +
+        '<p class="rise-title">' + esc(p.title || '') + '</p>' +
+        '</div></li>';
+    }).join('') + '</ol>';
+  }
+
+  /* --- 독자 구성 --- */
+  function audBar(items, colors) {
+    var total = 0;
+    items.forEach(function (x) { total += num(x.pct, 0); });
+    var scale = total > 0 ? 100 / total : 1;
+    return items.map(function (x, i) {
+      return '<i style="width:' + (num(x.pct, 0) * scale).toFixed(2) + '%;background:' +
+        colors[i % colors.length] + '"></i>';
+    }).join('');
+  }
+  function audLegend(items, colors) {
+    return '<ul class="aud-legend">' + items.map(function (x, i) {
+      return '<li><i class="ld" style="background:' + colors[i % colors.length] + '"></i>' +
+        esc(x.label) + ' <b>' + num(x.pct, 0).toFixed(1) + '%</b></li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderAudience() {
+    var host = $('advAudience');
+    if (!host) return;
+    var a = ADV && ADV.audience;
+    if (!a) { host.innerHTML = '<p class="chart-empty">독자 자료를 아직 불러오지 못했어요.</p>'; return; }
+
+    var DEV = ['#7C3AED', '#DDD3FB'];
+    var GEN = ['#E58AA8', '#7C9CE8'];
+    var html = '';
+
+    if ((a.device || []).length) {
+      var dTop = a.device.slice().sort(function (x, y) { return num(y.pct, 0) - num(x.pct, 0); })[0];
+      html += '<div class="aud-block">' +
+        '<div class="aud-head"><span>기기</span><b>' + esc(dTop.label) + ' ' + num(dTop.pct, 0).toFixed(1) + '%</b></div>' +
+        '<div class="aud-bar">' + audBar(a.device, DEV) + '</div>' +
+        audLegend(a.device, DEV) + '</div>';
+    }
+
+    if ((a.gender || []).length) {
+      html += '<div class="aud-block">' +
+        '<div class="aud-head"><span>성별</span><b>여 ' + num(a.gender[0].pct, 0).toFixed(1) + ' : ' +
+        num(a.gender[1] ? a.gender[1].pct : 0, 0).toFixed(1) + ' 남</b></div>' +
+        '<div class="aud-bar">' + audBar(a.gender, GEN) + '</div>' +
+        audLegend(a.gender, GEN) + '</div>';
+    }
+
+    if ((a.age_top || []).length) {
+      var maxAge = 0;
+      a.age_top.forEach(function (x) { maxAge = Math.max(maxAge, num(x.pct, 0)); });
+      html += '<div class="aud-block">' +
+        '<div class="aud-head"><span>연령 · 성별 상위</span><b>45~54세가 가장 많음</b></div>' +
+        '<ul class="aud-age">' + a.age_top.map(function (x) {
+          var w = maxAge ? Math.max(4, (num(x.pct, 0) / maxAge) * 100) : 0;
+          return '<li><span class="ag-l">' + esc(x.label) + '</span>' +
+            '<span class="ag-t"><i style="width:' + w.toFixed(1) + '%"></i></span>' +
+            '<span class="ag-v">' + num(x.pct, 0).toFixed(1) + '%</span></li>';
+        }).join('') + '</ul>' + '</div>';
+    }
+
+    var band = a.age_band;
+    if (band) {
+      html += '<div class="aud-callout">' + esc(band.label) + '가 <b>' + num(band.pct, 0).toFixed(1) + '%</b> — 절반 이상</div>';
+    }
+
+    host.innerHTML = html || '<p class="chart-empty">독자 자료를 아직 불러오지 못했어요.</p>';
+  }
+
+  /* --- 주제별 인기 유입 검색어 --- */
+  function termChip(t) {
+    var right = t.new || t.n == null ? '<b>NEW</b>' : '<b>' + esc(fmt(t.n)) + '</b>';
+    return '<span class="term-chip' + (t.new ? ' new' : '') + '">' + esc(t.t) + ' ' + right + '</span>';
+  }
+
+  function renderSearch() {
+    var tabs = $('advSearchTabs');
+    var body = $('advSearchBody');
+    if (!tabs || !body) return;
+    var groups = (ADV && ADV.searchTerms) || [];
+    if (!groups.length) {
+      tabs.innerHTML = '';
+      body.innerHTML = '<p class="chart-empty">검색어 자료를 아직 불러오지 못했어요.</p>';
+      return;
+    }
+    if (advGroup >= groups.length) advGroup = 0;
+
+    tabs.innerHTML = groups.map(function (g, i) {
+      return '<button type="button" data-adv="' + i + '"' + (i === advGroup ? ' class="on"' : '') + '>' +
+        esc((g.emoji || '') + ' ' + g.label) + '</button>';
+    }).join('');
+    tabs.onclick = function (e) {
+      var btn = siblingUp(e);
+      if (!btn) return;
+      advGroup = Number(btn.getAttribute('data-adv')) || 0;
+      renderSearch();
+    };
+
+    var g = groups[advGroup];
+    var terms = (g.terms || []).filter(function (t) { return t.n != null || t.new; });
+    if (!terms.length) { body.innerHTML = '<p class="adv-empty">이 주제는 아직 값이 없어요.</p>'; return; }
+
+    var head = terms.slice(0, 12);
+    var rest = terms.slice(12);
+    var html = '<div class="term-chips">' + head.map(termChip).join('') + '</div>';
+    if (rest.length) {
+      html += '<details class="more-posts"><summary>나머지 ' + rest.length + '개 더 보기</summary>' +
+        '<div class="term-chips">' + rest.map(termChip).join('') + '</div></details>';
+    }
+    body.innerHTML = html;
+  }
+
+  /* --- 네이버 메인 유입 TOP 20 --- */
+  function mainRow(p, i) {
+    return '<li class="main-row">' +
+      '<span class="rk' + (i === 0 ? ' top' : '') + '">' + (p.rank || i + 1) + '</span>' +
+      '<p class="main-title">' + esc(p.title || '') + '</p></li>';
+  }
+
+  function renderMain() {
+    var host = $('advMain');
+    if (!host) return;
+    var list = (ADV && ADV.mainTop) || [];
+    if (!list.length) { host.innerHTML = '<p class="chart-empty">메인 유입 자료를 아직 불러오지 못했어요.</p>'; return; }
+
+    var head = list.slice(0, 10);
+    var rest = list.slice(10);
+    var html = '<ol class="main-list">' + head.map(mainRow).join('') + '</ol>';
+    if (rest.length) {
+      html += '<details class="more-posts"><summary>' + (head.length + 1) + '~' + list.length + '위 더 보기</summary>' +
+        '<ol class="main-list">' + rest.map(mainRow).join('') + '</ol></details>';
+    }
+    host.innerHTML = html;
+  }
+
+  function renderAdvisor() {
+    ADV = (DATA && DATA.advisor) || null;
+    renderAdvBand();
+    renderRevenue();
+    renderRising();
+    renderAudience();
+    renderSearch();
+    renderMain();
+  }
+
   /* ---------------- boot ---------------- */
   function render(d) {
     if (!d || !d.daily && !d.posts) return false;
@@ -360,6 +697,7 @@
     renderSources();
     renderRanks(t);
     renderTypes(t);
+    renderAdvisor();
     var foot = $('statUpdated');
     if (foot) foot.textContent = '기준 ' + shortWhen(d.updated) + ' · ' + (d.blogLabel || '드라마') + ' 블로그';
     return true;
@@ -411,6 +749,7 @@
     var btn = $('statRefresh');
     if (btn) btn.addEventListener('click', function () { load(true); });
     if (!$('view-stats')) return;
+    initSeg();
     load(false);
   }
 
