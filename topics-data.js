@@ -1,5 +1,5 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-20T07:58:14+09:00",
+ "updated": "2026-11-20T09:10:48+09:00",
  "label": "2026년 11월 셋째 주",
  "version": 4,
  "blogs": [
@@ -304,9 +304,9 @@ window.TOPICS_FALLBACK = {
     "사극"
    ],
    "imageQuery": "문무 KBS 드라마",
-   "officialPhotoUrl": "https://program.kbs.co.kr/2tv/drama/munmu/pc/index.html",
-   "officialPhotoLabel": "KBS 공홈",
-   "officialPhotoNote": "공홈 프로그램 페이지 안 포토 메뉴에서 스틸컷을 볼 수 있어요",
+   "officialPhotoUrl": "https://program.kbs.co.kr/2tv/drama/munmu/pc/detail.html?smenu=cac6b1",
+   "officialPhotoLabel": "KBS 포스터 다운로드",
+   "officialPhotoNote": "KBS 공식 홈페이지 > 매거진 > 포스터 다운로드 (공식 포스터 7종)",
    "officialYoutubeUrl": "https://www.youtube.com/@kbsdrama/search?query=%EB%AC%B8%EB%AC%B4",
    "officialYoutubeName": "KBS Drama",
    "timeline": [
@@ -516,9 +516,9 @@ window.TOPICS_FALLBACK = {
     "소지섭"
    ],
    "imageQuery": "김부장 SBS",
-   "officialPhotoUrl": "https://programs.sbs.co.kr/drama/mrkim/photo",
-   "officialPhotoLabel": "SBS 공식 포토",
-   "officialPhotoNote": "SBS 공식 홈페이지 '포토' 메뉴에서 공식 스틸컷을 볼 수 있어요",
+   "officialPhotoUrl": "https://programs.sbs.co.kr/drama/mrkim/visualboards/89763",
+   "officialPhotoLabel": "SBS 포토갤러리",
+   "officialPhotoNote": "SBS 공식 홈페이지 > 포토갤러리 게시판 (공식 스틸 15건 이상)",
    "officialYoutubeUrl": "https://www.youtube.com/@SBSnow/search?query=%EA%B9%80%EB%B6%80%EC%9E%A5",
    "officialYoutubeName": "SBS",
    "formula": {
@@ -617,11 +617,9 @@ window.TOPICS_FALLBACK = {
     "손현주"
    ],
    "imageQuery": "유어 아너 ENA",
-   "officialPhotoUrl": "https://www.youtube.com/@ENA_Official/search?query=%EC%9C%A0%EC%96%B4%20%EC%95%84%EB%84%88",
-   "officialPhotoLabel": "ENA 공식 유튜브",
-   "officialPhotoNote": "ENA 공식 홈페이지(ena.skylifetv.co.kr)가 접속되지 않아, 공식 유튜브 채널의 스틸·영상에서 캡처하세요",
-   "officialYoutubeUrl": "https://www.youtube.com/@ENA_Official/search?query=%EC%9C%A0%EC%96%B4%20%EC%95%84%EB%84%88",
-   "officialYoutubeName": "ENA",
+   "officialPhotoNote": "ENA 공식 홈페이지(ena.skylifetv.co.kr)가 접속되지 않고 포토갤러리도 없어요. 공식 스틸은 아래 스튜디오지니 유튜브의 메이킹·하이라이트 영상에서 캡처하세요.",
+   "officialYoutubeUrl": "https://www.youtube.com/@Studio_Genie/search?query=%EC%9C%A0%EC%96%B4%20%EC%95%84%EB%84%88",
+   "officialYoutubeName": "스튜디오지니",
    "formula": {
     "hook": "1.7%로 시작해 6.1%로 끝났다",
     "outcome": "종영 2년 만에 넷플릭스 1위 한",
@@ -983,11 +981,11 @@ window.TOPICS_FALLBACK = {
     "역주행"
    ],
    "imageQuery": "거침없이 하이킥",
-   "officialPhotoUrl": "https://program.imbc.com/Photo/1000385100000100000",
-   "officialPhotoLabel": "MBC 포토",
-   "officialPhotoNote": "",
-   "officialYoutubeUrl": "https://www.youtube.com/@MBCdrama/search?query=%EA%B1%B0%EC%B9%A8%EC%97%86%EC%9D%B4%20%ED%95%98%EC%9D%B4%ED%82%A5",
-   "officialYoutubeName": "MBC DRAMA",
+   "officialPhotoUrl": "https://program.imbc.com/Info/kick?seq=2005",
+   "officialPhotoLabel": "MBC 공식 포스터",
+   "officialPhotoNote": "MBC 공식 홈페이지 > 포스터 (포토갤러리는 운영하지 않아요. 스틸은 아래 공식 유튜브 클립에서 캡처)",
+   "officialYoutubeUrl": "https://www.youtube.com/@MBCentertainment_classic/search?query=%EA%B1%B0%EC%B9%A8%EC%97%86%EC%9D%B4%20%ED%95%98%EC%9D%B4%ED%82%A5",
+   "officialYoutubeName": "올끌 (MBC 클래식)",
    "timeline": [
     {
      "range": "초반",
@@ -2287,11 +2285,11 @@ window.TOPICS_FALLBACK = {
     "옹산"
    ],
    "imageQuery": "동백꽃 필 무렵",
-   "officialPhotoUrl": null,
-   "officialPhotoLabel": "공홈 포토",
-   "officialPhotoNote": "KBS 공식 홈페이지 포토 페이지가 현재 접속되지 않아요. 공식 유튜브 클립 캡처를 추천",
-   "officialYoutubeUrl": "https://www.youtube.com/@kbsdrama/search?query=%EB%8F%99%EB%B0%B1%EA%BD%83%20%ED%95%84%20%EB%AC%B4%EB%A0%B5",
-   "officialYoutubeName": "KBS Drama",
+   "officialPhotoUrl": "https://program.kbs.co.kr/2tv/drama/camellia2019/pc/detail.html?smenu=cac6b1",
+   "officialPhotoLabel": "KBS 포스터 다운로드",
+   "officialPhotoNote": "KBS 공식 홈페이지 > 매거진 > 포스터 다운로드 (공식 포스터 3종)",
+   "officialYoutubeUrl": "https://www.youtube.com/@1004KBS/search?query=%EB%8F%99%EB%B0%B1%EA%BD%83%20%ED%95%84%20%EB%AC%B4%EB%A0%B5",
+   "officialYoutubeName": "KBS 한국방송",
    "timeline": [
     {
      "range": "초반",
@@ -2387,11 +2385,9 @@ window.TOPICS_FALLBACK = {
     "커피"
    ],
    "imageQuery": "커피프린스 1호점",
-   "officialPhotoUrl": "https://program.imbc.com/Photo/coffeeprince",
-   "officialPhotoLabel": "MBC 포토",
-   "officialPhotoNote": "",
-   "officialYoutubeUrl": "https://www.youtube.com/@MBCdrama/search?query=%EC%BB%A4%ED%94%BC%ED%94%84%EB%A6%B0%EC%8A%A4%201%ED%98%B8%EC%A0%90",
-   "officialYoutubeName": "MBC DRAMA",
+   "officialPhotoNote": "MBC 공식 홈페이지에 포토갤러리가 없어요(포토 주소 폐쇄). 아래 MBCdrama '하루 한 씬' 공식 클립에서 캡처하세요.",
+   "officialYoutubeUrl": "https://www.youtube.com/@mbc_drama/search?query=%EC%BB%A4%ED%94%BC%ED%94%84%EB%A6%B0%EC%8A%A4%201%ED%98%B8%EC%A0%90",
+   "officialYoutubeName": "MBCdrama",
    "timeline": [
     {
      "range": "1~4회",
@@ -3238,9 +3234,9 @@ window.TOPICS_FALLBACK = {
      "note": "검사 예약·조회"
     },
     {
-     "label": "자동차민원 대국민포털",
-     "url": "https://www.ecar.go.kr/",
-     "note": "내 차 검사일·자동차세 조회"
+     "label": "자동차민원 대국민포털(자동차365)",
+     "url": "https://www.car365.go.kr/",
+     "note": "내 차 검사일·자동차세·압류·보험 조회 (옛 ecar.go.kr 주소는 폐쇄)"
     }
    ],
    "keywords": [
