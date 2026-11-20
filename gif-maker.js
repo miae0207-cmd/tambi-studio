@@ -622,7 +622,7 @@
 
     palettePass(0).then(function () {
       var palette = GifEnc.quantize(
-        new Uint8Array(sr), new Uint8Array(sg), new Uint8Array(sb), sr.length, 254);
+        new Uint8Array(sr), new Uint8Array(sg), new Uint8Array(sb), sr.length, 200);
       /* 투명 슬롯 하나를 팔레트 끝에 붙인다 */
       var transIdx = palette.length;
       palette.push([0, 0, 0]);
@@ -636,6 +636,13 @@
       var map = GifEnc.mapper(palette);
       var frames = [];
       var prevIdx = null;
+      /* 화면에 실제로 남아 있는 색(ref)을 기억해 두고, 그 색과 거의 같으면 투명 처리.
+         앞 프레임과만 비교하면 느린 페이드가 통째로 사라지므로 ref를 씁니다. */
+      var refR = new Uint8Array(W * H), refG = new Uint8Array(W * H), refB = new Uint8Array(W * H);
+      var palR = new Uint8Array(palette.length), palG = new Uint8Array(palette.length), palB = new Uint8Array(palette.length);
+      for (var pi = 0; pi < palette.length; pi++) {
+        palR[pi] = palette[pi][0]; palG[pi] = palette[pi][1]; palB[pi] = palette[pi][2];
+      }
 
       function framePass(i) {
         if (i >= n) return Promise.resolve();
@@ -652,9 +659,15 @@
           var idx = new Uint8Array(W * H);
           var k = 0;
           for (var p = 0; p < d.length; p += 4) {
-            var q = map(d[p], d[p + 1], d[p + 2]);
-            /* 앞 프레임과 같은 색으로 떨어지면 그 픽셀은 안 바뀐 것 → 투명 처리(용량 절약) */
-            idx[k] = (!prevIdx || q !== prevIdx[k]) ? q : transIdx;
+            var r = d[p], g = d[p + 1], b = d[p + 2];
+            if (i > 0) {
+              var dr = r - refR[k], dg = g - refG[k], db = b - refB[k];
+              if (Math.abs(dr) + Math.abs(dg) + Math.abs(db) < 12) { idx[k] = transIdx; k++; continue; }
+            }
+            var q = map(r, g, b);
+            if (i > 0 && prevIdx && q === prevIdx[k]) { idx[k] = transIdx; k++; continue; }
+            idx[k] = q;
+            refR[k] = palR[q]; refG[k] = palG[q]; refB[k] = palB[q];
             k++;
           }
           frames.push({
