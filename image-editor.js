@@ -649,7 +649,8 @@
     var has = S.photos.length > 0;
     $('ieDrop').hidden = has;
     $('ieFileBtns').hidden = !has;
-    $('ieStageEmpty').hidden = has;
+    $('ieToolbar').hidden = !has;
+    $('ieStage').hidden = !has;
     $('ieAdd').hidden = S.photos.length >= 4;
     renderThumbs();
   }
