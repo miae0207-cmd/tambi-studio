@@ -27,7 +27,7 @@ window.HOMEFEED_DATA = {
    "blogName": "모봄",
    "blogId": "myu_chae",
    "blogTitle": "요즘 드라마 모봄",
-   "title": "모봄 여주는 따로 있는데.. 악역한테 우산 씌워준 장면이 더 멜로 같았던 드라마",
+   "title": "여주는 따로 있는데.. 악역한테 우산 씌워준 장면이 더 멜로 같았던 드라마",
    "url": "https://blog.naver.com/myu_chae/224483191262",
    "visitToday": 48316,
    "visitTotal": 2169895
@@ -38,7 +38,7 @@ window.HOMEFEED_DATA = {
    "blogName": "이쁜한개",
    "blogId": "hana2807",
    "blogTitle": "은행원 이쁜한개의 돈 버는 이중생활",
-   "title": "이쁜한개 네이버 애드포스트 조건 승인 받고 50만원 받을때까지 했던 방법",
+   "title": "네이버 애드포스트 조건 승인 받고 50만원 받을때까지 했던 방법",
    "url": "https://blog.naver.com/hana2807/224462556368",
    "visitToday": 276,
    "visitTotal": 280540
@@ -49,7 +49,7 @@ window.HOMEFEED_DATA = {
    "blogName": "미미씨",
    "blogId": "memec_",
    "blogTitle": "미미씨의 기행",
-   "title": "미미씨 수원 행궁동 드라마 <그 해 우리는> 신상카페 ㅣ 카페 키(KII) ♥ 성곽뷰 • 테라스 • 루프탑 카페",
+   "title": "수원 행궁동 드라마 <그 해 우리는> 신상카페 ㅣ 카페 키(KII) ♥ 성곽뷰 • 테라스 • 루프탑 카페",
    "url": "https://blog.naver.com/memec_/224465090412",
    "visitToday": 215,
    "visitTotal": 8475
@@ -71,7 +71,7 @@ window.HOMEFEED_DATA = {
    "blogName": "드라마도파민",
    "blogId": "3hgym",
    "blogTitle": "드라마도파민",
-   "title": "드라마도파민 \"극장 112만 처참한데…\" 단 1주 만에 넷플릭스 세계 3위 찍고 3주 톱10 한 영화 | 박서준 아이유 드림",
+   "title": "\"극장 112만 처참한데…\" 단 1주 만에 넷플릭스 세계 3위 찍고 3주 톱10 한 영화 | 박서준 아이유 드림",
    "url": "https://blog.naver.com/3hgym/224481856312",
    "visitToday": 18551,
    "visitTotal": 381651
@@ -82,7 +82,7 @@ window.HOMEFEED_DATA = {
    "blogName": "트렌드로직픽",
    "blogId": "trendlogic",
    "blogTitle": "trendlogic님의 블로그",
-   "title": "트렌드로직픽 '남주는 대타, 여주는 첫 장편드라마인데...' tvN 역대 시청률 3위까지 찍어버린 레전드 드라마",
+   "title": "'남주는 대타, 여주는 첫 장편드라마인데...' tvN 역대 시청률 3위까지 찍어버린 레전드 드라마",
    "url": "https://blog.naver.com/trendlogic/224482930677",
    "visitToday": 14275,
    "visitTotal": 62398
@@ -93,7 +93,7 @@ window.HOMEFEED_DATA = {
    "blogName": "반짝곰",
    "blogId": "hioper12345",
    "blogTitle": "반짝곰은 드라마를 뿌셔",
-   "title": "반짝곰 욕망의 덫 60회, 박성규 \"우리 결혼해요\"…손성윤 \"장난하는 거죠?\"",
+   "title": "욕망의 덫 60회, 박성규 \"우리 결혼해요\"…손성윤 \"장난하는 거죠?\"",
    "url": "https://blog.naver.com/hioper12345/224482730229",
    "visitToday": 4781,
    "visitTotal": 72074
@@ -423,7 +423,7 @@ window.HOMEFEED_DATA = {
    "blogName": "임주부",
    "blogId": "limsun_5631",
    "blogTitle": "임주부네 집밥 일기♥️‍",
-   "title": "임주부네 4인 가족 식비 절약 현실 집밥 메뉴 / 크래미전, 소고기 샤브 전골",
+   "title": "네 4인 가족 식비 절약 현실 집밥 메뉴 / 크래미전, 소고기 샤브 전골",
    "url": "https://blog.naver.com/limsun_5631/224477050149",
    "visitToday": 2863,
    "visitTotal": 381430
