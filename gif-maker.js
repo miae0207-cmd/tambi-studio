@@ -635,7 +635,7 @@
 
       var map = GifEnc.mapper(palette);
       var frames = [];
-      var prev = null;
+      var prevIdx = null;
 
       function framePass(i) {
         if (i >= n) return Promise.resolve();
@@ -652,19 +652,17 @@
           var idx = new Uint8Array(W * H);
           var k = 0;
           for (var p = 0; p < d.length; p += 4) {
-            var r = d[p], g = d[p + 1], b = d[p + 2];
-            if (prev) {
-              var dr = r - prev[p], dg = g - prev[p + 1], db = b - prev[p + 2];
-              if (Math.abs(dr) + Math.abs(dg) + Math.abs(db) < 9) { idx[k++] = transIdx; continue; }
-            }
-            idx[k++] = map(r, g, b);
+            var q = map(d[p], d[p + 1], d[p + 2]);
+            /* 앞 프레임과 같은 색으로 떨어지면 그 픽셀은 안 바뀐 것 → 투명 처리(용량 절약) */
+            idx[k] = (!prevIdx || q !== prevIdx[k]) ? q : transIdx;
+            k++;
           }
           frames.push({
             indices: idx,
             delayCs: delayCs,
             transparentIndex: i === 0 ? -1 : transIdx
           });
-          prev = d;
+          prevIdx = idx;
           setProg(10 + (i + 1) / n * 70, '프레임 따는 중 ' + (i + 1) + '/' + n);
           return framePass(i + 1);
         });
