@@ -12,7 +12,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 <link rel="stylesheet" href="image-editor.css?v=4">
 </head>
 <body>
@@ -478,12 +478,21 @@
         <div id="advSearchBody"></div>
       </div>
 
+      <div class="card" id="advLastCard">
+        <div class="card-head">
+          <h3>📌 지난주 돋보였던 글 5건</h3>
+          <span class="card-note">눌러서 바로 보기</span>
+        </div>
+        <p class="adv-hint">네이버가 뽑은 지난주 인기 글이에요(다른 블로그). 제목을 누르면 그 글로 바로 들어가요.</p>
+        <div id="advLastWeek"></div>
+      </div>
+
       <div class="card" id="advMainCard">
         <div class="card-head">
           <h3>🏆 네이버 메인 유입 TOP 20</h3>
           <span class="card-note">홈판 벤치마킹</span>
         </div>
-        <p class="adv-hint">메인(홈판)에서 실제로 터진 제목 20개예요. 문장 결을 그대로 참고하세요.</p>
+        <p class="adv-hint">메인(홈판)에서 실제로 터진 제목 20개예요. 문장 결을 그대로 참고하세요. 제목을 누르면 그 제목으로 네이버 블로그를 찾아 줍니다.</p>
         <div id="advMain"></div>
       </div>
 
@@ -538,9 +547,9 @@
 
 <script src="engine.js?v=7"></script>
 <script src="topics-data.js?v=7"></script>
-<script src="stats-data.js?v=8"></script>
+<script src="stats-data.js?v=9"></script>
 <script src="app.js?v=8"></script>
-<script src="stats.js?v=11"></script>
+<script src="stats.js?v=12"></script>
 <script src="image-editor.js?v=4"></script>
 </body>
 </html>

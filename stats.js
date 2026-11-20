@@ -358,6 +358,7 @@
     { id: 'advRisingCard', label: '🔥 급상승' },
     { id: 'advAudienceCard', label: '👥 독자' },
     { id: 'advSearchCard', label: '🔎 검색어' },
+    { id: 'advLastCard', label: '📌 지난주 인기' },
     { id: 'advMainCard', label: '🏆 메인 TOP20' }
   ];
 
@@ -650,11 +651,20 @@
     body.innerHTML = html;
   }
 
-  /* --- 네이버 메인 유입 TOP 20 --- */
+  /* --- 네이버 블로그 검색 링크 (제목으로 찾기) --- */
+  function blogSearchUrl(title) {
+    return 'https://m.search.naver.com/search.naver?where=m_blog&query=' +
+      encodeURIComponent(String(title || '').trim());
+  }
+
+  /* --- 네이버 메인 유입 TOP 20 (제목 누르면 블로그 검색으로) --- */
   function mainRow(p, i) {
-    return '<li class="main-row">' +
+    var title = p.title || '';
+    return '<li>' +
+      '<a class="main-row" href="' + esc(blogSearchUrl(title)) + '" target="_blank" rel="noopener noreferrer">' +
       '<span class="rk' + (i === 0 ? ' top' : '') + '">' + (p.rank || i + 1) + '</span>' +
-      '<p class="main-title">' + esc(p.title || '') + '</p></li>';
+      '<p class="main-title">' + esc(title) + '</p>' +
+      '<span class="main-go">글 찾기 ↗</span></a></li>';
   }
 
   function renderMain() {
@@ -673,6 +683,25 @@
     host.innerHTML = html;
   }
 
+  /* --- 지난주 돋보였던 콘텐츠 5건 (블로그 직링크) --- */
+  function renderLastWeek() {
+    var host = $('advLastWeek');
+    if (!host) return;
+    var list = (ADV && ADV.lastWeek) || [];
+    if (!list.length) { host.innerHTML = '<p class="chart-empty">지난주 인기 글을 아직 불러오지 못했어요.</p>'; return; }
+
+    host.innerHTML = '<ol class="main-list">' + list.map(function (p, i) {
+      return '<li>' +
+        '<a class="main-row last-row" href="' + esc(p.url || '#') + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="rk' + (i === 0 ? ' top' : '') + '">' + (p.rank || i + 1) + '</span>' +
+        '<span class="last-body">' +
+        '<span class="main-title">' + esc(p.title || '') + '</span>' +
+        '<span class="last-blog">' + esc(p.blog || '') + '</span>' +
+        '</span>' +
+        '<span class="main-go">바로가기 ↗</span></a></li>';
+    }).join('') + '</ol>';
+  }
+
   function renderAdvisor() {
     ADV = (DATA && DATA.advisor) || null;
     renderAdvBand();
@@ -680,6 +709,7 @@
     renderRising();
     renderAudience();
     renderSearch();
+    renderLastWeek();
     renderMain();
   }
 
