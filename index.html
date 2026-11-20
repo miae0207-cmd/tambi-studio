@@ -13,6 +13,7 @@
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="image-editor.css?v=1">
 </head>
 <body>
 <div class="app">
@@ -135,11 +136,194 @@
     </section>
 
     <!-- ============ 이미지 ============ -->
-    <section class="view" id="view-images" aria-label="이미지 수급과 체크리스트">
+    <section class="view" id="view-images" aria-label="이미지 편집과 수급">
       <div class="view-head">
-        <h2>이미지 수급</h2>
-        <span class="view-sub" style="margin:0">📺 드라마 · 공식 홈페이지·채널만</span>
+        <h2>이미지</h2>
+        <span class="view-sub" style="margin:0">📺 공식 홈페이지·채널만</span>
       </div>
+
+      <div class="seg ie-seg" id="imgSeg" role="group" aria-label="이미지 탭 보기">
+        <button type="button" data-pane="edit" class="on" aria-pressed="true">🖼 편집기</button>
+        <button type="button" data-pane="guide" aria-pressed="false">🔍 수급 가이드</button>
+      </div>
+
+      <!-- ---------- 편집기 ---------- -->
+      <div class="ie-pane active" id="imgPane-edit">
+
+        <div class="card ie-card">
+          <h3>🖼 사진 편집기</h3>
+          <p class="ie-sub">사진 1~4장으로 콜라주를 만들고, 자르기·모자이크·워터마크까지 폰에서 바로 끝냅니다. 사진은 폰 밖으로 나가지 않아요.</p>
+
+          <input type="file" id="ieFile" accept="image/*" multiple hidden>
+
+          <div class="ie-drop" id="ieDrop">
+            <span class="ico" aria-hidden="true">🖼</span>
+            <strong>사진 고르기</strong>
+            <small>갤러리에서 1~4장 (콜라주는 2장부터)</small>
+            <button type="button" class="btn primary" id="iePick">📷 사진 선택</button>
+          </div>
+
+          <div class="ie-thumbs" id="ieThumbs" hidden></div>
+          <div class="ie-filebtns" id="ieFileBtns" hidden>
+            <button type="button" class="btn soft sm" id="ieAdd">＋ 사진 추가</button>
+            <button type="button" class="btn ghost sm" id="ieClear">전체 비우기</button>
+          </div>
+        </div>
+
+        <div class="card ie-card">
+          <div class="ie-stage" id="ieStage">
+            <canvas id="ieCanvas" width="1080" height="1080" aria-label="편집 미리보기"></canvas>
+            <div class="ie-sel" id="ieSelBox" hidden></div>
+            <div class="ie-empty" id="ieStageEmpty">사진을 고르면<br>여기에 보여요</div>
+          </div>
+
+          <div class="ie-toolbar">
+            <div class="seg ie-seg2" id="ieMode" role="group" aria-label="손가락 도구">
+              <button type="button" data-mode="pos" class="on" aria-pressed="true">✋ 사진 위치·확대</button>
+              <button type="button" data-mode="mosaic" aria-pressed="false">🩹 모자이크</button>
+            </div>
+            <p class="ie-tip" id="ieTip">칸을 눌러 고른 뒤 <b>끌어서 위치</b>, 두 손가락으로 <b>확대</b>. 아래 슬라이더로도 맞출 수 있어요.</p>
+          </div>
+
+          <details class="ie-fold" open>
+            <summary>📐 배치 <em>레이아웃·비율·여백</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">칸 구성</span>
+              <div class="ie-chips" id="ieLayout"></div>
+
+              <span class="ie-label">비율</span>
+              <div class="ie-chips" id="ieRatio"></div>
+
+              <div class="ie-row">
+                <span>칸 간격</span>
+                <input type="range" class="ie-range" id="ieGap" min="0" max="40" step="2" value="12" aria-label="칸 간격">
+                <output id="ieGapOut">12</output>
+              </div>
+              <div class="ie-row">
+                <span>둥근 모서리</span>
+                <input type="range" class="ie-range" id="ieRadius" min="0" max="80" step="2" value="26" aria-label="둥근 모서리">
+                <output id="ieRadiusOut">26</output>
+              </div>
+
+              <span class="ie-label">배경색</span>
+              <div class="ie-swatches" id="ieBgs"></div>
+            </div>
+          </details>
+
+          <details class="ie-fold">
+            <summary>✂️ 칸 자르기 <em>확대·위치</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">고칠 칸</span>
+              <div class="ie-chips" id="ieCells"></div>
+
+              <div class="ie-row">
+                <span>확대</span>
+                <input type="range" class="ie-range" id="ieZoom" min="100" max="320" step="2" value="100" aria-label="사진 확대">
+                <output id="ieZoomOut">1.0×</output>
+              </div>
+              <div class="ie-row">
+                <span>좌우</span>
+                <input type="range" class="ie-range" id="iePanX" min="-100" max="100" step="1" value="0" aria-label="좌우 위치">
+                <output id="iePanXOut">0</output>
+              </div>
+              <div class="ie-row">
+                <span>상하</span>
+                <input type="range" class="ie-range" id="iePanY" min="-100" max="100" step="1" value="0" aria-label="상하 위치">
+                <output id="iePanYOut">0</output>
+              </div>
+
+              <div class="ie-chips">
+                <button type="button" class="ie-chip tog" id="ieFit" aria-pressed="false">전체 보이기 (여백 생김)</button>
+              </div>
+              <div class="ie-actions">
+                <button type="button" class="btn ghost sm" id="ieCellReset">이 칸 처음으로</button>
+              </div>
+              <p class="ie-note">칸을 꽉 채우면 원본의 일부가 잘려 나갑니다. 끌어서 보여줄 부분을 정하세요.</p>
+            </div>
+          </details>
+
+          <details class="ie-fold">
+            <summary>🩹 모자이크 <em>얼굴·닉네임 가리기</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">블록 크기</span>
+              <div class="ie-chips" id="ieBlock"></div>
+
+              <span class="ie-label">칠하는 방법</span>
+              <div class="ie-chips" id="ieShape"></div>
+
+              <div class="ie-row">
+                <span>붓 굵기</span>
+                <input type="range" class="ie-range" id="ieBrush" min="8" max="120" step="2" value="34" aria-label="붓 굵기">
+                <output id="ieBrushOut">34</output>
+              </div>
+
+              <div class="ie-actions">
+                <button type="button" class="btn soft sm" id="ieUndo">↩ 되돌리기</button>
+                <button type="button" class="btn ghost sm" id="ieMaskClear">모자이크 모두 지우기</button>
+              </div>
+              <p class="ie-note">위쪽 <b>🩹 모자이크</b>를 고른 뒤 미리보기를 손가락으로 문지르면 그 자리가 픽셀로 바뀝니다.</p>
+            </div>
+          </details>
+
+          <details class="ie-fold">
+            <summary>💜 내 워터마크 <em>내가 한 표시</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">문구</span>
+              <div class="ie-chips" id="ieWmPresets"></div>
+              <label class="field" style="margin-top:10px">
+                <span>직접 고치기</span>
+                <input type="text" id="ieWmText" value="달래쨘" maxlength="40" autocomplete="off" placeholder="예: 달래쨘">
+              </label>
+
+              <span class="ie-label">위치</span>
+              <div class="ie-chips" id="ieWmPos"></div>
+
+              <div class="ie-row">
+                <span>크기</span>
+                <input type="range" class="ie-range" id="ieWmSize" min="16" max="90" step="1" value="34" aria-label="워터마크 크기">
+                <output id="ieWmSizeOut">34</output>
+              </div>
+              <div class="ie-row">
+                <span>진하기</span>
+                <input type="range" class="ie-range" id="ieWmOpacity" min="20" max="100" step="1" value="85" aria-label="워터마크 진하기">
+                <output id="ieWmOpacityOut">85%</output>
+              </div>
+
+              <span class="ie-label">색</span>
+              <div class="ie-colors" id="ieWmColors"></div>
+
+              <div class="ie-chips">
+                <button type="button" class="ie-chip tog" id="ieWmBadge" aria-pressed="true">반투명 배지</button>
+                <button type="button" class="ie-chip tog" id="ieWmShadow" aria-pressed="true">그림자</button>
+              </div>
+            </div>
+          </details>
+
+          <details class="ie-fold" open>
+            <summary>💾 저장 <em>PNG · JPG</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">형식</span>
+              <div class="ie-chips" id="ieFormat"></div>
+
+              <div class="ie-actions">
+                <button type="button" class="btn primary" id="ieSave">💾 사진첩에 저장</button>
+                <button type="button" class="btn soft mini" id="ieShare" hidden>📤 공유</button>
+              </div>
+
+              <div class="ie-out" id="ieOut" hidden>
+                <img class="ie-out-img" id="ieOutImg" alt="완성된 이미지 미리보기">
+                <p class="ie-out-note">저장이 안 열리면 <b>위 이미지를 길게 눌러</b> “이미지 저장”을 눌러주세요.</p>
+                <div class="ie-actions">
+                  <a class="btn ghost sm" id="ieOutLink" href="#" download>다시 저장</a>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- ---------- 수급 가이드 ---------- -->
+      <div class="ie-pane" id="imgPane-guide">
 
       <div class="card">
         <h3>🔍 어떤 작품이든</h3>
@@ -175,6 +359,8 @@
         <div class="bar" style="margin-top:10px"><i id="checkBar" style="width:0"></i></div>
         <div id="checkList"></div>
         <button type="button" class="btn ghost sm" id="checkReset" style="margin-top:12px">체크 비우기</button>
+      </div>
+
       </div>
     </section>
 
@@ -277,5 +463,6 @@
 <script src="stats-data.js?v=6"></script>
 <script src="app.js?v=5"></script>
 <script src="stats.js?v=8"></script>
+<script src="image-editor.js?v=1"></script>
 </body>
 </html>

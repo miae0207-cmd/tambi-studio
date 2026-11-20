@@ -1,0 +1,222 @@
+/* 탐비 블로그 스튜디오 — 이미지 편집기 (콜라주·자르기·모자이크·워터마크) */
+
+/* [hidden]이 display 지정 클래스에 밀리지 않게 */
+#view-images [hidden] { display: none !important; }
+
+/* ---------- 이미지 탭 상단 세그먼트 ---------- */
+.ie-seg { margin: 6px 0 12px; }
+.ie-pane { display: none; }
+.ie-pane.active { display: block; animation: ieIn .2s ease-out both; }
+@keyframes ieIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+.ie-card { padding: 15px 15px 16px; }
+.ie-card > h3 { margin-bottom: 2px; }
+.ie-sub { font-size: 12.5px; color: var(--sub); margin-top: 5px; line-height: 1.5; }
+
+/* ---------- 사진 고르기 ---------- */
+.ie-drop {
+  margin-top: 12px;
+  border: 1.5px dashed var(--violet-line);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, #FBF8FF, #F6F1FF);
+  padding: 20px 14px 18px;
+  text-align: center;
+}
+.ie-drop .ico { display: block; font-size: 30px; line-height: 1; margin-bottom: 8px; }
+.ie-drop strong { display: block; font-size: 14.5px; font-weight: 800; letter-spacing: -.02em; }
+.ie-drop small { display: block; font-size: 12px; color: var(--sub); margin-top: 3px; }
+.ie-drop .btn { margin-top: 12px; }
+
+.ie-thumbs { display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding: 2px 0 4px; -webkit-overflow-scrolling: touch; }
+.ie-thumb {
+  position: relative; flex: 0 0 auto;
+  width: 68px; height: 68px; border-radius: 13px; overflow: hidden;
+  border: 2px solid transparent; background: var(--lav);
+  box-shadow: var(--shadow-sm);
+}
+.ie-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ie-thumb.sel { border-color: var(--violet); }
+.ie-thumb b {
+  position: absolute; left: 4px; top: 4px;
+  width: 18px; height: 18px; border-radius: 999px;
+  background: rgba(46,37,64,.62); color: #fff;
+  font-size: 10.5px; font-weight: 800;
+  display: grid; place-items: center;
+}
+.ie-thumb i {
+  position: absolute; right: 3px; top: 3px;
+  width: 20px; height: 20px; border-radius: 999px;
+  background: rgba(255,255,255,.92); color: #6D28D9;
+  font-size: 11px; font-style: normal; font-weight: 800;
+  display: grid; place-items: center;
+  box-shadow: 0 1px 4px rgba(46,37,64,.2);
+}
+.ie-filebtns { display: flex; gap: 7px; margin-top: 10px; }
+
+/* ---------- 캔버스 ---------- */
+.ie-stage {
+  position: relative;
+  margin-top: 12px;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(45deg, #F1ECFB 25%, transparent 25%, transparent 75%, #F1ECFB 75%) 0 0/16px 16px,
+    linear-gradient(45deg, #F1ECFB 25%, #FAF8FF 25%, #FAF8FF 75%, #F1ECFB 75%) 8px 8px/16px 16px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.ie-stage canvas {
+  display: block; width: 100%; height: auto;
+  border-radius: 9px;
+  touch-action: none;            /* 모자이크 칠할 때 페이지가 스크롤되지 않게 */
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+  box-shadow: 0 3px 14px rgba(46,37,64,.13);
+}
+.ie-sel {
+  position: absolute;
+  border: 2px dashed var(--violet);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.85) inset;
+  pointer-events: none;
+}
+.ie-empty {
+  position: absolute; inset: 8px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: rgba(255,255,255,.86);
+  color: var(--sub); font-size: 13px; font-weight: 700;
+  text-align: center; padding: 20px;
+  pointer-events: none;
+}
+
+.ie-toolbar { margin-top: 12px; }
+.ie-seg2 button { min-height: 34px; font-size: 12px; }
+.ie-tip {
+  font-size: 11.5px; color: var(--violet-deep);
+  background: var(--violet-soft);
+  border-radius: 11px; padding: 8px 11px; margin-top: 9px;
+  line-height: 1.45; font-weight: 600;
+}
+.ie-tip b { font-weight: 800; }
+
+/* ---------- 접이식 패널 ---------- */
+.ie-fold { margin-top: 12px; border-top: 1px solid var(--line); }
+.ie-fold > summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; gap: 7px;
+  padding: 13px 2px 3px;
+  font-size: 13.5px; font-weight: 800; letter-spacing: -.02em; color: var(--ink);
+}
+.ie-fold > summary::-webkit-details-marker { display: none; }
+.ie-fold > summary::after {
+  content: "▾"; margin-left: auto; color: var(--sub); font-size: 12px;
+  transition: transform .18s ease;
+}
+.ie-fold[open] > summary::after { transform: rotate(180deg); }
+.ie-fold > summary em {
+  font-style: normal; font-size: 11px; font-weight: 700; color: var(--sub);
+}
+.ie-fold .ie-body { padding: 4px 0 6px; }
+
+/* ---------- 슬라이더 한 줄 ---------- */
+.ie-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 10px;
+}
+.ie-row > span:first-child {
+  flex: 0 0 76px; font-size: 12px; font-weight: 800; color: var(--ink-2);
+}
+.ie-row output {
+  flex: 0 0 44px; text-align: right;
+  font-size: 11.5px; font-weight: 800; color: var(--violet-deep);
+  font-variant-numeric: tabular-nums;
+}
+.ie-range { flex: 1 1 auto; }
+
+input[type="range"].ie-range {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 34px; background: transparent; margin: 0;
+}
+input[type="range"].ie-range::-webkit-slider-runnable-track {
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, #C9B7F7, #E7DEFB);
+}
+input[type="range"].ie-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px; height: 26px; margin-top: -10px;
+  border-radius: 999px; background: #fff;
+  border: 2.5px solid var(--violet);
+  box-shadow: 0 2px 8px rgba(124,58,237,.3);
+}
+input[type="range"].ie-range::-moz-range-track {
+  height: 6px; border-radius: 999px; background: #D9CBF9;
+}
+input[type="range"].ie-range::-moz-range-thumb {
+  width: 24px; height: 24px; border-radius: 999px;
+  background: #fff; border: 2.5px solid var(--violet);
+}
+
+/* ---------- 색 견본 ---------- */
+.ie-swatches { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.ie-swatch {
+  width: 34px; height: 34px; border-radius: 11px;
+  border: 2px solid var(--line);
+  box-shadow: 0 1px 3px rgba(46,37,64,.1);
+  position: relative;
+}
+.ie-swatch.on { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(124,58,237,.18); }
+.ie-swatch.on::after {
+  content: "✓"; position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 900; color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
+}
+
+/* ---------- 글자색 견본 ---------- */
+.ie-colors { display: flex; gap: 8px; margin-top: 10px; }
+.ie-color {
+  flex: 1 1 0; min-height: 36px; border-radius: 11px;
+  border: 1px solid var(--line); background: #fff;
+  font-size: 12px; font-weight: 800; color: var(--ink-2);
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+}
+.ie-color i { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,.12); }
+.ie-color.on { border-color: var(--violet); background: var(--violet-soft); color: var(--violet-deep); }
+
+/* ---------- 일반 칩(레이아웃·비율·위치) ---------- */
+.ie-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 9px; }
+.ie-chip {
+  min-height: 36px; padding: 0 12px; border-radius: 11px;
+  background: #fff; border: 1px solid var(--line);
+  font-size: 12.5px; font-weight: 700; color: var(--ink-2);
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.ie-chip.on { background: var(--violet-soft); border-color: #C9B4FA; color: var(--violet-deep); font-weight: 800; }
+.ie-chip:disabled { opacity: .38; }
+.ie-chip.tog.on { background: var(--violet); border-color: var(--violet); color: #fff; }
+
+.ie-label { font-size: 12px; font-weight: 800; color: var(--ink-2); margin-top: 14px; display: block; }
+.ie-label:first-child { margin-top: 2px; }
+.ie-note { font-size: 11.5px; color: var(--sub); margin-top: 7px; line-height: 1.45; }
+
+/* ---------- 액션 줄 ---------- */
+.ie-actions { display: flex; gap: 7px; margin-top: 12px; }
+.ie-actions .btn { flex: 1 1 0; }
+.ie-actions .btn.mini { flex: 0 0 auto; padding: 0 12px; }
+
+.ie-out { margin-top: 12px; }
+.ie-out-img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.ie-out-note {
+  font-size: 11.5px; color: var(--sub); margin-top: 8px; line-height: 1.45;
+}
+.ie-out-note b { color: var(--violet-deep); }
+
+/* ---------- 수급 가이드 pane 안의 기존 카드 간격 유지 ---------- */
+#imgPane-guide > .card:first-child { margin-top: 0; }
