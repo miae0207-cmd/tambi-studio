@@ -191,7 +191,8 @@
         '" fill="url(#' + (peak ? 'barPeak' : 'barSoft') + ')"/>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 6).toFixed(1) +
         '" text-anchor="middle" font-size="10" font-weight="800" fill="' +
-        (peak ? '#5B21B6' : '#5B5370') + '">' + esc(fmt(v)) + '</text>';
+        (peak ? '#5B21B6' : '#5B5370') + '" stroke="#FFFFFF" stroke-width="3" paint-order="stroke">' +
+        esc(fmt(v)) + '</text>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 17) +
         '" text-anchor="middle" font-size="11" font-weight="800" fill="' +
         (peak ? '#6D28D9' : '#5B5370') + '">' + esc(d.day || '') + '</text>';

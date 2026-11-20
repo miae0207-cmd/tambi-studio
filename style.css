@@ -490,6 +490,7 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
   box-shadow: 0 -6px 24px rgba(109, 40, 217, .07);
 }
 .tab {
+  position: relative;
   flex: 1 1 0;
   display: flex; flex-direction: column; align-items: center; gap: 2px;
   min-height: 48px; justify-content: center;
@@ -502,7 +503,7 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
 .tab.on { color: var(--violet-deep); background: var(--violet-soft); }
 .tab.on .ti { filter: none; opacity: 1; }
 .tab .dotbadge {
-  position: absolute; transform: translate(12px, -10px);
+  position: absolute; top: 3px; right: 5px; transform: none;
   min-width: 15px; height: 15px; padding: 0 4px;
   border-radius: 999px; background: var(--violet); color: #fff;
   font-size: 9.5px; font-weight: 800;
@@ -911,6 +912,11 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
 .donut-svg { display: block; width: 100%; height: auto; }
 .donut-legend { flex: 1 1 148px; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
 .donut-legend li { display: flex; align-items: center; gap: 7px; min-width: 0; }
+@media (max-width: 430px) {
+  .donut-wrap { flex-direction: column; gap: 10px; }
+  .donut-box { width: 128px; margin: 0 auto; }
+  .donut-legend { flex: 1 1 auto; width: 100%; gap: 6px; }
+}
 .ld { width: 8px; height: 8px; border-radius: 2.5px; flex: 0 0 auto; }
 .ll {
   flex: 1 1 auto; min-width: 0;
