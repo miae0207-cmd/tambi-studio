@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css?v=9">
-<link rel="stylesheet" href="image-editor.css?v=4">
+<link rel="stylesheet" href="image-editor.css?v=5">
 </head>
 <body>
 <div class="app">
@@ -154,8 +154,9 @@
         <span class="view-sub" style="margin:0">📺 공식 홈페이지·채널만</span>
       </div>
 
-      <div class="seg ie-seg" id="imgSeg" role="group" aria-label="이미지 탭 보기">
+      <div class="seg ie-seg gm-seg3" id="imgSeg" role="group" aria-label="이미지 탭 보기">
         <button type="button" data-pane="edit" class="on" aria-pressed="true">🖼 편집기</button>
+        <button type="button" data-pane="gif" aria-pressed="false">🎬 움짤 만들기</button>
         <button type="button" data-pane="guide" aria-pressed="false">🔍 수급 가이드</button>
       </div>
 
@@ -331,6 +332,109 @@
               </div>
             </div>
           </details>
+        </div>
+      </div>
+
+      <!-- ---------- 움짤 만들기 (영상 → GIF) ---------- -->
+      <div class="ie-pane" id="imgPane-gif">
+
+        <div class="card ie-card">
+          <h3>🎬 움짤 만들기</h3>
+          <p class="ie-sub">짧은 영상(MP4·MOV·WebM)을 골라 원하는 구간만 GIF로 굽습니다. 영상은 폰·PC 밖으로 나가지 않아요.</p>
+
+          <input type="file" id="gmFile" accept="video/*" hidden>
+
+          <div class="ie-drop gm-drop" id="gmDrop">
+            <span class="ico" aria-hidden="true">🎬</span>
+            <strong>영상 고르기</strong>
+            <small>MP4 · MOV · WebM · 끌어다 놓아도 돼요 (PC)</small>
+            <button type="button" class="btn primary" id="gmPick">🎬 영상 선택</button>
+          </div>
+
+          <div class="gm-file" id="gmFileInfo" hidden></div>
+        </div>
+
+        <div class="card ie-card" id="gmEditorCard" hidden>
+          <div class="gm-stage">
+            <video id="gmVideo" playsinline muted preload="metadata" webkit-playsinline></video>
+            <button type="button" class="gm-play" id="gmPlay" aria-label="고른 구간 미리보기">▶</button>
+          </div>
+          <p class="gm-meta" id="gmMeta"></p>
+
+          <details class="ie-fold" open>
+            <summary>⏱ 구간 자르기 <em>최대 6초</em></summary>
+            <div class="ie-body">
+              <div class="ie-row">
+                <span>시작</span>
+                <input type="range" class="ie-range" id="gmStart" min="0" max="4" step="0.1" value="0" aria-label="시작 시간">
+                <output id="gmStartOut">0.0초</output>
+              </div>
+              <div class="ie-row">
+                <span>끝</span>
+                <input type="range" class="ie-range" id="gmEnd" min="0" max="4" step="0.1" value="4" aria-label="끝 시간">
+                <output id="gmEndOut">4.0초</output>
+              </div>
+              <div class="gm-len">고른 길이 <b id="gmLenOut">4.0초</b></div>
+              <p class="ie-note" id="gmLimit">⏱ 최대 6초까지.</p>
+            </div>
+          </details>
+
+          <details class="ie-fold" open>
+            <summary>📐 크기·부드러움 <em>용량 조절</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">너비</span>
+              <div class="ie-chips" id="gmWidths"></div>
+
+              <span class="ie-label">프레임</span>
+              <div class="ie-chips" id="gmFps"></div>
+
+              <p class="ie-note" id="gmInfo"></p>
+              <p class="ie-note">네이버 블로그는 움짤 한 장이 가벼울수록 빨리 열립니다. 기본(640px·10fps)으로 먼저 만들어 보고, 무거우면 480px이나 8fps로 낮춰보세요.</p>
+            </div>
+          </details>
+
+          <details class="ie-fold">
+            <summary>💜 내 워터마크 <em>내가 한 표시</em></summary>
+            <div class="ie-body">
+              <span class="ie-label">문구</span>
+              <div class="ie-chips" id="gmWmPresets"></div>
+              <label class="field" style="margin-top:10px">
+                <span>직접 고치기</span>
+                <input type="text" id="gmWmText" maxlength="40" autocomplete="off" placeholder="예: 달래쨘">
+              </label>
+
+              <span class="ie-label">위치</span>
+              <div class="ie-chips" id="gmWmPos"></div>
+              <p class="ie-note">구석에 작게 넣어두면 다른 곳에 퍼져도 내 표시가 남습니다.</p>
+            </div>
+          </details>
+
+          <div class="ie-actions">
+            <button type="button" class="btn primary wide" id="gmRun">🎬 GIF 만들기</button>
+            <button type="button" class="btn ghost mini" id="gmClear">다른 영상</button>
+          </div>
+
+          <div class="gm-prog" id="gmProgWrap" hidden>
+            <div class="gm-bar"><i id="gmBar"></i></div>
+            <div class="gm-prog-row">
+              <span id="gmStage"></span>
+              <b id="gmPct">0%</b>
+            </div>
+          </div>
+
+          <div class="ie-out" id="gmOut" hidden>
+            <img class="ie-out-img" id="gmOutImg" alt="만들어진 움짤 미리보기">
+            <div class="gm-out-head">
+              <b id="gmOutName"></b>
+              <span id="gmOutSize"></span>
+            </div>
+            <div class="ie-actions">
+              <button type="button" class="btn primary" id="gmSave">💾 GIF 저장</button>
+              <button type="button" class="btn soft mini" id="gmShare" hidden>📤 공유</button>
+            </div>
+            <p class="ie-note" id="gmOutWarn" hidden>⚠️ 5MB가 넘어요. 블로그에 올리면 글 여는 속도가 느려질 수 있으니 480px·8fps로 다시 만들어 보세요.</p>
+            <p class="ie-out-note">저장이 안 열리면 <b>위 움짤을 길게 눌러</b> “이미지 저장”을 눌러주세요. (다시 저장: <a id="gmOutLink" href="#" download>여기</a>)</p>
+          </div>
         </div>
       </div>
 
@@ -551,5 +655,6 @@
 <script src="app.js?v=8"></script>
 <script src="stats.js?v=13"></script>
 <script src="image-editor.js?v=4"></script>
+<script src="gif-maker.js?v=1"></script>
 </body>
 </html>
