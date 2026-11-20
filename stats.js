@@ -120,7 +120,7 @@
       {
         label: '1위 글 조회수',
         value: t.top ? fmt(t.top.views) : '-',
-        note: t.top ? '한 편이 주 조회수 중 ' + t.topPct.toFixed(1) + '%' : ''
+        note: t.top ? '주 조회수 중 ' + t.topPct.toFixed(1) + '%' : ''
       }
     ];
     box.innerHTML = cards.map(function (c) {
