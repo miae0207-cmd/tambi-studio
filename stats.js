@@ -48,7 +48,9 @@
     var t = $('statTitle');
     if (t) t.textContent = p.label || '주간 리포트';
 
-    var parts = [(DATA.blogLabel || '드라마') + ' · 네이버 블로그 통계 캡처 기준'];
+    var parts = [];
+    if (DATA.blogName) parts.push(DATA.blogName);
+    parts.push(DATA.source || ((DATA.blogLabel || '드라마') + ' · 네이버 블로그 통계 캡처 기준'));
     if (p.note) parts.push(p.note);
     parts.push('업데이트 ' + shortWhen(DATA.updated));
 
@@ -116,9 +118,9 @@
         note: t.best ? (t.best.date || '') + ' ' + (t.best.day || '') + '요일' : ''
       },
       {
-        label: '1위 글 쏠림',
-        value: t.top ? t.topPct.toFixed(1) + '%' : '-',
-        note: '한 편이 주 조회수 중'
+        label: '1위 글 조회수',
+        value: t.top ? fmt(t.top.views) : '-',
+        note: t.top ? '한 편이 주 조회수 중 ' + t.topPct.toFixed(1) + '%' : ''
       }
     ];
     box.innerHTML = cards.map(function (c) {
