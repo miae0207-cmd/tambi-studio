@@ -1,5 +1,5 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-22T07:58:54+09:00",
+ "updated": "2026-11-22T08:02:25+09:00",
  "label": "2026년 11월 넷째 주",
  "version": 6,
  "blogs": [
@@ -762,7 +762,7 @@ window.TOPICS_FALLBACK = {
    "officialPhotoUrl": "https://program.imbc.com/Photo/ThePerfectLie?bbs_id=PerfectLie_photo",
    "officialPhotoLabel": "MBC 현장포토",
    "officialPhotoNote": "MBC 공식 홈페이지 > 현장포토 (스틸 44건, 4페이지)",
-   "officialYoutubeUrl": "https://www.youtube.com/playlist?list=PLEjjZMeygyy8",
+   "officialYoutubeUrl": "https://www.youtube.com/@mbc_drama/search?query=%EB%9D%BC%EC%9D%B4%EC%96%B4",
    "officialYoutubeName": "MBCdrama"
   },
   {
