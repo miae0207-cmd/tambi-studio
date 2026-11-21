@@ -452,17 +452,18 @@
       '" stroke="#EDE7F8" stroke-width="1.2"/>';
 
     daily.forEach(function (d, i) {
+      var pending = d.won === null || d.won === undefined;
       var v = num(d.won, 0);
-      var h = v > 0 ? Math.max(3, (v / scaleMax) * maxH) : 2;
+      var h = pending ? 2 : (v > 0 ? Math.max(3, (v / scaleMax) * maxH) : 2);
       var x = left + slot * i + (slot - barW) / 2;
       var y = baseY - h;
       var last = i === daily.length - 1;
       s += '<path d="' + barPath(+x.toFixed(1), +y.toFixed(1), +barW.toFixed(1), +h.toFixed(1), 6) +
-        '" fill="url(#' + (last ? 'moneyPeak' : 'moneySoft') + ')"/>';
+        '" fill="url(#' + (last ? 'moneyPeak' : 'moneySoft') + '" opacity="' + (pending ? '0.35' : '1') + '"/>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 5).toFixed(1) +
         '" text-anchor="middle" font-size="9" font-weight="800" fill="' +
         (last ? '#5B21B6' : '#6B6283') + '" stroke="#FFFFFF" stroke-width="3" paint-order="stroke">' +
-        esc(fmt(v)) + '</text>';
+        esc(pending ? '집계 전' : fmt(v)) + '</text>';
       s += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 14) +
         '" text-anchor="middle" font-size="10" font-weight="800" fill="' +
         (last ? '#6D28D9' : '#5B5370') + '">' + esc(d.day || '') + '</text>';
@@ -482,36 +483,46 @@
     var up = num(r.delta, 0) >= 0;
     var daily = r.daily || [];
     var ad = r.ad || {};
+    var revPending = r.yesterday === null || r.yesterday === undefined;
+    var pendDays = num(r.pendingDays, 0);
 
     var html = '<div class="money-hero">' +
       '<div>' +
       '<span class="money-label">어제 ' + esc(ADV.dayLabel || '') + ' 예상수익</span>' +
-      '<strong class="money-num">' + esc(fmt(r.yesterday)) + '<em>원</em></strong>' +
+      (revPending
+        ? '<strong class="money-num">집계 전</strong>'
+        : '<strong class="money-num">' + esc(fmt(r.yesterday)) + '<em>원</em></strong>') +
       '</div>' +
-      '<span class="money-delta">' + (up ? '▲' : '▼') + ' ' +
-      (up ? '+' : '−') + esc(fmt(Math.abs(num(r.delta, 0)))) + '원 ' +
-      '<small>' + (up ? '+' : '−') + esc(Math.abs(num(r.deltaPct, 0)).toFixed(1)) + '%</small></span>' +
+      (revPending
+        ? '<span class="money-delta">네이버 집계 전</span>'
+        : '<span class="money-delta">' + (up ? '▲' : '▼') + ' ' +
+          (up ? '+' : '−') + esc(fmt(Math.abs(num(r.delta, 0)))) + '원 ' +
+          '<small>' + (up ? '+' : '−') + esc(Math.abs(num(r.deltaPct, 0)).toFixed(1)) + '%</small></span>') +
       '</div>';
 
     html += '<div class="money-grid">' +
-      '<div class="money-cell"><span>최근 7일 합계</span><b>' + esc(fmt(r.total7)) + '<i>원</i></b></div>' +
-      '<div class="money-cell"><span>하루 평균</span><b>' + esc(fmt(r.avg7)) + '<i>원</i></b></div>' +
+      '<div class="money-cell"><span>최근 7일 합계' + (pendDays ? ' (' + (7 - pendDays) + '일)' : '') + '</span><b>' + esc(fmt(r.total7)) + '<i>원</i></b></div>' +
+      '<div class="money-cell"><span>하루 평균' + (pendDays ? ' (' + (7 - pendDays) + '일)' : '') + '</span><b>' + esc(fmt(r.avg7)) + '<i>원</i></b></div>' +
       '</div>';
+
+    if (pendDays) {
+      html += '<p class="adv-hint" style="margin:7px 0 0">' + esc((ADV.dayLabel || '') + ' 예상수익은 아직 집계 전이라 합계·평균에서 빠져 있어요.') + '</p>';
+    }
 
     if (daily.length) {
       html += '<div class="money-chart">' + moneyChart(daily) + '</div>';
     }
 
     html += '<div class="money-ads">' +
-      '<div class="ad-cell"><span>광고 노출</span><b>' + esc(fmt(ad.impressions)) + '</b></div>' +
-      '<div class="ad-cell"><span>광고 클릭</span><b>' + esc(fmt(ad.clicks)) + '</b></div>' +
-      '<div class="ad-cell"><span>클릭률</span><b>' + esc(num(ad.ctr, 0).toFixed(2)) + '%</b></div>' +
+      '<div class="ad-cell"><span>광고 노출</span><b>' + (ad.impressions === null || ad.impressions === undefined ? '-' : esc(fmt(ad.impressions))) + '</b></div>' +
+      '<div class="ad-cell"><span>광고 클릭</span><b>' + (ad.clicks === null || ad.clicks === undefined ? '-' : esc(fmt(ad.clicks))) + '</b></div>' +
+      '<div class="ad-cell"><span>클릭률</span><b>' + (ad.ctr === null || ad.ctr === undefined ? '-' : esc(num(ad.ctr, 0).toFixed(2)) + '%') + '</b></div>' +
       '</div>';
 
     var tr = ADV.traffic;
     if (tr) {
       var tv = [
-        '어제 조회수 ' + fmt(tr.views) + ' (+' + num(tr.viewsPct, 0).toFixed(1) + '%)',
+        '어제 조회수 ' + fmt(tr.views) + ' (' + (num(tr.viewsPct, 0) >= 0 ? '+' : '−') + Math.abs(num(tr.viewsPct, 0)).toFixed(1) + '%)',
         '메인 유입 ' + fmt(tr.mainInflow),
         '검색 유입 ' + fmt(tr.searchInflow)
       ];
