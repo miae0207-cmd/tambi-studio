@@ -727,6 +727,32 @@
   }
 
   /* ---------------- boot ---------------- */
+  function mmdd(iso) {
+    var p = String(iso || '').split('-');
+    if (p.length < 3) return '';
+    return parseInt(p[1], 10) + '/' + parseInt(p[2], 10);
+  }
+
+  /* '이 숫자는 어디서 왔나' — 기간·기준일을 데이터에서 채운다 */
+  function renderSourceNotes(d) {
+    var per = d.period || {};
+    var advDay = d.advisor && d.advisor.day ? mmdd(d.advisor.day) : '';
+    var n1 = $('srcNotePeriod');
+    if (n1 && per.start && per.end) {
+      n1.innerHTML = '네이버 블로그 <b>관리 → 통계</b>에 찍힌 실제 기록입니다(' +
+        mmdd(per.start) + ' ~ ' + mmdd(per.end) + ', ' + (per.days || 7) + '일).';
+    }
+    var n2 = $('srcNoteSource');
+    if (n2 && advDay) {
+      n2.innerHTML = '요일별 조회수는 <b>조회수 일간</b> 원본, 유입 비율은 ' + advDay + ' <b>유입 분석</b> 값입니다.';
+    }
+    var n4 = $('srcNoteAdv');
+    if (n4 && advDay) {
+      n4.innerHTML = '예상수익·광고·급상승·독자 구성은 <b>크리에이터 어드바이저</b>(creator-advisor.naver.com) ' +
+        advDay + ' 값입니다.';
+    }
+  }
+
   function render(d) {
     if (!d || !d.daily && !d.posts) return false;
     DATA = d;
@@ -738,6 +764,7 @@
     renderRanks(t);
     renderTypes(t);
     renderAdvisor();
+    renderSourceNotes(d);
     var foot = $('statUpdated');
     if (foot) foot.textContent = '기준 ' + shortWhen(d.updated) + ' · ' + (d.blogLabel || '드라마') + ' 블로그';
     return true;
