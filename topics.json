@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T08:02:25+09:00",
+ "updated": "2026-11-22T08:03:18+09:00",
  "label": "2026년 11월 넷째 주",
  "version": 6,
  "blogs": [
@@ -1074,8 +1074,8 @@
    "officialPhotoUrl": "https://content.mbc.co.kr/program/drama/2603121_64284.html",
    "officialPhotoLabel": "MBC 글로벌미디어 공식 페이지",
    "officialPhotoNote": "MBC 공식 작품 페이지의 포토뷰어·예고편. 인물 소개와 줄거리도 함께 있어요.",
-   "officialYoutubeUrl": "https://www.youtube.com/@MBCdrama/search?query=%EC%84%A0%EB%8D%95%EC%97%AC%EC%99%95",
-   "officialYoutubeName": "MBCDrama",
+   "officialYoutubeUrl": "https://www.youtube.com/@mbc_drama/search?query=%EC%84%A0%EB%8D%95%EC%97%AC%EC%99%95",
+   "officialYoutubeName": "MBCdrama",
    "formula": {
     "hook": "62부작이 4K로 돌아왔다",
     "hooks": {
