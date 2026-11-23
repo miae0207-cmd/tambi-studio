@@ -456,8 +456,9 @@
 
   /* ---- 드라마 카드 ---- */
   function dramaCard(t, idx) {
-    var card = el('article', 'topic-card' + (t.heat === 'hot' ? ' hot' : ''));
+    var card = el('article', 'topic-card' + (t.heat === 'hot' ? ' hot' : '') + (t.isNew ? ' is-new' : ''));
     var top = el('div', 'topic-top');
+    if (t.isNew) top.appendChild(el('span', 'badge new', '✨ NEW'));
     top.appendChild(el('span', 'badge ' + (t.status === 'airing' ? 'airing' : 'past'),
       t.status === 'airing' ? '방영중' : '과거작'));
     if (t.status === 'past') top.appendChild(el('span', 'badge hide', '제목엔 작품명 숨김'));
@@ -612,8 +613,9 @@
 
   /* ---- 자동차 · 지원금경제 카드 ---- */
   function genericCard(t, blog, idx) {
-    var card = el('article', 'topic-card' + (t.heat === 'hot' ? ' hot' : ''));
+    var card = el('article', 'topic-card' + (t.heat === 'hot' ? ' hot' : '') + (t.isNew ? ' is-new' : ''));
     var top = el('div', 'topic-top');
+    if (t.isNew) top.appendChild(el('span', 'badge new', '✨ NEW'));
     if (t.badge) top.appendChild(el('span', 'badge cat', t.badge));
     if (t.heat === 'hot') top.appendChild(el('span', 'badge flame', '🔥 화제'));
     var metaTxt = t.when || '';

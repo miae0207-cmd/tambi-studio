@@ -242,6 +242,12 @@ main { padding: 2px 16px calc(var(--tab-h) + 30px + env(safe-area-inset-bottom))
 .badge.past { background: #EEEAF8; color: #6A5AAB; }
 .badge.hide { background: var(--gold-soft); color: #A5701A; }
 .badge.flame { background: #FFE9E2; color: #C4552E; }
+.badge.new {
+  background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+  color: #fff; letter-spacing: .01em;
+  box-shadow: 0 2px 7px rgba(109, 40, 217, .3);
+}
+.topic-card.is-new { box-shadow: 0 0 0 1.5px var(--violet-line), var(--shadow-sm); }
 .topic-meta { margin-left: auto; font-size: 11.5px; color: var(--sub); font-weight: 700; }
 .topic-work { font-size: 18.5px; font-weight: 800; letter-spacing: -.04em; margin-top: 9px; }
 .topic-cast { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
