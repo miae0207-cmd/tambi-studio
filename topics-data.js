@@ -1,7 +1,7 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-23T09:23:28+09:00",
+ "updated": "2026-11-23T10:08:26+09:00",
  "label": "2026년 11월 넷째 주",
- "version": 7,
+ "version": 8,
  "blogs": [
   {
    "id": "drama",
@@ -4300,16 +4300,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "뷰익 엘렉트라 E7, 11월 23일 본계약 시작…가격은",
+     "text": "뷰익 엘렉트라 E7 가격 트림별 정리 사전예약 본계약 일정",
      "kind": "search"
     },
     {
-     "text": "엘렉트라 E7 전기 126km, PHEV가 처음이라면",
+     "text": "엘렉트라 E7 전기 126km PHEV 보조금 없는 이유",
      "kind": "search"
     },
     {
-     "text": "'4,300만원대 PHEV' 전기차 보조금은 못 받는다",
-     "kind": "homefeed"
+     "text": "엘렉트라 E7 PHEV 뜻과 충전 방법 계약 전 확인할 것",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4401,16 +4401,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "도로살얼음 생기는 곳, 교량·터널 입구부터 조심",
+     "text": "도로살얼음 블랙아이스 대처법 제동거리 7배 차이 주의 구간",
      "kind": "search"
     },
     {
-     "text": "빙판길 제동거리 7배, 30km에서 1.5m가 10.7m로",
+     "text": "블랙아이스 결빙사고 5년 평균 884건 사망 16명 통계",
      "kind": "search"
     },
     {
-     "text": "'오늘 전국 비·눈' 아침 출근길 먼저 줄여야 할 속도",
-     "kind": "homefeed"
+     "text": "빙판길 운전 급제동 대신 기어 낮춰 속도 줄이는 방법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4501,16 +4501,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "포드 머스탱 리콜, 영하에서 와이퍼 멈출 수 있다",
+     "text": "포드 머스탱 리콜 대상 조회 방법 와이퍼 무상 수리 일정",
      "kind": "search"
     },
     {
-     "text": "머스탱·익스플로러·에비에이터 리콜, 11월 23일부터",
+     "text": "머스탱 와이퍼 모터 리콜 665대 생산기간 차대번호 확인",
      "kind": "search"
     },
     {
-     "text": "'영하 0도' 와이퍼가 고속으로만 움직이는 이유",
-     "kind": "homefeed"
+     "text": "머스탱 리콜 통지 못 받아도 무상 수리받는 방법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4592,16 +4592,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "캐딜락 리릭·비스틱 리콜, 11월 27일부터 무상 업데이트",
+     "text": "캐딜락 리릭 비스틱 리콜 대상 조회와 무상 업데이트 일정",
      "kind": "search"
     },
     {
-     "text": "리릭·비스틱 캐딜락 리콜, 내 차인지 확인하는 법",
+     "text": "리릭 비스틱 리콜 11월 27일부터 소프트웨어 무상 업데이트",
      "kind": "search"
     },
     {
-     "text": "'브레이크가 잠깐 안 들면' 소프트웨어 하나로 갈린 제동력",
-     "kind": "homefeed"
+     "text": "캐딜락 리릭 내 차 리콜 대상인지 차대번호로 확인하는 법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4690,16 +4690,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "폭스바겐 티구안 9차종 리콜, 11월 20일부터 무상 교체",
+     "text": "폭스바겐 티구안 리콜 대상 조회 방법 무상 교체 일정",
      "kind": "search"
     },
     {
-     "text": "티구안 리콜 대상인지 차대번호로 30초 확인하는 법",
+     "text": "티구안 리콜 9차종 2만 8,901대 생산기간 확인법",
      "kind": "search"
     },
     {
-     "text": "'주차하다 핸들이 뻑뻑' 볼트 하나가 부러지면 생기는 일",
-     "kind": "homefeed"
+     "text": "티구안 핸들 뻑뻑할 때 리콜 증상과 서비스센터 예약 방법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4774,16 +4774,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "제네시스 GV90, 1억 3,950만원부터…가장 큰 전기 SUV",
+     "text": "제네시스 GV90 가격 트림별 정리 7인승 6인승 네오룬",
      "kind": "search"
     },
     {
-     "text": "GV90 500km·22분 충전, 숫자로만 본 제네시스 전기 SUV",
+     "text": "GV90 주행거리 500km 충전 22분 배터리 123.5kWh 정리",
      "kind": "search"
     },
     {
-     "text": "'2억 3,950만원' 제네시스 GV90 네오룬, 뭐가 다를까",
-     "kind": "homefeed"
+     "text": "GV90 전기차 보조금 없는 이유와 계약 전 확인 사항",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4853,16 +4853,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "디 올 뉴 아반떼 2,398만원부터, 6년 만에 바뀐 것",
+     "text": "디 올 뉴 아반떼 가격 트림별 정리 (엔진·옵션 추천)",
      "kind": "search"
     },
     {
-     "text": "신형 아반떼 가솔린·하이브리드 가격 차이 정리",
+     "text": "신형 아반떼 하이브리드 가격 3,042만원 가솔린과 차이",
      "kind": "search"
     },
     {
-     "text": "'2,398만원' 신형 아반떼, 3,000만원 아래서 달라진 것",
-     "kind": "homefeed"
+     "text": "아반떼 8세대 모던 프리미엄 인스퍼레이션 트림 선택 기준",
+     "kind": "search"
     }
    ],
    "links": [
@@ -4932,16 +4932,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "디 올 뉴 투싼 3,140만원부터, 6년 만에 커진 SUV",
+     "text": "디 올 뉴 투싼 가격 트림별 정리 가솔린 하이브리드",
      "kind": "search"
     },
     {
-     "text": "신형 투싼 하이브리드 17.4km/ℓ, 가솔린과 비교",
+     "text": "신형 투싼 하이브리드 연비 17.4km/ℓ 트렁크 645L",
      "kind": "search"
     },
     {
-     "text": "'트렁크 645L' 신형 투싼에 유모차가 들어갈까",
-     "kind": "homefeed"
+     "text": "투싼 가솔린 하이브리드 유지비 차이 초보 선택 기준",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5011,16 +5011,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "아반떼·베뉴 255대 리콜, 내 차 대상인지 조회하는 법",
+     "text": "아반떼 베뉴 리콜 대상 조회 방법 255대 휠 너트 점검",
      "kind": "search"
     },
     {
-     "text": "현대차 리콜 255대, 차대번호로 30초 확인",
+     "text": "현대차 리콜 255대 8월 10일~9월 15일 생산분 확인법",
      "kind": "search"
     },
     {
-     "text": "'주행 중 바퀴가 빠질 수 있다' 8~9월 생산 아반떼 리콜",
-     "kind": "homefeed"
+     "text": "아반떼 리콜 주행 중 바퀴 빠짐 증상 무상 점검 방법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5098,16 +5098,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "리콜과 무상수리 차이, 내 차 해당되는지 확인하는 법",
+     "text": "리콜과 무상수리 차이 대상 조회 방법",
      "kind": "search"
     },
     {
-     "text": "이번 주 무상수리 5건, 쏠라티·레이·740 포함",
+     "text": "이번 주 무상수리 5건 쏠라티 레이 740 대상 확인",
      "kind": "search"
     },
     {
-     "text": "'문자 안 왔다고 넘기면 유상' 무상수리 확인 30초",
-     "kind": "homefeed"
+     "text": "무상수리 기간 지나면 유상 내 차 해당 여부 확인법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5177,16 +5177,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "전기차 보조금 11월 현황, 내 지역 남았는지 확인법",
+     "text": "전기차 보조금 2026 잔여 물량 지역별 확인 방법",
      "kind": "search"
     },
     {
-     "text": "2026 전기차 보조금 최대 680만원, 조건 정리",
+     "text": "전기차 보조금 최대 680만원 차값 5,300만원 기준 정리",
      "kind": "search"
     },
     {
-     "text": "'서울은 11월 11일 마감' 연말 전기차, 지금 사도 될까",
-     "kind": "homefeed"
+     "text": "전기차 보조금 마감 지역에서 지금 계약해도 받는지 확인법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5256,16 +5256,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "12월 자동차세 16일부터, 연납했으면 고지서 없다",
+     "text": "12월 자동차세 납부기간 대상 조회 방법",
      "kind": "search"
     },
     {
-     "text": "자동차세 2기분 납부기간과 대상 정리",
+     "text": "자동차세 2기분 12월 16일부터 연납하면 고지서 없는 이유",
      "kind": "search"
     },
     {
-     "text": "'12월 1일 소유자'가 낸다, 자동차세 3분 정리",
-     "kind": "homefeed"
+     "text": "자동차세 고지서 안 왔을 때 연납 10만원 이하 확인법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5335,16 +5335,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "겨울철 배터리 방전 예방, 시동 안 걸릴 때 대처법",
+     "text": "겨울철 배터리 방전 예방 시동 안 걸릴 때 대처법",
      "kind": "search"
     },
     {
-     "text": "배터리 인디케이터 초록·검정·흰색 뜻",
+     "text": "배터리 인디케이터 초록 검정 흰색 뜻 교체 주기 3년",
      "kind": "search"
     },
     {
-     "text": "'시동이 안 걸린다' 겨울 아침 3분 점검법",
-     "kind": "homefeed"
+     "text": "배터리 점프 순서 빨간 선 먼저 연결하는 방법",
+     "kind": "search"
     }
    ],
    "links": [
@@ -5414,16 +5414,16 @@ window.TOPICS_FALLBACK = {
    ],
    "titles": [
     {
-     "text": "자동차 정기검사 기간, 만료 전 90일부터 가능",
+     "text": "자동차 정기검사 기간 만료 전 90일 예약 방법",
      "kind": "search"
     },
     {
-     "text": "내 차 검사일 조회하는 방법과 예약 순서",
+     "text": "자동차 검사 과태료 내 차 검사일 조회하는 방법",
      "kind": "search"
     },
     {
-     "text": "'과태료 맞기 전에' 자동차 검사일 30초 확인",
-     "kind": "homefeed"
+     "text": "자동차 정기검사 준비물과 예약 순서 지참 서류",
+     "kind": "search"
     }
    ],
    "links": [
