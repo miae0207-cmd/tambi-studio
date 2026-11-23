@@ -218,13 +218,13 @@
       "settledDays": 7,
       "pendingDays": 0,
       "yesterday": 2450,
-      "delta": 286,
+      "delta": -286,
       "deltaPct": -10.5,
       "ad": {
         "impressions": 850,
-        "impressionsDelta": 287,
+        "impressionsDelta": -287,
         "clicks": 10,
-        "clicksDelta": 7,
+        "clicksDelta": -7,
         "ctr": 1.18
       }
     },
