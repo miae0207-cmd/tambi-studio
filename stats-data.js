@@ -1,23 +1,18 @@
 window.STATS_FALLBACK = {
- "updated": "2026-11-24T08:30:00+09:00",
+ "updated": "2026-11-25T08:30:00+09:00",
  "sample": false,
  "blog": "drama",
  "blogLabel": "드라마",
  "blogName": "달래의 행복나라 여행기♡",
  "source": "네이버 블로그 관리 통계 + 크리에이터 어드바이저",
  "period": {
-  "start": "2026-11-17",
-  "end": "2026-11-23",
-  "label": "11/17 ~ 11/23 최근 7일 리포트",
+  "start": "2026-11-18",
+  "end": "2026-11-24",
+  "label": "11/18 ~ 11/24 최근 7일 리포트",
   "note": "1주 기록"
  },
  "banner": "",
  "daily": [
-  {
-   "day": "화",
-   "date": "11/17",
-   "views": 8836
-  },
   {
    "day": "수",
    "date": "11/18",
@@ -47,24 +42,29 @@ window.STATS_FALLBACK = {
    "day": "월",
    "date": "11/23",
    "views": 1632
+  },
+  {
+   "day": "화",
+   "date": "11/24",
+   "views": 1013
   }
  ],
  "sources": [
   {
    "label": "홈판",
-   "pct": 92.68
+   "pct": 91.34
   },
   {
    "label": "검색",
-   "pct": 0.19
+   "pct": 1.49
   },
   {
    "label": "블로그 안",
-   "pct": 3.85
+   "pct": 2.69
   },
   {
    "label": "엔터판·기타",
-   "pct": 3.29
+   "pct": 4.48
   }
  ],
  "types": [
@@ -89,81 +89,73 @@ window.STATS_FALLBACK = {
   {
    "type": "home",
    "title": "\"첫방 4%대 드라마라고?\" 3주 만에 넷플릭스 세계 1위 찍은 SBS 드라마",
-   "views": 43076
+   "views": 37078
   },
   {
    "type": "home",
    "title": "'공개 나흘 만에 4개국 1위..' 넷플릭스가 처음 한국에서 만든 드라마",
-   "views": 5074
+   "views": 3598
   },
   {
    "type": "home",
    "title": "'시청률은 2%대였는데..' 8주 동안 시청자들 공감을 쌓은 JTBC 드라마",
-   "views": 851
+   "views": 853
   },
   {
    "type": "home",
    "title": "'시청률 0.2% 였는데..' 종영 3개월만에 넷플릭스 3위한 드라마",
-   "views": 619
+   "views": 554
   },
   {
    "type": "home",
    "title": "'단 4회 만에 해외가 뒤집혔다..' 5개국 1위 찍은 드라마",
-   "views": 277
-  },
-  {
-   "type": "home",
-   "title": "\"공개 2주 만에 글로벌 2위..\" 64개국이 동시에 반응한 한국드라마",
-   "views": 200
-  },
-  {
-   "type": "issue",
-   "title": "'강동원♥김고은 부부된다' 10살차 부부의 혼인 로맨스",
-   "views": 168
+   "views": 237
   },
   {
    "type": "home",
    "title": "'2회 만에 넷플릭스 1위..' 2.9%로 시작해 류승룡이 백상 대상까지 받은 드라마",
-   "views": 154
+   "views": 192
+  },
+  {
+   "type": "home",
+   "title": "\"공개 2주 만에 글로벌 2위..\" 64개국이 동시에 반응한 한국드라마",
+   "views": 177
+  },
+  {
+   "type": "issue",
+   "title": "'강동원♥김고은 부부된다' 10살차 부부의 혼인 로맨스",
+   "views": 138
   },
   {
    "type": "home",
    "title": "“1·2회 2%대였는데?” 단 2회 만에 넷플릭스 1위 찍은 한국드라마",
-   "views": 141
+   "views": 116
   },
   {
    "type": "home",
    "title": "'코미디인 줄 알았는데..' 첫 회 3.2%에서 최종 9.7%로 끝난 드라마",
-   "views": 113
+   "views": 114
   },
   {
    "type": "home",
    "title": "'7주 동안 무슨 일이..' 11.3%로 시작해서 18.2%로 끝난 드라마",
-   "views": 95
+   "views": 80
   },
   {
    "type": "home",
    "title": "사형수 사건으로 시작했다, 5주 연속 1위 지키고 끝난 드라마",
-   "views": 87
+   "views": 75
   }
  ],
  "advisor": {
-  "updated": "2026-11-24T08:25:00+09:00",
+  "updated": "2026-11-25T08:22:00+09:00",
   "source": "네이버 크리에이터 어드바이저",
   "url": "https://creator-advisor.naver.com/naver_blog/miae0207",
   "channel": "달래의 행복나라 여행기♡ (miae0207)",
-  "day": "2026-11-23",
-  "dayLabel": "11/23 (월)",
+  "day": "2026-11-24",
+  "dayLabel": "11/24 (화)",
   "revenue": {
    "daily": [
-    {
-     "date": "11/17",
-     "day": "화",
-     "won": 16113,
-     "impressions": 4000,
-     "clicks": 55,
-     "ctr": 1.38
-    },
     {
      "date": "11/18",
      "day": "수",
@@ -211,69 +203,77 @@ window.STATS_FALLBACK = {
      "impressions": 850,
      "clicks": 10,
      "ctr": 1.18
+    },
+    {
+     "date": "11/24",
+     "day": "화",
+     "won": null,
+     "impressions": 0,
+     "clicks": 0,
+     "ctr": 0.0
     }
    ],
-   "total7": 71008,
-   "avg7": 10144,
-   "settledDays": 7,
-   "pendingDays": 0,
-   "yesterday": 2450,
-   "delta": -286,
-   "deltaPct": -10.5,
+   "total7": 54895,
+   "avg7": 9149,
+   "settledDays": 6,
+   "pendingDays": 1,
+   "yesterday": null,
+   "delta": null,
+   "deltaPct": null,
    "ad": {
-    "impressions": 850,
-    "impressionsDelta": -287,
-    "clicks": 10,
-    "clicksDelta": -7,
-    "ctr": 1.18
+    "impressions": 0,
+    "impressionsDelta": -850,
+    "clicks": 0,
+    "clicksDelta": -10,
+    "ctr": 0.0
    }
   },
   "traffic": {
-   "views": 1632,
-   "viewsDelta": -532,
-   "viewsPct": -24.6,
-   "mainInflow": 1539,
-   "searchInflow": 3
+   "views": 1013,
+   "viewsDelta": -619,
+   "viewsPct": -37.9,
+   "mainInflow": 955,
+   "searchInflow": 15
   },
   "rising": [
    {
     "rank": 1,
-    "title": "'공개 나흘 만에 4개국 1위..' 넷플릭스가 처음 한국에서 만든 드라마",
-    "created": "2026. 11. 11. 18:00",
-    "views": 852,
-    "delta": 141,
-    "is_new": false
+    "title": "'종영 다음 날 열애설 났다' 5주 연속 화제성 1위 찍은 드라마",
+    "created": "2026. 11. 24. 20:00",
+    "views": 13,
+    "delta": 13,
+    "is_new": true
    },
    {
     "rank": 2,
     "title": "'2회 만에 넷플릭스 1위..' 2.9%로 시작해 류승룡이 백상 대상까지 받은 드라마",
     "created": "2026. 11. 18. 20:00",
-    "views": 25,
-    "delta": 24,
+    "views": 38,
+    "delta": 13,
     "is_new": false
    },
    {
     "rank": 3,
-    "title": "'코미디인 줄 알았는데..' 첫 회 3.2%에서 최종 9.7%로 끝난 드라마",
-    "created": "2026. 11. 20. 20:00",
-    "views": 36,
-    "delta": 20,
+    "title": "“1·2회 2%대였는데?” 단 2회 만에 넷플릭스 1위 찍은 한국드라마",
+    "created": "2026. 11. 17. 16:05",
+    "views": 9,
+    "delta": 8,
     "is_new": false
    },
    {
     "rank": 4,
-    "title": "\"첫방 보고 접은 사람 손\" 시청률 역주행 드라마 순위 정리",
-    "created": "2026. 10. 28. 20:00",
-    "views": 4,
-    "delta": 4,
+    "title": "'첫방 5.5%였는데..' 2회 만에 넷플릭스 1위 찍은 드라마",
+    "created": "2026. 11. 24. 13:29",
+    "views": 6,
+    "delta": 6,
     "is_new": true
    },
    {
     "rank": 5,
-    "title": "\"연말에 뭐 보지?\" 12월 김우빈 김혜수 송혜교 방영예정한국드라마",
-    "created": "2026. 11. 18. 12:04",
-    "views": 6,
-    "delta": 4,
+    "title": "'시청률 3%대인데, 넷플릭스 1위?' 입소문 타고 올라온 드라마",
+    "created": "2026. 11. 16. 16:10",
+    "views": 9,
+    "delta": 6,
     "is_new": false
    }
   ],
@@ -310,60 +310,64 @@ window.STATS_FALLBACK = {
    }
   ],
   "audience": {
-   "basis": "통합 데이터 > 방문 사용자 분석 (조회수 기준, 2026-11-23)",
+   "basis": "통합 데이터 > 방문 사용자 분석 (조회수 기준, 2026-11-24)",
    "device": [
     {
      "label": "모바일",
-     "pct": 97.4
+     "pct": 97.5
     },
     {
      "label": "PC",
-     "pct": 2.6
+     "pct": 2.5
     }
    ],
    "gender": [
     {
      "label": "여자",
-     "pct": 53.9
+     "pct": 58.4
     },
     {
      "label": "남자",
-     "pct": 46.1
+     "pct": 41.6
     }
    ],
    "age_band": {
     "label": "45~54세",
-    "pct": 50.5
+    "pct": 49.2
    },
    "age_top": [
     {
-     "label": "45~49 남성",
-     "pct": 16.4
+     "label": "45~49 여성",
+     "pct": 18.5
     },
     {
-     "label": "45~49 여성",
-     "pct": 14.7
+     "label": "45~49 남성",
+     "pct": 13.0
     },
     {
      "label": "50~54 여성",
-     "pct": 13.6
-    },
-    {
-     "label": "40~44 남성",
-     "pct": 10.7
+     "pct": 11.7
     },
     {
      "label": "40~44 여성",
-     "pct": 9.4
+     "pct": 10.6
+    },
+    {
+     "label": "40~44 남성",
+     "pct": 9.5
     }
    ],
    "country_top": [
     {
      "label": "대한민국",
-     "pct": 98.7
+     "pct": 98.8
     },
     {
      "label": "일본",
+     "pct": 0.4
+    },
+    {
+     "label": "오스트레일리아",
      "pct": 0.2
     },
     {
@@ -379,102 +383,97 @@ window.STATS_FALLBACK = {
     "label": "드라마",
     "terms": [
      {
-      "t": "100일의거짓말 시청률 10% 돌파",
-      "n": 50,
+      "t": "나의유죄인간 11회 주인공 총상",
+      "n": 65,
       "new": false
      },
      {
-      "t": "100일의 거짓말 결말",
-      "n": 46,
+      "t": "나의 유죄인간",
+      "n": 45,
       "new": false
      },
      {
-      "t": "100일의 거짓말 14회 줄거리",
-      "n": 29,
+      "t": "대리수능 기본정보",
+      "n": 41,
       "new": false
      },
      {
-      "t": "100일의 거짓말 14회",
-      "n": 29,
+      "t": "두번째 시그널 기본정보",
+      "n": 33,
       "new": false
      },
      {
-      "t": "재혼황후 몇부작",
-      "n": 26,
-      "new": false
-     },
-     {
-      "t": "넷플릭스 푸른길 국내 1위 달성",
-      "n": 22,
-      "new": false
-     },
-     {
-      "t": "라이어 몇부작",
+      "t": "100일의거짓말 시청률 경신",
       "n": 17,
       "new": false
      },
      {
-      "t": "100일의 거짓말 신태진",
-      "n": 11,
-      "new": false
-     },
-     {
-      "t": "라이어 기본정보",
-      "n": 9,
+      "t": "재혼황후",
+      "n": 14,
       "new": false
      },
      {
       "t": "재혼 황후 기본정보",
-      "n": 6,
+      "n": 11,
       "new": false
      },
      {
-      "t": "드라마 라이어 민준호 사망",
-      "n": 4,
+      "t": "오늘은 여우비",
+      "n": 9,
       "new": false
      },
      {
-      "t": "라이어 원작 결말",
-      "n": 4,
+      "t": "라이어 몇부작",
+      "n": 8,
       "new": false
      },
      {
-      "t": "푸른길 기본정보",
-      "n": 3,
+      "t": "라이어 기본정보",
+      "n": 5,
       "new": false
      },
      {
       "t": "100일의 거짓말",
-      "n": 1,
-      "new": false
-     },
-     {
-      "t": "푸른길",
-      "n": 1,
+      "n": 5,
       "new": false
      },
      {
       "t": "푸른길 결말",
+      "n": 4,
+      "new": false
+     },
+     {
+      "t": "재혼황후 몇부작",
+      "n": 3,
+      "new": false
+     },
+     {
+      "t": "푸른길",
+      "n": 2,
+      "new": false
+     },
+     {
+      "t": "푸른길 기본정보",
       "n": 1,
       "new": false
      },
      {
-      "t": "100일의거짓말 남매 반전 공개",
+      "t": "100일의 거짓말 반전",
       "n": null,
       "new": true
      },
      {
-      "t": "100일의 거짓말 이애영",
+      "t": "현혹 수지 뱀파이어 포스터 공개",
       "n": null,
       "new": true
      },
      {
-      "t": "사랑이온다 한결 친부 친모 등장",
+      "t": "100일의 거짓말 기획의도",
       "n": null,
       "new": true
      },
      {
-      "t": "옆자리 프란체스카 기본정보",
+      "t": "시그널2 첫 티저 공개",
       "n": null,
       "new": true
      }
@@ -486,102 +485,97 @@ window.STATS_FALLBACK = {
     "label": "방송",
     "terms": [
      {
-      "t": "신인감독 김연경2",
-      "n": 62,
+      "t": "22기 영숙",
+      "n": 33,
       "new": false
      },
      {
-      "t": "기준부부",
-      "n": 20,
+      "t": "데블스플랜3 우승자",
+      "n": 29,
       "new": false
      },
      {
-      "t": "34기 순자",
-      "n": 14,
-      "new": false
-     },
-     {
-      "t": "100일의 거짓말",
-      "n": 14,
-      "new": false
-     },
-     {
-      "t": "데블스플랜3",
+      "t": "계약결혼",
       "n": 11,
       "new": false
      },
      {
-      "t": "19기 옥순 상철",
-      "n": 5,
-      "new": false
-     },
-     {
-      "t": "미우새 김승수 박혜연에게 고백",
+      "t": "12월 3일 공휴일 확정",
       "n": null,
       "new": true
      },
      {
-      "t": "드라마 라이어 민준호 사망",
+      "t": "광명 붕어빵 청년 정체",
       "n": null,
       "new": true
      },
      {
-      "t": "박지윤 카톡 파문",
+      "t": "데블스플랜3 현경렬 최종 우승",
       "n": null,
       "new": true
      },
      {
-      "t": "오지헌 딸 공개",
+      "t": "강성연 의사 남편 근황",
       "n": null,
       "new": true
      },
      {
-      "t": "생활의달인 차은우 닮은 붕어빵 달인",
+      "t": "계약결혼 상철 영숙",
       "n": null,
       "new": true
      },
      {
-      "t": "하정우 차정원 청첩장",
+      "t": "우리들의발라드2 TOP12 확정",
       "n": null,
       "new": true
      },
      {
-      "t": "오정태 딸 명문대",
+      "t": "배용준 박수진 부부 한국 귀국",
       "n": null,
       "new": true
      },
      {
-      "t": "박지윤 사적 대화 공개",
+      "t": "배용준 박수진 귀국",
       "n": null,
       "new": true
      },
      {
-      "t": "이혜영 미우새 출연",
+      "t": "우리들의 발라드 2",
       "n": null,
       "new": true
      },
      {
-      "t": "김신영 정오의희망곡 하차",
+      "t": "계약결혼 출연진 가치관 차이 갈등",
       "n": null,
       "new": true
      },
      {
-      "t": "송혜교 생일 파티",
+      "t": "100일거짓말 가족사진 반전",
       "n": null,
       "new": true
      },
      {
-      "t": "김신영 정오의 희망곡 하차",
+      "t": "우리들의 발라드2",
       "n": null,
       "new": true
      },
      {
-      "t": "나는솔로 19기 상철 옥순 결혼",
+      "t": "안녕 피터팬",
       "n": null,
       "new": true
      },
      {
-      "t": "나솔 19기 옥순 상철 결혼",
+      "t": "양홍원 원현주 이혼",
+      "n": null,
+      "new": true
+     },
+     {
+      "t": "추성훈 파이트머니 금액",
+      "n": null,
+      "new": true
+     },
+     {
+      "t": "12월 3일 공휴일",
       "n": null,
       "new": true
      }
@@ -593,201 +587,84 @@ window.STATS_FALLBACK = {
     "label": "자동차",
     "terms": [
      {
-      "t": "엔진오일 교환주기",
-      "n": 25,
-      "new": false
-     },
-     {
-      "t": "운전면허증 갱신",
+      "t": "렉스턴 phev",
       "n": 22,
       "new": false
      },
      {
-      "t": "테슬라",
-      "n": 22,
+      "t": "제네시스 gv90",
+      "n": 21,
       "new": false
      },
      {
-      "t": "렉서스 es300h",
+      "t": "테슬라 v15",
+      "n": 18,
+      "new": false
+     },
+     {
+      "t": "렉스턴",
       "n": 12,
       "new": false
      },
      {
-      "t": "볼보 ex30",
-      "n": 11,
+      "t": "엔진오일 교환주기",
+      "n": 12,
       "new": false
      },
      {
-      "t": "bmw x5",
+      "t": "쏘렌토 풀체인지",
       "n": 10,
       "new": false
      },
      {
-      "t": "싼타페 페이스리프트",
+      "t": "뷰익 일렉트라 E7",
       "n": 9,
       "new": false
      },
      {
-      "t": "투싼",
+      "t": "테슬라",
       "n": 9,
       "new": false
      },
      {
       "t": "gv90",
-      "n": 6,
+      "n": 7,
       "new": false
      },
      {
-      "t": "bmw x3",
-      "n": 6,
-      "new": false
-     },
-     {
-      "t": "쏘렌토 풀체인지",
-      "n": 5,
-      "new": false
-     },
-     {
-      "t": "아반떼 신형",
-      "n": 4,
+      "t": "카니발 풀체인지",
+      "n": 7,
       "new": false
      },
      {
       "t": "렉서스 nx350h",
-      "n": 3,
-      "new": false
-     },
-     {
-      "t": "테슬라 모델3",
-      "n": 2,
+      "n": 5,
       "new": false
      },
      {
       "t": "kgm se10",
-      "n": 2,
-      "new": false
-     },
-     {
-      "t": "테슬라 v15",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "테슬라 리얼리티뷰",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "뷰익 일렉트라 E7",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "렉스턴",
-      "n": null,
-      "new": true
-     }
-    ]
-   },
-   {
-    "key": "economy",
-    "emoji": "💰",
-    "label": "경제",
-    "terms": [
-     {
-      "t": "삼성전자 주가",
-      "n": 70,
-      "new": false
-     },
-     {
-      "t": "이진우",
-      "n": 63,
-      "new": false
-     },
-     {
-      "t": "코스피",
-      "n": 43,
-      "new": false
-     },
-     {
-      "t": "잠실 래미안 줍줍",
-      "n": 36,
-      "new": false
-     },
-     {
-      "t": "로또",
-      "n": 13,
-      "new": false
-     },
-     {
-      "t": "정년연장",
-      "n": 7,
-      "new": false
-     },
-     {
-      "t": "고향사랑기부제",
-      "n": 7,
-      "new": false
-     },
-     {
-      "t": "동일임금 동일노동",
       "n": 4,
       "new": false
      },
      {
-      "t": "증안펀드",
-      "n": 4,
-      "new": false
-     },
-     {
-      "t": "청년미래적금",
+      "t": "싼타페 페이스리프트",
       "n": 3,
       "new": false
      },
      {
-      "t": "금시세",
+      "t": "운전면허증 갱신",
       "n": 3,
       "new": false
      },
      {
-      "t": "증권시장안정펀드 준비",
+      "t": "투싼",
       "n": 3,
       "new": false
      },
      {
-      "t": "케이뱅크 돈나무",
+      "t": "bmw x3",
       "n": 1,
       "new": false
-     },
-     {
-      "t": "이부진 아들 성 변경",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "증안펀드 18년만 가동",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "마포 아파트 급락",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "지그재그 뽑기",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "정영란",
-      "n": null,
-      "new": true
-     },
-     {
-      "t": "이부진 남편",
-      "n": null,
-      "new": true
      }
     ]
    }
@@ -795,13 +672,13 @@ window.STATS_FALLBACK = {
   "mainTop": [
    {
     "rank": 1,
-    "title": "16기 상철 강정환 재결합으로 28기 영숙 정유진과 부산에서 다시 신혼생활 시작? (계약결혼)",
-    "url": "https://blog.naver.com/19hwang74/224487742418"
+    "title": "100만원 패딩 사달라던 10대들... 요즘은 5만원대 '이 패딩' 찾아요",
+    "url": "https://blog.naver.com/orotday/224486124116"
    },
    {
     "rank": 2,
-    "title": "100만원 패딩 사달라던 10대들... 요즘은 5만원대 '이 패딩' 찾아요",
-    "url": "https://blog.naver.com/orotday/224486124116"
+    "title": "16기 상철 강정환 재결합으로 28기 영숙 정유진과 부산에서 다시 신혼생활 시작? (계약결혼)",
+    "url": "https://blog.naver.com/19hwang74/224487742418"
    },
    {
     "rank": 3,
@@ -810,28 +687,28 @@ window.STATS_FALLBACK = {
    },
    {
     "rank": 4,
-    "title": "곧 환갑인데... 요근래 여배우 중 가장 아름다웠다는 김혜수 드레스",
-    "url": "https://blog.naver.com/orotday/224487514062"
+    "title": "최태원 “9,440억 전액 지급” 화해 요청… 더욱 주목받는 김희영 스타일",
+    "url": "https://blog.naver.com/precede213/224489109306"
    },
    {
     "rank": 5,
-    "title": "빠니보틀 유튜브 수익 고백, 구독자 261만 1년 조회수 1억 광고 수익 얼마?(여행유튜버)",
-    "url": "https://blog.naver.com/every215/224474685683"
+    "title": "국공립 적응못해 거부증 생겨.. 이현이, 두 아들 영어유치원 보낸 이유?",
+    "url": "https://blog.naver.com/dearwinterrain/224489204009"
    },
    {
     "rank": 6,
-    "title": "100일의 거짓말 송지효, 김현주 진선규 말 다른데 이애영 살아 있을 가능성은?(tvn드라마)",
-    "url": "https://blog.naver.com/somedayview/224487658900"
+    "title": "AI 사진인 줄 알았다는 걸그룹 출신 신부, 근데 결혼하는 건 아님",
+    "url": "https://blog.naver.com/habit_of_makingmoney/224480433965"
    },
    {
     "rank": 7,
-    "title": "“첫방 부터 18% 터졌다…” 20회 만에 42.2% 찍더니 광고 130억 완판·연기대상 9관왕 기록한 드라마.jpg",
-    "url": "https://blog.naver.com/kj043kj/224485036584"
+    "title": "“어깨를 다 덮었는데 더 화려해요?” 김혜수 MAMA 마지막 드레스, 저 흰 소매 좀 보세요",
+    "url": "https://blog.naver.com/yozmday/224486829478"
    },
    {
     "rank": 8,
-    "title": "“같은 사람 맞나?” 이틀 차이로 베스트 워스트 다 찍어버린 여배우 드레스",
-    "url": "https://blog.naver.com/tlwjd70/224484576898"
+    "title": "곧 환갑인데... 요근래 여배우 중 가장 아름다웠다는 김혜수 드레스",
+    "url": "https://blog.naver.com/orotday/224487514062"
    },
    {
     "rank": 9,
@@ -840,8 +717,8 @@ window.STATS_FALLBACK = {
    },
    {
     "rank": 10,
-    "title": "판타지 사극이 일냈다..넷플 비영어 3위 찍고 한국 포함 7개국 1위 휩쓴 드라마",
-    "url": "https://blog.naver.com/havueverbeen/224482681979"
+    "title": "“첫방 부터 18% 터졌다…” 20회 만에 42.2% 찍더니 광고 130억 완판·연기대상 9관왕 기록한 드라마.jpg",
+    "url": "https://blog.naver.com/kj043kj/224485036584"
    },
    {
     "rank": 11,
@@ -850,48 +727,48 @@ window.STATS_FALLBACK = {
    },
    {
     "rank": 12,
-    "title": "\"첫 방송부터 파격 수위로 발칵\" 결국 자체 최고 시청률로 종영한 드라마",
-    "url": "https://blog.naver.com/gusdltjgml/224478170759"
+    "title": "\"1970~1973년생은 날벼락 맞겠네\" 국민연금 60세부터 생활비로 쓰려 했는데... 정상수령은 65세라니 '걱정'",
+    "url": "https://blog.naver.com/yoonkone/224475104226"
    },
    {
     "rank": 13,
+    "title": "판타지 사극이 일냈다..넷플 비영어 3위 찍고 한국 포함 7개국 1위 휩쓴 드라마",
+    "url": "https://blog.naver.com/havueverbeen/224482681979"
+   },
+   {
+    "rank": 14,
+    "title": "[체형분석]나는솔로 34기 순자 패션 추천/ 이렇게 몸매가 좋다고??",
+    "url": "https://blog.naver.com/dlalwl8557/224488731802"
+   },
+   {
+    "rank": 15,
     "title": "작정하고 꾸미고 나왔는데.. '종아리 알'만 보인 여배우 시사회 룩",
     "url": "https://blog.naver.com/phantom4477/224482009682"
    },
    {
-    "rank": 14,
-    "title": "최태원 연인 김희영, 딸과 함께 찍은 사진에서 눈길이 간 건 따로 있었다",
-    "url": "https://blog.naver.com/kims_5055/224484788982"
-   },
-   {
-    "rank": 15,
-    "title": "결국 몸매가 다했네..나는솔로 34기 순자 전투복 착장 2가지",
-    "url": "https://blog.naver.com/digitaljubu/224483844656"
-   },
-   {
     "rank": 16,
+    "title": "“같은 사람 맞나?” 이틀 차이로 베스트 워스트 다 찍어버린 여배우 드레스",
+    "url": "https://blog.naver.com/tlwjd70/224484576898"
+   },
+   {
+    "rank": 17,
+    "title": "“51세 맞아?” 베이지 코트에 검은 머플러만 둘렀는데 30대 같은 김희영",
+    "url": "https://blog.naver.com/go5593_820/224488780012"
+   },
+   {
+    "rank": 18,
+    "title": "100일의 거짓말 류관실 야나기 정체는 김태웅 친엄마? 이애영 약속 지켰다 14화 15화",
+    "url": "https://blog.naver.com/chhyks1/224488296279"
+   },
+   {
+    "rank": 19,
     "title": "이제는 손님보다 직원이 더 많아진 나이키 아울렛 근황",
     "url": "https://blog.naver.com/ssshsjsy/224484870040"
    },
    {
-    "rank": 17,
-    "title": "SSG 랜더스, 삼성 외야수 구자욱에게 4년 210억원 제시하고 붙잡을까?",
-    "url": "https://blog.naver.com/gaoblade/224486792272"
-   },
-   {
-    "rank": 18,
-    "title": "김혜수 '시그널2' 조진웅 AI 교체 접더니... 첫 주 3회 몰아치기로 튼 파격 결단",
-    "url": "https://blog.naver.com/pk947788/224467286268"
-   },
-   {
-    "rank": 19,
-    "title": "마흔 넘도록 결혼 안하면, 요즘은 '이렇게' 삽니다",
-    "url": "https://blog.naver.com/papervore/224483370491"
-   },
-   {
     "rank": 20,
-    "title": "우리 엄마 같네.. 친근감 느껴진 김혜수 공항룩 속 몽클 패딩",
-    "url": "https://blog.naver.com/somethingthatilove/224484411818"
+    "title": "“1월 월급부터 또 빠진다” 국민연금 보험료 10% 인상, 300만원 직장인 '이만큼' 더 낸다는데..",
+    "url": "https://blog.naver.com/zkfldb888/224482934276"
    }
   ]
  }
