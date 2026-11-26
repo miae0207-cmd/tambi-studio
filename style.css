@@ -1240,10 +1240,9 @@ input[type="text"]:focus { outline: none; border-color: var(--violet); backgroun
   background: var(--lav);
 }
 .img-cell.is-thumb img { aspect-ratio: 1 / 1; object-fit: contain; }
-
+/* 카드 폭이 좁은 UI라 화면 폭과 상관없이 본문 이미지는 한 장씩 */
 @media (min-width: 720px) {
-  .img-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .img-cell.is-thumb { grid-column: 1 / -1; }
+  .img-grid { gap: 12px; }
 }
 .img-cell figcaption {
   font-size: 11px;
