@@ -382,12 +382,6 @@ window.STATS_FALLBACK = {
   },
   "searchTerms": [
    {
-    "key": "bcast",
-    "emoji": "📡",
-    "label": "방송",
-    "terms": []
-   },
-   {
     "key": "drama",
     "emoji": "📺",
     "label": "드라마",
@@ -483,6 +477,12 @@ window.STATS_FALLBACK = {
       "new": true
      }
     ]
+   },
+   {
+    "key": "bcast",
+    "emoji": "📡",
+    "label": "방송",
+    "terms": []
    },
    {
     "key": "car",
