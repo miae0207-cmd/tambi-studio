@@ -1,7 +1,7 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-26T18:47:24+09:00",
+ "updated": "2026-11-26T19:02:30+09:00",
  "label": "2026년 11월 넷째 주",
- "version": 20,
+ "version": 21,
  "blogs": [
   {
    "id": "drama",
@@ -9081,19 +9081,19 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/kosaf2027-thumb.png",
+     "src": "assets/money/kosaf2027-thumb.jpg",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 라 구간 100만원",
      "alt": "2027학년도 1학기 국가장학금 1차 신청 시작, 라 구간 100만원"
     },
     {
-     "src": "assets/money/kosaf2027-body1.png",
+     "src": "assets/money/kosaf2027-body1.jpg",
      "role": "body",
      "label": "본문 이미지 1 · 구간별 연간 최대 금액",
      "alt": "2027학년도 국가장학금 구간별 연간 최대 금액 표"
     },
     {
-     "src": "assets/money/kosaf2027-body2.png",
+     "src": "assets/money/kosaf2027-body2.jpg",
      "role": "body",
      "label": "본문 이미지 2 · 신청 일정과 방법",
      "alt": "국가장학금 1차 신청 일정과 신청 방법"
@@ -9247,19 +9247,19 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/munhwari-thumb.png",
+     "src": "assets/money/munhwari-thumb.jpg",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 발급 11.30 / 사용 12.31",
      "alt": "문화누리카드 발급은 11월 30일, 사용은 12월 31일, 1인당 15만원"
     },
     {
-     "src": "assets/money/munhwari-body1.png",
+     "src": "assets/money/munhwari-body1.jpg",
      "role": "body",
      "label": "본문 이미지 1 · 금액과 대상",
      "alt": "2026년 문화누리카드 금액과 대상 요약"
     },
     {
-     "src": "assets/money/munhwari-body2.png",
+     "src": "assets/money/munhwari-body2.jpg",
      "role": "body",
      "label": "본문 이미지 2 · 발급과 사용 마감",
      "alt": "문화누리카드 발급과 사용 마감, 미사용 잔액 국고 반납"
@@ -9413,19 +9413,19 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/eitclate-thumb.png",
+     "src": "assets/money/eitclate-thumb.jpg",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 12월 1일까지, 산정액의 95%",
      "alt": "놓친 근로·자녀장려금 12월 1일까지, 산정액의 95% 지급"
     },
     {
-     "src": "assets/money/eitclate-body1.png",
+     "src": "assets/money/eitclate-body1.jpg",
      "role": "body",
      "label": "본문 이미지 1 · 구분별 최대 지급액",
      "alt": "근로·자녀장려금 가구 유형별 최대 지급액"
     },
     {
-     "src": "assets/money/eitclate-body2.png",
+     "src": "assets/money/eitclate-body2.jpg",
      "role": "body",
      "label": "본문 이미지 2 · 신청과 지급",
      "alt": "근로·자녀장려금 신청 마감과 지급일, 신청 방법"
