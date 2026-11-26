@@ -687,7 +687,7 @@
         if (im.label) fig.appendChild(el('figcaption', null, im.label));
         var sv = el('a', 'img-save', '이미지 저장');
         sv.href = im.src;
-        sv.download = String(im.src).split('/').pop();
+        sv.download = String(im.src).split('?')[0].split('/').pop();
         fig.appendChild(sv);
         ig.appendChild(fig);
       });

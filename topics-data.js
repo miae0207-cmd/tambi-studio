@@ -1,5 +1,5 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-26T19:12:11+09:00",
+ "updated": "2026-11-26T19:14:54+09:00",
  "label": "2026년 11월 넷째 주",
  "version": 22,
  "blogs": [
@@ -9081,37 +9081,37 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/kosaf2027-thumb.jpg",
+     "src": "assets/money/kosaf2027-thumb.jpg?v=22",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 라 구간 100만원",
      "alt": "2027학년도 1학기 국가장학금 1차 신청 시작, 라 구간 100만원"
     },
     {
-     "src": "assets/money/kosaf2027-body1.jpg",
+     "src": "assets/money/kosaf2027-body1.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 1 · 소제목 1 합격 전에 넣어도 된다",
      "alt": "국가장학금은 합격 전에도 신청할 수 있다, 신입생·재학생 모두 1차 기간"
     },
     {
-     "src": "assets/money/kosaf2027-body2.jpg",
+     "src": "assets/money/kosaf2027-body2.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 2 · 소제목 2 2027년부터 달라지는 구간과 금액",
      "alt": "2027학년도 국가장학금 구간별 연간 최대 금액"
     },
     {
-     "src": "assets/money/kosaf2027-body3.jpg",
+     "src": "assets/money/kosaf2027-body3.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 3 · 소제목 3 다자녀와 지방 국립대",
      "alt": "국가장학금 다자녀 가구별 금액과 지방 국립대 전액 장학금"
     },
     {
-     "src": "assets/money/kosaf2027-body4.jpg",
+     "src": "assets/money/kosaf2027-body4.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 4 · 소제목 4 신청은 재단 누리집과 앱에서",
      "alt": "국가장학금은 한국장학재단 누리집과 앱에서 24시간 신청, 마감 18시"
     },
     {
-     "src": "assets/money/kosaf2027-body5.jpg",
+     "src": "assets/money/kosaf2027-body5.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 5 · 소제목 5 신청 뒤에 확인할 것",
      "alt": "국가장학금 신청 뒤 신청완료 내역과 서류·가구원 동의 확인"
@@ -9265,37 +9265,37 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/munhwari-thumb.jpg",
+     "src": "assets/money/munhwari-thumb.jpg?v=22",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 발급 11.30 / 사용 12.31",
      "alt": "문화누리카드 발급은 11월 30일, 사용은 12월 31일, 1인당 15만원"
     },
     {
-     "src": "assets/money/munhwari-body1.jpg",
+     "src": "assets/money/munhwari-body1.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 1 · 소제목 1 올해는 1인당 15만원이다",
      "alt": "2026년 문화누리카드 1인당 연 15만원, 청소년기·준고령기 16만원"
     },
     {
-     "src": "assets/money/munhwari-body2.jpg",
+     "src": "assets/money/munhwari-body2.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 2 · 소제목 2 안 쓴 돈은 연말에 국고로 간다",
      "alt": "문화누리카드 미사용 잔액 소멸, 본인 충전금은 소멸 대상 아님"
     },
     {
-     "src": "assets/money/munhwari-body3.jpg",
+     "src": "assets/money/munhwari-body3.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 3 · 소제목 3 신청은 주민센터와 누리집, 앱에서",
      "alt": "문화누리카드 신청 방법, 주민센터·누리집·앱, 전화는 재충전만"
     },
     {
-     "src": "assets/money/munhwari-body4.jpg",
+     "src": "assets/money/munhwari-body4.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 4 · 소제목 4 결제는 가맹점에서만 된다",
      "alt": "문화누리카드 가맹점 3만 6천여 곳, 문화·관광·체육 결제"
     },
     {
-     "src": "assets/money/munhwari-body5.jpg",
+     "src": "assets/money/munhwari-body5.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 5 · 소제목 5 12월 31일 전에 확인할 것",
      "alt": "문화누리카드 12월 31일 사용 마감 전 잔액과 가맹점 확인"
@@ -9449,37 +9449,37 @@ window.TOPICS_FALLBACK = {
    },
    "images": [
     {
-     "src": "assets/money/eitclate-thumb.jpg",
+     "src": "assets/money/eitclate-thumb.jpg?v=22",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 12월 1일까지, 산정액의 95%",
      "alt": "놓친 근로·자녀장려금 12월 1일까지, 산정액의 95% 지급"
     },
     {
-     "src": "assets/money/eitclate-body1.jpg",
+     "src": "assets/money/eitclate-body1.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 1 · 소제목 1 올해는 안내 대상이 늘었다",
      "alt": "근로·자녀장려금 기한 후 신청 안내 대상 26만 가구, 1만 가구 추가"
     },
     {
-     "src": "assets/money/eitclate-body2.jpg",
+     "src": "assets/money/eitclate-body2.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 2 · 소제목 2 5%가 줄어도 받는 게 낫다",
      "alt": "기한 후 신청은 산정액의 95%, 신청하지 않으면 0원"
     },
     {
-     "src": "assets/money/eitclate-body3.jpg",
+     "src": "assets/money/eitclate-body3.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 3 · 소제목 3 얼마를 받을 수 있나",
      "alt": "근로·자녀장려금 가구 유형별 최대 지급액"
     },
     {
-     "src": "assets/money/eitclate-body4.jpg",
+     "src": "assets/money/eitclate-body4.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 4 · 소제목 4 신청은 세 가지 길이 있다",
      "alt": "근로·자녀장려금 신청 방법 QR·ARS 1544-9944·홈택스"
     },
     {
-     "src": "assets/money/eitclate-body5.jpg",
+     "src": "assets/money/eitclate-body5.jpg?v=22",
      "role": "body",
      "label": "본문 이미지 5 · 소제목 5 내년부터는 금액이 더 늘어난다",
      "alt": "2027년 귀속분 근로장려금 최대액 확대, 단독 180만·홑벌이 310만·맞벌이 360만원"
