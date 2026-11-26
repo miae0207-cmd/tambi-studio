@@ -632,6 +632,33 @@
     if (t.what) card.appendChild(el('p', 'topic-lede', t.what));
     if (t.why) card.appendChild(el('p', 'topic-why', t.why));
 
+    // 완성 세트 ① 대표 썸네일 + 본문 카드 이미지
+    if (Array.isArray(t.images) && t.images.length) {
+      card.appendChild(el('p', 'sec-label', '이미지 · 직접 만든 카드'));
+      var ig = el('div', 'img-grid');
+      t.images.forEach(function (im) {
+        if (!im || !im.src) return;
+        var fig = el('figure', 'img-cell' + (im.role === 'thumb' ? ' is-thumb' : ''));
+        var a = el('a', 'img-link');
+        a.href = im.src;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        var pic = document.createElement('img');
+        pic.src = im.src;
+        pic.alt = im.alt || im.label || '';
+        pic.loading = 'lazy';
+        a.appendChild(pic);
+        fig.appendChild(a);
+        if (im.label) fig.appendChild(el('figcaption', null, im.label));
+        var sv = el('a', 'img-save', '이미지 저장');
+        sv.href = im.src;
+        sv.download = String(im.src).split('/').pop();
+        fig.appendChild(sv);
+        ig.appendChild(fig);
+      });
+      card.appendChild(ig);
+    }
+
     if (Array.isArray(t.facts) && t.facts.length) {
       card.appendChild(el('p', 'sec-label', blog === 'money' ? '대상 · 기간 · 혜택' : '핵심 숫자'));
       var dl = el('dl', 'fact-grid');
@@ -643,6 +670,40 @@
         dl.appendChild(row);
       });
       card.appendChild(dl);
+    }
+
+    // 완성 세트 ② 한눈에 정리한 표
+    if (t.table && Array.isArray(t.table.head) && t.table.head.length && Array.isArray(t.table.rows) && t.table.rows.length) {
+      card.appendChild(el('p', 'sec-label', '한눈에 정리한 표'));
+      if (t.table.caption) card.appendChild(el('p', 'tbl-cap', t.table.caption));
+      var tw = el('div', 'tbl-wrap');
+      var tb = document.createElement('table');
+      tb.className = 'mini-table';
+      var thead = document.createElement('thead');
+      var htr = document.createElement('tr');
+      t.table.head.forEach(function (h) { htr.appendChild(el('th', null, h)); });
+      thead.appendChild(htr);
+      tb.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      t.table.rows.forEach(function (row) {
+        var tr = document.createElement('tr');
+        row.forEach(function (cell, ci) {
+          tr.appendChild(el(ci === 0 ? 'th' : 'td', null, cell));
+        });
+        tbody.appendChild(tr);
+      });
+      tb.appendChild(tbody);
+      tw.appendChild(tb);
+      card.appendChild(tw);
+      if (t.table.note) card.appendChild(el('p', 'tbl-note', t.table.note));
+      var tbtn = el('button', 'btn ghost sm tbl-copy', '표 내용 복사');
+      tbtn.type = 'button';
+      tbtn.addEventListener('click', function () {
+        var lines = [t.table.head.join('\t')];
+        t.table.rows.forEach(function (row) { lines.push(row.join('\t')); });
+        copyText(lines.join('\n'), tbtn);
+      });
+      card.appendChild(tbtn);
     }
 
     if (Array.isArray(t.points) && t.points.length) {
@@ -672,6 +733,35 @@
       jb.appendChild(jl);
       jd.appendChild(jb);
       card.appendChild(jd);
+    }
+
+    // 완성 세트 ③ 바로 붙여넣는 초안
+    if (typeof t.draft === 'string' && t.draft.length > 40) {
+      var heads = Array.isArray(t.draftHeads) ? t.draftHeads : [];
+      var df = document.createElement('details');
+      df.className = 'fold draft-fold';
+      df.appendChild(el('summary', null, '📝 완성 초안 ' + t.draft.length.toLocaleString() + '자(공백 포함) · 눌러서 보기'));
+      var db = el('div', 'fold-body');
+      var bar = el('div', 'draft-bar');
+      bar.appendChild(el('span', 'draft-len', '제목 ' + ((t.titles || []).length) + '개 · 초안 ' + t.draft.length.toLocaleString() + '자'));
+      var cpy = el('button', 'btn soft sm', '본문 전체 복사');
+      cpy.type = 'button';
+      cpy.addEventListener('click', function () { copyText(t.draft, cpy); });
+      bar.appendChild(cpy);
+      db.appendChild(bar);
+      var dbody = el('div', 'draft-body');
+      t.draft.split('\n\n').forEach(function (para) {
+        var p = para.trim();
+        if (!p) return;
+        if (heads.indexOf(p) !== -1) {
+          dbody.appendChild(el('p', 'draft-h', p));
+        } else {
+          dbody.appendChild(el('p', 'draft-p', p.replace(/\n/g, ' ')));
+        }
+      });
+      db.appendChild(dbody);
+      df.appendChild(db);
+      card.appendChild(df);
     }
 
     if (Array.isArray(t.titles) && t.titles.length) {
