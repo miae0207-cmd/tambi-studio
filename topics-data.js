@@ -1,5 +1,5 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-27T05:58:47+09:00",
+ "updated": "2026-11-27T06:00:24+09:00",
  "label": "2026년 11월 넷째 주",
  "version": 24,
  "blogs": [
@@ -8834,6 +8834,10 @@ window.TOPICS_FALLBACK = {
      "e": "현금 대신 정해진 곳에 쓸 수 있는 이용권"
     },
     {
+     "t": "이용권",
+     "e": "전기·가스 요금에서 깎거나 연료를 살 때 쓰는 권리"
+    },
+    {
      "t": "가상카드",
      "e": "전기·도시가스·지역난방 고지서에서 요금을 바로 깎는 방식"
     },
@@ -8871,14 +8875,14 @@ window.TOPICS_FALLBACK = {
      "note": "온라인 신청·자격 확인"
     },
     {
-     "label": "에너지바우처 공식 홈페이지",
-     "url": "https://www.energyv.or.kr/",
-     "note": "지원금액·사용처 안내"
+     "label": "에너지바우처 · 지원 대상과 금액",
+     "url": "https://www.energyv.or.kr/info/support_info.do",
+     "note": "소득·세대원 특성 기준, 세대원 수별 금액, 신청·사용기간 원문"
     },
     {
      "label": "에너지바우처 누리집",
-     "url": "https://www.energyv.or.kr/main.do",
-     "note": "지원금액·사용기간·사용처 안내"
+     "url": "https://www.energyv.or.kr/",
+     "note": "가맹점·사용처·잔액 확인"
     }
    ],
    "keywords": [
