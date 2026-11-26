@@ -195,7 +195,7 @@
               <button type="button" data-mode="pos" class="on" aria-pressed="true">✋ 사진 위치·확대</button>
               <button type="button" data-mode="mosaic" aria-pressed="false">🩹 모자이크</button>
             </div>
-            <p class="ie-tip" id="ieTip">칸을 눌러 고른 뒤 <b>끌어서 위치</b>, 두 손가락으로 <b>확대</b>. 아래 슬라이더로도 맞출 수 있어요.</p>
+            <p class="ie-tip" id="ieTip">칸을 눌러 고른 뒤 <b>끌어서 위치</b>, 두 손가락이나 <b>PC 마우스 휠</b>로 <b>확대·축소</b>. 아래 슬라이더로도 맞출 수 있어요.</p>
           </div>
 
           <details class="ie-fold" open>
@@ -230,8 +230,8 @@
               <div class="ie-chips" id="ieCells"></div>
 
               <div class="ie-row">
-                <span>확대</span>
-                <input type="range" class="ie-range" id="ieZoom" min="100" max="320" step="2" value="100" aria-label="사진 확대">
+                <span>확대·축소</span>
+                <input type="range" class="ie-range" id="ieZoom" min="50" max="400" step="2" value="100" aria-label="사진 확대·축소">
                 <output id="ieZoomOut">1.0×</output>
               </div>
               <div class="ie-row">
@@ -251,7 +251,7 @@
               <div class="ie-actions">
                 <button type="button" class="btn ghost sm" id="ieCellReset">이 칸 처음으로</button>
               </div>
-              <p class="ie-note">칸을 꽉 채우면 원본의 일부가 잘려 나갑니다. 끌어서 보여줄 부분을 정하세요.</p>
+              <p class="ie-note">칸을 꽉 채우면 원본의 일부가 잘려 나갑니다. 끌어서 보여줄 부분을 정하세요. PC에선 사진 위에서 마우스 휠로 확대·축소, 끌어서 이동.</p>
             </div>
           </details>
 

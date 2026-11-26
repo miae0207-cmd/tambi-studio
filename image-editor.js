@@ -11,6 +11,9 @@
   /* ---------------- 상수 ---------------- */
   var BASE = 1440;                        // 긴 변 기준 해상도(px)
   var STORE = 'tambi.imageEditor.v1';
+  var ZOOM_MIN = 0.5;                     // 칸 사진 축소 하한(여백 생김)
+  var ZOOM_MAX = 4;                       // 칸 사진 확대 상한
+  var WHEEL_K = 0.0016;                   // 마우스 휠 1칸(≈100px)당 약 1.17배
 
   var RATIOS = [
     { id: '1:1',  label: '1:1 대표',   v: 1 },
@@ -194,7 +197,9 @@
     if (!iw || !ih) return null;
     var cover = Math.max(r.w / iw, r.h / ih);
     var fit = Math.min(r.w / iw, r.h / ih);
-    var sc = (c.fit ? fit : cover) * (c.zoom || 1);
+    // zoom < 1이면 사진이 칸보다 작아져 칸 가운데에 놓이고 사방에 배경이 남는다.
+    // 이때는 넘칠 부분이 없으므로 sx/sy가 0이 되어 끌기(위치)는 자동으로 잠긴다.
+    var sc = (c.fit ? fit : cover) * clamp(ZOOM_MIN, ZOOM_MAX, c.zoom || 1);
     var dw = iw * sc, dh = ih * sc;
     var sx = c.fit ? 0 : Math.max(0, (dw - r.w) / 2);
     var sy = c.fit ? 0 : Math.max(0, (dh - r.h) / 2);
@@ -818,7 +823,7 @@
     });
     $('ieTip').innerHTML = S.mode === 'mosaic'
       ? '미리보기를 <b>손가락으로 문지르면</b> 그 자리가 모자이크됩니다. 잘못 칠했으면 <b>되돌리기</b>.'
-      : '칸을 눌러 고른 뒤 <b>끌어서 위치</b>, 두 손가락으로 <b>확대</b>. 아래 슬라이더로도 맞출 수 있어요.';
+      : '칸을 눌러 고른 뒤 <b>끌어서 위치</b>, 두 손가락이나 <b>PC 마우스 휠</b>로 <b>확대·축소</b>. 아래 슬라이더로도 맞출 수 있어요.';
     updateSelBox();
   }
 
@@ -910,7 +915,7 @@
       var arr = Array.from(ptrs.values());
       var d = dist(arr[0], arr[1]);
       var c = cell(S.sel);
-      c.zoom = clamp(1, 5, pinch.z * (d / Math.max(1, pinch.d)));
+      c.zoom = clamp(ZOOM_MIN, ZOOM_MAX, pinch.z * (d / Math.max(1, pinch.d)));
       baseDirty = true;
       syncSliders();
       schedule();
@@ -954,6 +959,35 @@
   canvas.addEventListener('pointerup', endPointer);
   canvas.addEventListener('pointercancel', endPointer);
   canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  /* PC 마우스 휠로 칸마다 확대·축소 (위로 굴리면 확대, 아래로 굴리면 축소) */
+  canvas.addEventListener('wheel', function (e) {
+    if (!S.photos.length) return;
+    if (S.mode !== 'pos') return;              // 모자이크 모드에선 페이지 스크롤을 그대로 둔다
+    e.preventDefault();
+
+    var idx = hitCell(toCanvas(e));
+    if (idx < 0) idx = S.sel;                  // 칸 사이 여백이면 지금 고른 칸
+    if (!S.photos[idx]) return;
+
+    var changed = idx !== S.sel;
+    S.sel = idx;
+
+    var dy = e.deltaY || 0;
+    if (e.deltaMode === 1) dy *= 16;           // 줄 단위
+    else if (e.deltaMode === 2) dy *= 100;     // 페이지 단위
+    var c = cell(idx);
+    var next = clamp(ZOOM_MIN, ZOOM_MAX, (c.zoom || 1) * Math.exp(-dy * WHEEL_K));
+    if (Math.abs(next - (c.zoom || 1)) > 0.0001) {
+      c.zoom = next;
+      baseDirty = true;
+      schedule();
+    }
+
+    if (changed) { renderCellChips(); renderThumbs(); }
+    syncSliders();
+    updateSelBox();
+  }, { passive: false });
 
   /* ---------------- 저장 ---------------- */
   function stamp() {
