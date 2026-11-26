@@ -611,6 +611,36 @@
       : '과거작 공식으로 채웠어요 · 작품명 숨김');
   }
 
+  /* ---- 본문 초안 (접지 않고 바로 보이게) ---- */
+  function draftBlock(t) {
+    var heads = Array.isArray(t.draftHeads) ? t.draftHeads : [];
+    var box = el('section', 'draft-open');
+    var head = el('div', 'draft-head');
+    var txt = el('div', 'draft-head-txt');
+    txt.appendChild(el('span', 'draft-badge', '📝 복붙용 본문 초안'));
+    txt.appendChild(el('span', 'draft-chars',
+      t.draft.length.toLocaleString() + '자(공백 포함)' + (heads.length ? ' · 소제목 ' + heads.length + '개' : '')));
+    head.appendChild(txt);
+    var cpy = el('button', 'btn soft sm draft-copy', '📋 본문 전체 복사');
+    cpy.type = 'button';
+    cpy.addEventListener('click', function () { copyText(t.draft, cpy); });
+    head.appendChild(cpy);
+    box.appendChild(head);
+
+    var body = el('div', 'draft-body');
+    t.draft.split('\n\n').forEach(function (para) {
+      var p = para.trim();
+      if (!p) return;
+      if (heads.indexOf(p) !== -1) {
+        body.appendChild(el('p', 'draft-h', p));
+      } else {
+        body.appendChild(el('p', 'draft-p', p.replace(/\n/g, ' ')));
+      }
+    });
+    box.appendChild(body);
+    return box;
+  }
+
   /* ---- 자동차 · 지원금경제 카드 ---- */
   function genericCard(t, blog, idx) {
     var card = el('article', 'topic-card' + (t.heat === 'hot' ? ' hot' : '') + (t.isNew ? ' is-new' : ''));
@@ -632,13 +662,18 @@
     if (t.what) card.appendChild(el('p', 'topic-lede', t.what));
     if (t.why) card.appendChild(el('p', 'topic-why', t.why));
 
-    // 완성 세트 ① 대표 썸네일 + 본문 카드 이미지
+    // 완성 세트 ① 바로 붙여넣는 본문 초안 — 카드 맨 위쪽에 펼친 채로 둔다
+    if (typeof t.draft === 'string' && t.draft.length > 40) {
+      card.appendChild(draftBlock(t));
+    }
+
+    // 완성 세트 ② 대표 썸네일(1:1) + 본문 이미지(16:9)
     if (Array.isArray(t.images) && t.images.length) {
       card.appendChild(el('p', 'sec-label', '이미지 · 직접 만든 카드'));
       var ig = el('div', 'img-grid');
       t.images.forEach(function (im) {
         if (!im || !im.src) return;
-        var fig = el('figure', 'img-cell' + (im.role === 'thumb' ? ' is-thumb' : ''));
+        var fig = el('figure', 'img-cell' + (im.role ? ' is-' + im.role : ''));
         var a = el('a', 'img-link');
         a.href = im.src;
         a.target = '_blank';
@@ -672,7 +707,7 @@
       card.appendChild(dl);
     }
 
-    // 완성 세트 ② 한눈에 정리한 표
+    // 완성 세트 ③ 한눈에 정리한 표
     if (t.table && Array.isArray(t.table.head) && t.table.head.length && Array.isArray(t.table.rows) && t.table.rows.length) {
       card.appendChild(el('p', 'sec-label', '한눈에 정리한 표'));
       if (t.table.caption) card.appendChild(el('p', 'tbl-cap', t.table.caption));
@@ -735,35 +770,6 @@
       card.appendChild(jd);
     }
 
-    // 완성 세트 ③ 바로 붙여넣는 초안
-    if (typeof t.draft === 'string' && t.draft.length > 40) {
-      var heads = Array.isArray(t.draftHeads) ? t.draftHeads : [];
-      var df = document.createElement('details');
-      df.className = 'fold draft-fold';
-      df.appendChild(el('summary', null, '📝 완성 초안 ' + t.draft.length.toLocaleString() + '자(공백 포함) · 눌러서 보기'));
-      var db = el('div', 'fold-body');
-      var bar = el('div', 'draft-bar');
-      bar.appendChild(el('span', 'draft-len', '제목 ' + ((t.titles || []).length) + '개 · 초안 ' + t.draft.length.toLocaleString() + '자'));
-      var cpy = el('button', 'btn soft sm', '본문 전체 복사');
-      cpy.type = 'button';
-      cpy.addEventListener('click', function () { copyText(t.draft, cpy); });
-      bar.appendChild(cpy);
-      db.appendChild(bar);
-      var dbody = el('div', 'draft-body');
-      t.draft.split('\n\n').forEach(function (para) {
-        var p = para.trim();
-        if (!p) return;
-        if (heads.indexOf(p) !== -1) {
-          dbody.appendChild(el('p', 'draft-h', p));
-        } else {
-          dbody.appendChild(el('p', 'draft-p', p.replace(/\n/g, ' ')));
-        }
-      });
-      db.appendChild(dbody);
-      df.appendChild(db);
-      card.appendChild(df);
-    }
-
     if (Array.isArray(t.titles) && t.titles.length) {
       card.appendChild(el('p', 'sec-label', '바로 쓸 제목 ' + t.titles.length + '개'));
       var tl = el('div', 'mini-titles');
@@ -799,6 +805,12 @@
     if (t.note) card.appendChild(el('p', 'note-line', '⚠️ ' + t.note));
 
     var acts = el('div', 'topic-acts');
+    if (typeof t.draft === 'string' && t.draft.length > 40) {
+      var dcb = el('button', 'btn soft sm', '📋 본문 복사');
+      dcb.type = 'button';
+      dcb.addEventListener('click', function () { copyText(t.draft, dcb); });
+      acts.appendChild(dcb);
+    }
     var all = el('button', 'btn ghost sm', '제목 ' + (t.titles || []).length + '개 복사');
     all.type = 'button';
     all.addEventListener('click', function () {
