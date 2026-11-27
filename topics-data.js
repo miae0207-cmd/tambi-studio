@@ -1,7 +1,7 @@
 window.TOPICS_FALLBACK = {
- "updated": "2026-11-27T15:43:03+09:00",
+ "updated": "2026-11-27T17:42:16+09:00",
  "label": "2026년 11월 넷째 주",
- "version": 27,
+ "version": 28,
  "blogs": [
   {
    "id": "drama",
@@ -399,129 +399,6 @@ window.TOPICS_FALLBACK = {
    "officialYoutubeName": "tvN Joy",
    "blog": "drama",
    "homefeed": [],
-   "isNew": true
-  },
-  {
-   "id": "spiderman",
-   "status": "past",
-   "work": "스파이더맨: 브랜드 뉴 데이",
-   "channel": "넷플릭스",
-   "year": "2026",
-   "genre": "액션 · SF",
-   "slot": "과거작 · 넷플릭스 공개 (극장 7/29 개봉)",
-   "cast": "톰 홀랜드 · 젠데이아 · 세이디 싱크 · 제이컵 배털론 · 존 번설 · 마크 러펠로",
-   "heat": "hot",
-   "imageQuery": "스파이더맨 브랜드 뉴 데이 톰 홀랜드 넷플릭스",
-   "metric": "극장 7/29 개봉 · 국내 9,057,229명(영진위 11/25 집계, 2026년 흥행 3위) · 전 세계 25억 2,000만 달러 · 145분 · 12세 이상 · 엔딩 크레딧 뒤 쿠키 1개 · 11/26 넷플릭스 공개 완료",
-   "why": "7월 29일 극장에서 개봉한 지 120일 만에 넷플릭스로 왔어요. 국내에서 906만 명이 봤고, 전 세계로는 25억 2,000만 달러를 벌어들였습니다. 역대 스파이더맨 시리즈 가운데 국내 최고 성적이고, 올해 국내 흥행 3위입니다. 이야기는 '노 웨이 홈'에서 닥터 스트레인지의 주문으로 세상 모두가 피터 파커를 잊은 뒤 4년 뒤입니다. 피터는 MJ와 네드에게 다시 자신을 알리지 않은 채 스파이더맨으로만 살아요. 그런데 DNA 변이로 힘이 통제되지 않기 시작하고, 남의 몸에 정신을 옮기는 존재가 도시를 흔듭니다. 그 정체가 밝혀지면서 피터는 처음에 적으로 봤던 상대의 사정을 알게 되고, 마지막에는 퍼니셔가 쏜 총을 대신 맞습니다. 네드는 마지막에 옛 비밀 악수를 그대로 따라 하며 '피터!'라고 부르고, 쿠키영상에서는 스파이더맨이 지구 밖으로 찍힙니다. 넷플릭스에는 홈커밍과 파 프롬 홈도 함께 올라와 있지만 '노 웨이 홈'은 없어서, 정주행 순서를 짤 때 이 지점이 걸립니다.",
-   "angles": [
-    {
-     "icon": "📈",
-     "text": "906만, 시리즈 국내 최고"
-    },
-    {
-     "icon": "🧠",
-     "text": "남의 몸에 옮겨 다니는 적"
-    },
-    {
-     "icon": "🤝",
-     "text": "네드의 마지막 악수"
-    },
-    {
-     "icon": "🌌",
-     "text": "쿠키영상 30초가 가리킨 곳"
-    }
-   ],
-   "titles": [
-    "스파이더맨: 브랜드 뉴 데이, 넷플릭스에 올라온 날",
-    "스파이더맨: 브랜드 뉴 데이 결말, 네드의 마지막 악수",
-    "스파이더맨 정주행, 넷플릭스에 없는 편이 하나 있다"
-   ],
-   "formula": {
-    "hook": "906만이 본 영화, 4개월 만에 OTT",
-    "hooks": {
-     "rank": "\"906만이 본 영화인데..\" 개봉 4개월 만에 넷플릭스 온 영화",
-     "cast": "\"모두가 그를 잊은 채\" 25억 달러 벌어들인 영화",
-     "making": "\"마지막 악수 한 번에\" 4년 공백이 끝난 영화",
-     "rewatch": "\"쿠키영상 30초\"가 다음 우주를 가리킨 영화"
-    },
-    "outcome": "국내 906만·전 세계 25억 2,000만 달러",
-    "channel": "넷플릭스",
-    "actor": "톰 홀랜드·젠데이아"
-   },
-   "timeline": [
-    {
-     "range": "2026.7.29",
-     "text": "국내 개봉. 미국은 7월 31일. 145분, 12세 이상 관람가."
-    },
-    {
-     "range": "여름",
-     "text": "국내 906만 관객. 홈커밍 725만·파 프롬 홈 802만·노 웨이 홈 755만을 넘어 시리즈 국내 최고."
-    },
-    {
-     "range": "11.12",
-     "text": "넷플릭스가 11월 26일 공개 일정을 발표. 홈커밍·파 프롬 홈·뉴 유니버스도 함께 서비스된다고 안내."
-    },
-    {
-     "range": "11.26",
-     "text": "넷플릭스 공개. 극장 개봉 120일 만. '노 웨이 홈'은 넷플릭스 목록에 없다."
-    }
-   ],
-   "highlights": [
-    {
-     "ep": "초반",
-     "text": "모두가 피터를 잊은 지 4년. MJ와 네드는 MIT를 졸업하고 뉴욕으로 돌아왔고, 피터는 두 사람 앞에서 가면을 쓴 채 지나간다."
-    },
-    {
-     "ep": "중반",
-     "text": "DNA 변이로 감각과 힘이 커진 피터는 브루스 배너의 억제 장치를 참고해 스스로 제어 장치를 만든다. 그 장치가 마지막 싸움의 열쇠가 된다."
-    },
-    {
-     "ep": "결말",
-     "text": "퍼니셔가 쏜 총을 대신 맞은 피터는 진 그레이의 도움으로 살아난다. 진은 버스를 타고 뉴욕을 떠나고, 피터는 네드와 비밀 악수를 나눈다."
-    },
-    {
-     "ep": "쿠키",
-     "text": "엔딩 크레딧이 모두 끝난 뒤 1개. 네드의 위치 추적 앱에 스파이더맨이 지구 밖(Off-planet)으로 뜬다."
-    }
-   ],
-   "behind": [
-    {
-     "label": "원작",
-     "text": "스탠 리·스티브 딧코의 마블 코믹스 스파이더맨. '노 웨이 홈'의 속편이자 톰 홀랜드의 네 번째 단독 스파이더맨 영화."
-    },
-    {
-     "label": "제작",
-     "text": "마블 스튜디오·컬럼비아 픽처스·파스칼 픽처스. 감독 데스틴 대니얼 크레턴, 각본 크리스 매케나·에릭 소머스, 음악 마이클 자키노."
-    },
-    {
-     "label": "출연",
-     "text": "톰 홀랜드(피터 파커)·젠데이아(MJ)·제이컵 배털론(네드)·세이디 싱크(진 그레이)·존 번설(퍼니셔)·트러멜 틸먼(빌 메츠거)·마크 러펠로(브루스 배너)."
-    },
-    {
-     "label": "지금 보는 법",
-     "text": "넷플릭스에서 11/26부터. 공식 예고·스트리밍 소개 영상은 Netflix Korea 공식 유튜브에 있다."
-    }
-   ],
-   "keywords": [
-    "스파이더맨 브랜드 뉴 데이",
-    "스파이더맨 브랜드 뉴 데이 넷플릭스",
-    "톰 홀랜드",
-    "세이디 싱크",
-    "쿠키영상"
-   ],
-   "homefeed": [
-    "\"906만이 본 영화인데..\" 개봉 4개월 만에 넷플릭스 온 영화",
-    "\"모두가 그를 잊은 채\" 25억 달러 벌어들인 영화",
-    "\"마지막 악수 한 번에\" 4년 공백이 끝난 영화",
-    "\"쿠키영상 30초\"가 다음 우주를 가리킨 영화"
-   ],
-   "officialPhotoUrl": "https://www.youtube.com/@NetflixKorea",
-   "officialPhotoLabel": "Netflix Korea 공식 유튜브",
-   "officialPhotoNote": "'스파이더맨: 브랜드 뉴 데이 | 절찬 스트리밍 중 | 넷플릭스'(11/26 업로드)를 일시정지해 캡처하세요. 주연 얼굴과 로고가 크게 나오니 홈판용은 뒷모습·실루엣 컷으로.",
-   "officialYoutubeUrl": "https://www.youtube.com/@NetflixKorea/search?query=%EC%8A%A4%ED%8C%8C%EC%9D%B4%EB%8D%94%EB%A7%A8%20%EB%B8%8C%EB%9E%9C%EB%93%9C%20%EB%89%B4%20%EB%8D%B0%EC%9D%B4",
-   "officialYoutubeName": "Netflix Korea",
-   "blog": "drama",
    "isNew": true
   },
   {
@@ -10148,37 +10025,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/jobseek-thumb.jpg?v=27",
+     "src": "assets/money/jobseek-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 월 60만원 6개월이면",
      "alt": "2026 국민취업지원제도 — 실업급여 끝났어도 받을 수 있다"
     },
     {
-     "src": "assets/money/jobseek-body1.jpg?v=27",
+     "src": "assets/money/jobseek-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 6개월 360만원",
      "alt": "구직촉진수당 · 6개월 360만원 — 월 50만원이 60만원으로 올랐다"
     },
     {
-     "src": "assets/money/jobseek-body2.jpg?v=27",
+     "src": "assets/money/jobseek-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 누가 받을 수 있나",
      "alt": "지원 대상 · 누가 받을 수 있나 — 1인 가구 월 153만원 이하"
     },
     {
-     "src": "assets/money/jobseek-body3.jpg?v=27",
+     "src": "assets/money/jobseek-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 신청한다고 바로 나오지 않는다",
      "alt": "지급 절차 · 신청한다고 바로 나오지 않는다 — 첫 달은 계획을 세워야 나온다"
     },
     {
-     "src": "assets/money/jobseek-body4.jpg?v=27",
+     "src": "assets/money/jobseek-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 같이 받을 수 없다",
      "alt": "실업급여 · 같이 받을 수 없다 — 실업급여가 끝나야 문이 열린다"
     },
     {
-     "src": "assets/money/jobseek-body5.jpg?v=27",
+     "src": "assets/money/jobseek-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 취업하면 따로 또 준다",
      "alt": "취업성공수당 · 취업하면 따로 또 준다 — 6개월·12개월 근속이 조건이다"
@@ -10332,37 +10209,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/disastermed-thumb.jpg?v=27",
+     "src": "assets/money/disastermed-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 병원비 5,000만원까지",
      "alt": "재난적의료비 — 본인부담 의료비의 50~80%"
     },
     {
-     "src": "assets/money/disastermed-body1.jpg?v=27",
+     "src": "assets/money/disastermed-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 소득과 재산을 함께 본다",
      "alt": "지원 대상 · 소득과 재산을 함께 본다 — 연봉 3,000만원이면 병원비 300만원부터"
     },
     {
-     "src": "assets/money/disastermed-body2.jpg?v=27",
+     "src": "assets/money/disastermed-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 소득이 낮을수록 높다",
      "alt": "지원 비율 · 소득이 낮을수록 높다 — 영수증 금액의 80%가 그대로 나오지는 않는다"
     },
     {
-     "src": "assets/money/disastermed-body3.jpg?v=27",
+     "src": "assets/money/disastermed-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 이름만 비슷하다",
      "alt": "상한제와 차이 · 이름만 비슷하다 — 상한제는 급여만 돌려준다"
     },
     {
-     "src": "assets/money/disastermed-body4.jpg?v=27",
+     "src": "assets/money/disastermed-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 기준이 조여졌다",
      "alt": "2026.7.1 이후 · 기준이 조여졌다 — 중증질환이 아니면 2·3인실도 빠진다"
     },
     {
-     "src": "assets/money/disastermed-body5.jpg?v=27",
+     "src": "assets/money/disastermed-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 180일이 전부다",
      "alt": "신청 기한 · 180일이 전부다 — 지나면 그냥 사라진다"
@@ -10512,37 +10389,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/birthvoucher-thumb.jpg?v=27",
+     "src": "assets/money/birthvoucher-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 출산하면 100만원",
      "alt": "임신·출산 진료비 — 다태아는 200만원까지"
     },
     {
-     "src": "assets/money/birthvoucher-body1.jpg?v=27",
+     "src": "assets/money/birthvoucher-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 임신 1회당 100만원",
      "alt": "지원 금액 · 임신 1회당 100만원 — 현금이 아니라 카드 포인트로"
     },
     {
-     "src": "assets/money/birthvoucher-body2.jpg?v=27",
+     "src": "assets/money/birthvoucher-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 추가 신청해야 늘어난다",
      "alt": "다태아 · 추가 신청해야 늘어난다 — 가만히 두면 60만원 손해"
     },
     {
-     "src": "assets/money/birthvoucher-body3.jpg?v=27",
+     "src": "assets/money/birthvoucher-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 2년 안에 다 써야",
      "alt": "사용 기한 · 2년 안에 다 써야 — 남은 포인트는 사라진다"
     },
     {
-     "src": "assets/money/birthvoucher-body4.jpg?v=27",
+     "src": "assets/money/birthvoucher-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 병원과 약국에서만",
      "alt": "사용처 · 병원과 약국에서만 — 현금으로 바꿀 수 없다"
     },
     {
-     "src": "assets/money/birthvoucher-body5.jpg?v=27",
+     "src": "assets/money/birthvoucher-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 카드사와 공단에서",
      "alt": "신청 · 카드사와 공단에서 — 여섯 곳 카드사에서 고른다"
@@ -10705,37 +10582,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/childallow-thumb.jpg?v=27",
+     "src": "assets/money/childallow-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 0세는 월 110만원",
      "alt": "아동수당·부모급여 — 아동수당 10만 + 부모급여 100만"
     },
     {
-     "src": "assets/money/childallow-body1.jpg?v=27",
+     "src": "assets/money/childallow-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 같이 받는다",
      "alt": "두 급여 · 같이 받는다 — 0세 아이 한 명 한 달 110만원"
     },
     {
-     "src": "assets/money/childallow-body2.jpg?v=27",
+     "src": "assets/money/childallow-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 내년에 한 살 더",
      "alt": "지급 연령 · 내년에 한 살 더 — 2027년 1월부터 대상이 늘어난다"
     },
     {
-     "src": "assets/money/childallow-body3.jpg?v=27",
+     "src": "assets/money/childallow-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 사는 곳에 따라 더",
      "alt": "지역 추가 · 사는 곳에 따라 더 — 같은 10만원이라도 지역마다 다르다"
     },
     {
-     "src": "assets/money/childallow-body4.jpg?v=27",
+     "src": "assets/money/childallow-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 60일이 전부다",
      "alt": "신청 기한 · 60일이 전부다 — 하루 차이로 100만원이 갈린다"
     },
     {
-     "src": "assets/money/childallow-body5.jpg?v=27",
+     "src": "assets/money/childallow-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 보내면 달라진다",
      "alt": "어린이집 · 보내면 달라진다 — 1세는 현금이 남지 않는다"
@@ -10904,37 +10781,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/idlecare-thumb.jpg?v=27",
+     "src": "assets/money/idlecare-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 시간당 1,918원",
      "alt": "아이돌봄서비스 — 중위 250%까지 정부지원"
     },
     {
-     "src": "assets/money/idlecare-body1.jpg?v=27",
+     "src": "assets/money/idlecare-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 소득 낮을수록 많이",
      "alt": "지원 계산 · 소득 낮을수록 많이 — 가형 0~5세는 시간당 1,918원"
     },
     {
-     "src": "assets/money/idlecare-body2.jpg?v=27",
+     "src": "assets/money/idlecare-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 250%까지 넓어졌다",
      "alt": "소득 기준 · 250%까지 넓어졌다 — 지난해 탈락했어도 올해는 된다"
     },
     {
-     "src": "assets/money/idlecare-body3.jpg?v=27",
+     "src": "assets/money/idlecare-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 세 갈래",
      "alt": "서비스 종류 · 세 갈래 — 아픈 날에는 다른 서비스로"
     },
     {
-     "src": "assets/money/idlecare-body4.jpg?v=27",
+     "src": "assets/money/idlecare-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 한부모는 시간이 더",
      "alt": "추가 지원 · 한부모는 시간이 더 — 한부모는 120시간 더"
     },
     {
-     "src": "assets/money/idlecare-body5.jpg?v=27",
+     "src": "assets/money/idlecare-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 유형 판정이 먼저",
      "alt": "신청 절차 · 유형 판정이 먼저 — 유형 판정 먼저 받아야"
@@ -11102,37 +10979,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/emergency-thumb.jpg?v=27",
+     "src": "assets/money/emergency-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 4인 가구 199만원",
      "alt": "긴급복지지원 — 실직·질병·화재 때 129"
     },
     {
-     "src": "assets/money/emergency-body1.jpg?v=27",
+     "src": "assets/money/emergency-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 생계·주거·의료",
      "alt": "지원 종류 · 생계·주거·의료 — 한 번에 여러 항목이 붙는다"
     },
     {
-     "src": "assets/money/emergency-body2.jpg?v=27",
+     "src": "assets/money/emergency-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 정해져 있다",
      "alt": "위기사유 · 정해져 있다 — 사유가 맞아야 지원된다"
     },
     {
-     "src": "assets/money/emergency-body3.jpg?v=27",
+     "src": "assets/money/emergency-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 가구원 수만큼",
      "alt": "금액 · 가구원 수만큼 — 겨울엔 연료비가 붙는다"
     },
     {
-     "src": "assets/money/emergency-body4.jpg?v=27",
+     "src": "assets/money/emergency-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 기준을 넘으면 안 된다",
      "alt": "소득·재산 · 기준을 넘으면 안 된다 — 금융재산 600만원 넘으면 어렵다"
     },
     {
-     "src": "assets/money/emergency-body5.jpg?v=27",
+     "src": "assets/money/emergency-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 기초수급자는 원칙 제외",
      "alt": "제한 · 기초수급자는 원칙 제외 — 당장 막막하면 129부터"
@@ -11286,37 +11163,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/diaper-thumb.jpg?v=27",
+     "src": "assets/money/diaper-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 매달 20만원",
      "alt": "기저귀·조제분유 — 기저귀 9만 + 분유 11만"
     },
     {
-     "src": "assets/money/diaper-body1.jpg?v=27",
+     "src": "assets/money/diaper-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 기저귀와 분유",
      "alt": "지원 금액 · 기저귀와 분유 — 현금이 아니라 포인트로"
     },
     {
-     "src": "assets/money/diaper-body2.jpg?v=27",
+     "src": "assets/money/diaper-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 저소득 가구",
      "alt": "지원 대상 · 저소득 가구 — 쌍둥이면 두 배"
     },
     {
-     "src": "assets/money/diaper-body3.jpg?v=27",
+     "src": "assets/money/diaper-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 7월부터 완화",
      "alt": "소득 기준 · 7월부터 완화 — 기준이 풀려 다시 신청한다"
     },
     {
-     "src": "assets/money/diaper-body4.jpg?v=27",
+     "src": "assets/money/diaper-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 60일 안에",
      "alt": "신청 기한 · 60일 안에 — 늦으면 그만큼 빠진다"
     },
     {
-     "src": "assets/money/diaper-body5.jpg?v=27",
+     "src": "assets/money/diaper-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 기저귀보다 까다롭다",
      "alt": "분유 조건 · 기저귀보다 까다롭다 — 분유는 조건이 더 붙는다"
@@ -11469,37 +11346,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/naeilcard-thumb.jpg?v=27",
+     "src": "assets/money/naeilcard-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 5년 500만원",
      "alt": "국민내일배움카드 — 훈련비 지원 · 본인부담 0~55%"
     },
     {
-     "src": "assets/money/naeilcard-body1.jpg?v=27",
+     "src": "assets/money/naeilcard-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 300만원과 200만원",
      "alt": "지원 한도 · 300만원과 200만원 — 500만원이 처음부터 오지 않는다"
     },
     {
-     "src": "assets/money/naeilcard-body2.jpg?v=27",
+     "src": "assets/money/naeilcard-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 0~55%를 낸다",
      "alt": "본인부담 · 0~55%를 낸다 — 전액 지원이 아니다"
     },
     {
-     "src": "assets/money/naeilcard-body3.jpg?v=27",
+     "src": "assets/money/naeilcard-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 대상이 따로 있다",
      "alt": "추가 200만원 · 대상이 따로 있다 — 다 쓰고 따로 신청"
     },
     {
-     "src": "assets/money/naeilcard-body4.jpg?v=27",
+     "src": "assets/money/naeilcard-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 못 만드는 사람들",
      "alt": "발급 제외 · 못 만드는 사람들 — 생계급여 받으면 원칙적으로 안 된다"
     },
     {
-     "src": "assets/money/naeilcard-body5.jpg?v=27",
+     "src": "assets/money/naeilcard-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 구직신청이 먼저",
      "alt": "신청 · 구직신청이 먼저 — 카드부터 만들지 않는다"
@@ -11652,37 +11529,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/durunuri-thumb.jpg?v=27",
+     "src": "assets/money/durunuri-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 보험료 80% 지원",
      "alt": "두루누리 — 10인 미만 · 월 270만원 미만"
     },
     {
-     "src": "assets/money/durunuri-body1.jpg?v=27",
+     "src": "assets/money/durunuri-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 10인 미만 사업장",
      "alt": "지원 대상 · 10인 미만 사업장 — 새로 뽑은 직원이 대상이다"
     },
     {
-     "src": "assets/money/durunuri-body2.jpg?v=27",
+     "src": "assets/money/durunuri-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 2026년 월 최대",
      "alt": "지원 금액 · 2026년 월 최대 — 사업주는 월 10만 8,560원"
     },
     {
-     "src": "assets/money/durunuri-body3.jpg?v=27",
+     "src": "assets/money/durunuri-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 고지서에서 빠진다",
      "alt": "지원 방식 · 고지서에서 빠진다 — 고지서 금액이 줄어든다"
     },
     {
-     "src": "assets/money/durunuri-body4.jpg?v=27",
+     "src": "assets/money/durunuri-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 국민연금 요율 인상",
      "alt": "2027년 · 국민연금 요율 인상 — 내년 1월 요율이 오른다"
     },
     {
-     "src": "assets/money/durunuri-body5.jpg?v=27",
+     "src": "assets/money/durunuri-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 36개월이 끝나면",
      "alt": "주의 · 36개월이 끝나면 — 4대 보험 전부가 아니다"
@@ -11855,37 +11732,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/specialcase-thumb.jpg?v=27",
+     "src": "assets/money/specialcase-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 암이면 5%만",
      "alt": "산정특례 — 확진 후 30일 안에 등록"
     },
     {
-     "src": "assets/money/specialcase-body1.jpg?v=27",
+     "src": "assets/money/specialcase-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 5%와 20%의 차이",
      "alt": "본인부담 · 5%와 20%의 차이 — 같은 치료라도 5%만 낸다"
     },
     {
-     "src": "assets/money/specialcase-body2.jpg?v=27",
+     "src": "assets/money/specialcase-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 30일이 기준",
      "alt": "신청 기한 · 30일이 기준 — 하루 늦으면 그 전 진료비는 못 받는다"
     },
     {
-     "src": "assets/money/specialcase-body3.jpg?v=27",
+     "src": "assets/money/specialcase-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 질환마다 다르다",
      "alt": "적용 기간 · 질환마다 다르다 — 5년이 지나면 재등록을 본다"
     },
     {
-     "src": "assets/money/specialcase-body4.jpg?v=27",
+     "src": "assets/money/specialcase-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 급여만 해당",
      "alt": "적용 범위 · 급여만 해당 — 비급여는 빠진다"
     },
     {
-     "src": "assets/money/specialcase-body5.jpg?v=27",
+     "src": "assets/money/specialcase-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 5년 뒤 다시",
      "alt": "재등록 · 5년 뒤 다시 — 기간을 기록해 둬야"
@@ -12039,37 +11916,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/infertreat-thumb.jpg?v=27",
+     "src": "assets/money/infertreat-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 회당 110만원",
      "alt": "난임 시술비 — 출산당 25회 · 소득 기준 없음"
     },
     {
-     "src": "assets/money/infertreat-body1.jpg?v=27",
+     "src": "assets/money/infertreat-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 출산당 25회",
      "alt": "지원 횟수 · 출산당 25회 — 출산 한 번에 25회까지"
     },
     {
-     "src": "assets/money/infertreat-body2.jpg?v=27",
+     "src": "assets/money/infertreat-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 본인부담의 90%",
      "alt": "지원 범위 · 본인부담의 90% — 110만원은 상한이다"
     },
     {
-     "src": "assets/money/infertreat-body3.jpg?v=27",
+     "src": "assets/money/infertreat-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 소득·나이 기준 없다",
      "alt": "신청 자격 · 소득·나이 기준 없다 — 소득이 넘어도 신청된다"
     },
     {
-     "src": "assets/money/infertreat-body4.jpg?v=27",
+     "src": "assets/money/infertreat-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 시술 전에 받아야",
      "alt": "통지서 · 시술 전에 받아야 — 시술 먼저 하면 못 받는다"
     },
     {
-     "src": "assets/money/infertreat-body5.jpg?v=27",
+     "src": "assets/money/infertreat-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 건강보험 횟수와 묶임",
      "alt": "주의 · 건강보험 횟수와 묶임 — 남은 횟수를 먼저 확인"
@@ -12237,37 +12114,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/singleparent-thumb.jpg?v=27",
+     "src": "assets/money/singleparent-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 월 23만원 +8만원",
      "alt": "한부모 아동양육비 — 12월 난방비까지 챙기세요"
     },
     {
-     "src": "assets/money/singleparent-body1.jpg?v=27",
+     "src": "assets/money/singleparent-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 월 23만원",
      "alt": "아동양육비 · 월 23만원 — 자녀가 둘이면 46만원"
     },
     {
-     "src": "assets/money/singleparent-body2.jpg?v=27",
+     "src": "assets/money/singleparent-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 금액이 더 크다",
      "alt": "청소년 한부모 · 금액이 더 크다 — 젊은 부모일수록 더 받는다"
     },
     {
-     "src": "assets/money/singleparent-body3.jpg?v=27",
+     "src": "assets/money/singleparent-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 12월에 8만원",
      "alt": "난방비 · 12월에 8만원 — 겨울 네 달 8만원씩"
     },
     {
-     "src": "assets/money/singleparent-body4.jpg?v=27",
+     "src": "assets/money/singleparent-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 월급과 다르다",
      "alt": "소득인정액 · 월급과 다르다 — 신청해 봐야 아는 경우가 많다"
     },
     {
-     "src": "assets/money/singleparent-body5.jpg?v=27",
+     "src": "assets/money/singleparent-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 중복은 안 된다",
      "alt": "주의 · 중복은 안 된다 — 급여가 안 돼도 증명서는 나온다"
@@ -12421,37 +12298,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/disabledpay-thumb.jpg?v=27",
+     "src": "assets/money/disabledpay-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 월 43만 9,700원",
      "alt": "장애인연금 — 65세엔 기초연금으로"
     },
     {
-     "src": "assets/money/disabledpay-body1.jpg?v=27",
+     "src": "assets/money/disabledpay-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 34만 9,700원",
      "alt": "기초급여 · 34만 9,700원 — 올해 7,190원 올랐다"
     },
     {
-     "src": "assets/money/disabledpay-body2.jpg?v=27",
+     "src": "assets/money/disabledpay-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 3만~9만원",
      "alt": "부가급여 · 3만~9만원 — 부가급여까지 합쳐야 최대"
     },
     {
-     "src": "assets/money/disabledpay-body3.jpg?v=27",
+     "src": "assets/money/disabledpay-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 올해 조금 올랐다",
      "alt": "선정기준액 · 올해 조금 올랐다 — 기준이 올라 대상이 늘었다"
     },
     {
-     "src": "assets/money/disabledpay-body4.jpg?v=27",
+     "src": "assets/money/disabledpay-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 기초연금으로 바뀐다",
      "alt": "65세 · 기초연금으로 바뀐다 — 신청을 놓치면 끊긴다"
     },
     {
-     "src": "assets/money/disabledpay-body5.jpg?v=27",
+     "src": "assets/money/disabledpay-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 주민센터·복지로",
      "alt": "신청 · 주민센터·복지로 — 20일이 지급일이다"
@@ -12614,37 +12491,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/dentalcare-thumb.jpg?v=27",
+     "src": "assets/money/dentalcare-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 30%만 내면 된다",
      "alt": "65세 틀니·임플란트 — 틀니 7년 · 임플란트 2개"
     },
     {
-     "src": "assets/money/dentalcare-body1.jpg?v=27",
+     "src": "assets/money/dentalcare-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 30%만 낸다",
      "alt": "본인부담 · 30%만 낸다 — 30%만 내면 된다"
     },
     {
-     "src": "assets/money/dentalcare-body2.jpg?v=27",
+     "src": "assets/money/dentalcare-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 7년에 한 번",
      "alt": "틀니 · 7년에 한 번 — 7년이 안 돼도 예외가 있다"
     },
     {
-     "src": "assets/money/dentalcare-body3.jpg?v=27",
+     "src": "assets/money/dentalcare-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 평생 2개",
      "alt": "임플란트 · 평생 2개 — 평생 두 개뿐"
     },
     {
-     "src": "assets/money/dentalcare-body4.jpg?v=27",
+     "src": "assets/money/dentalcare-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 먼저 해야 한다",
      "alt": "사전 등록 · 먼저 해야 한다 — 등록 없이 하면 전액 부담"
     },
     {
-     "src": "assets/money/dentalcare-body5.jpg?v=27",
+     "src": "assets/money/dentalcare-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 바꾸면 비급여",
      "alt": "재료 · 바꾸면 비급여 — 재료 하나로 전액이 된다"
@@ -12805,37 +12682,37 @@ window.TOPICS_FALLBACK = {
    ],
    "images": [
     {
-     "src": "assets/money/youthrent-thumb.jpg?v=27",
+     "src": "assets/money/youthrent-thumb.jpg?v=28",
      "role": "thumb",
      "label": "대표 썸네일 1:1 · 월 20만원 24회까지",
      "alt": "청년월세 지원 — 부모와 따로 사는 무주택 청년"
     },
     {
-     "src": "assets/money/youthrent-body1.jpg?v=27",
+     "src": "assets/money/youthrent-body1.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 1 · 월 20만원, 24회",
      "alt": "지원 금액 · 월 20만원, 24회 — 생애 한 번뿐"
     },
     {
-     "src": "assets/money/youthrent-body2.jpg?v=27",
+     "src": "assets/money/youthrent-body2.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 2 · 부모 소득까지 본다",
      "alt": "소득 기준 · 부모 소득까지 본다 — 부모 소득이 넘으면 탈락"
     },
     {
-     "src": "assets/money/youthrent-body3.jpg?v=27",
+     "src": "assets/money/youthrent-body3.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 3 · 3월에 몰아서",
      "alt": "신청 일정 · 3월에 몰아서 — 놓치면 1년을 기다린다"
     },
     {
-     "src": "assets/money/youthrent-body4.jpg?v=27",
+     "src": "assets/money/youthrent-body4.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 4 · 안 되는 집이 있다",
      "alt": "제외 대상 · 안 되는 집이 있다 — 보증금은 계산에 없다"
     },
     {
-     "src": "assets/money/youthrent-body5.jpg?v=27",
+     "src": "assets/money/youthrent-body5.jpg?v=28",
      "role": "body",
      "label": "본문 이미지 5 · 3월 전에 챙길 것",
      "alt": "준비 · 3월 전에 챙길 것 — 서류를 미리 모아 둔다"
