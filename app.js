@@ -231,7 +231,7 @@
     { id: 'drama', icon: '📺', label: '드라마', key: 'topics',
       filters: [{ k: 'all', t: '전체' }, { k: 'airing', t: '방영중' }, { k: 'past', t: '과거작' }] },
     { id: 'car', icon: '🚗', label: '자동차', key: 'car',
-      filters: [{ k: 'all', t: '전체' }, { k: '신차', t: '신차' }, { k: '리콜', t: '리콜' },
+      filters: [{ k: 'all', t: '전체' }, { k: '중고차', t: '중고차' }, { k: '신차', t: '신차' },
         { k: '세금', t: '세금' }, { k: '정비', t: '정비' }, { k: '보조금', t: '보조금' }, { k: '초보운전', t: '초보운전' }] },
     { id: 'money', icon: '💰', label: '지원금·경제', key: 'money',
       filters: [{ k: 'all', t: '전체' }, { k: '지원금', t: '지원금' }, { k: '세금', t: '세금' },
